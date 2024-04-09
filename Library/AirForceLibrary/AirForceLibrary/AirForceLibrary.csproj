@@ -43,14 +43,26 @@
   <ItemGroup>
     <Compile Include="BL\AFPersonalle.cs" />
     <Compile Include="BL\CommandingOfficers.cs" />
-    <Compile Include="BL\GDP.cs" />
+    <Compile Include="BL\GDPilot.cs" />
     <Compile Include="BL\InFieldOfficers.cs" />
+    <Compile Include="BL\ITPerson.cs" />
     <Compile Include="BL\Mission.cs" />
     <Compile Include="BL\Requests.cs" />
+    <Compile Include="DL\DLAFPersonalleDB.cs" />
+    <Compile Include="DL\DLCommandingOfficerDB.cs" />
+    <Compile Include="DL\DLGDPDB.cs" />
+    <Compile Include="DL\DLIFOfficerDB.cs" />
     <Compile Include="DL\DLMissionDB.cs" />
+    <Compile Include="DL\DLRequestsDB.cs" />
+    <Compile Include="Interfaces\IAFPersonalle.cs" />
+    <Compile Include="Interfaces\IGDP.cs" />
     <Compile Include="Interfaces\IMission.cs" />
+    <Compile Include="Interfaces\IOC.cs" />
+    <Compile Include="Interfaces\IRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilis\ConnectionClass.cs" />
+    <Compile Include="Utilis\Interfaces.cs" />
+    <Compile Include="Utilis\Validations.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -27,6 +27,10 @@ namespace AirForceLibrary.BL
         {
             return this.Squadron;
         }
+        public List<InFieldPersonalle> GetUnderOfficer()
+        {
+            return UnderOfficers.ToList();
+        }
         //Now Define the behaviours of Commanding Officers
         //1. Define the CRUD of its under officers
         public void AddUnderOfficer(InFieldPersonalle inFieldPersonalle)
@@ -40,7 +44,7 @@ namespace AirForceLibrary.BL
             {
                 if(Officer.GetPakNo()==PakNo)
                 {
-                    Officer.SetMission(TheMission);
+                    Officer.AddMission(TheMission);
                 }
             }
         }

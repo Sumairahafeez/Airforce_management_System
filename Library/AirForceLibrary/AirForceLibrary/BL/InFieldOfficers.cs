@@ -19,18 +19,36 @@ namespace AirForceLibrary.BL
             Missions = new List<Mission>();
             requests = new List<Requests>();
         }
+        public InFieldPersonalle() { }
         //Define the getters and Setters
         public void SetSquadron(string Squadron)
         {
             this.Squadron = Squadron;
         }
+        
         public string GetSquadron()
         {
             return this.Squadron;
         }
-        public void SetMission(Mission mission)
+        public CommandingOfficers GetOC()
+        {
+            return OC;
+        }
+        public void SetOC(CommandingOfficers c)
+        {
+            OC = c;
+        }
+        public void SetMission(List<Mission> missions)
+        {
+            Missions = missions;
+        }
+        public void AddMission(Mission mission)
         {
             Missions.Add(mission);
+        }
+        public void SetRequests(List<Requests> requests)
+        {
+            this.requests = requests;
         }
         public void SetRequest(Requests req)
         {

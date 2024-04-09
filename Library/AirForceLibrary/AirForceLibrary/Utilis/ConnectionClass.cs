@@ -9,6 +9,6 @@ namespace AirForceLibrary.Utilis
 {
     public class ConnectionClass
     {
-        public static string ConnectionStr = "Server = localhost\\SQLEXPRESS01; Database = AirForce; TrustedConnection = true;";
+        public static string ConnectionStr = "Server = localhost\\SQLEXPRESS01; Database = AirForce; trusted_connection = true;";
     }
 }

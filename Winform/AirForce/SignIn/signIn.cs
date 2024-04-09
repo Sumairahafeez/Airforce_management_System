@@ -1,4 +1,6 @@
 ﻿using AirForce.GDP;
+using AirForce.IT;
+using AirForceLibrary.Utilis;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,9 +22,28 @@ namespace AirForce.SignIn
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            GDPMenu menu = new GDPMenu();
-            menu.Show();
+            try
+            {
+                string name = InputName.Text;
+                int PakNo = int.Parse(InputPakNo.Text);
+                string Password = InputPassword.Text;
+                bool IsValid = Validations.IsValidIT(name, PakNo, Password);
+                if (IsValid)
+                {
+                    this.Hide();
+                    ITMain menu = new ITMain();
+                    menu.Show();
+                }
+                else
+                {
+                    MessageBox.Show("InValid Input");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
     }
 }

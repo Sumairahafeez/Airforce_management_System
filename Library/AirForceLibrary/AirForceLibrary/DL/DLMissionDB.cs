@@ -12,9 +12,9 @@ namespace AirForceLibrary.DL
 {
     public class DLMissionDB:IMission
     {
-        public void StoreMission(Mission mission)
+        public void StoreMission(Mission mission,int PakNo)
         {
-            string query = "INSERT INTO Mission Values(@Date,@Details)";
+            string query = "INSERT INTO Mission Values(@Date,@Details,(SELECT Id From AFPersonalle Where PakNo = "+PakNo+")";
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
@@ -60,7 +60,7 @@ namespace AirForceLibrary.DL
         }
         public void DeleteMission(Mission mission)
         {
-            string query = string.Format("DELETE Mission WHERE Date = {0}, Details = {1}, IsComplete = {2}, SuccessRate{3} "+mission.GetDate()+mission.GetDetails()+mission.GetIsComplete()+mission.GetSuccessRate());
+            string query = string.Format("DELETE Mission WHERE Date = {0} AND  Details = {1} AND  IsComplete = {2} AND SuccessRate{3} "+mission.GetDate()+mission.GetDetails()+mission.GetIsComplete()+mission.GetSuccessRate());
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
@@ -68,6 +68,47 @@ namespace AirForceLibrary.DL
                 cmd.ExecuteNonQuery();
             }
         }
-
+        public List<Mission> GetAllMission()
+        {
+            string query = "SELECT * FROM Mission";
+            List<Mission> missions = new List<Mission>();
+            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query,con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Mission mission = new Mission();
+                    mission.SetDate(DateTime.Parse(reader["Date"].ToString()));
+                    mission.SetDetails(reader["Details"].ToString());
+                    mission.SetIsComplete(bool.Parse(reader["IsComplete"].ToString()));
+                    mission.SetSuccessRate(float.Parse(reader["SuccessRate"].ToString()));
+                    missions.Add(mission);
+                }
+                return missions; 
+            }
+        }
+        public List<Mission> GetAllMissionsOfSpecificOfficer(int officerId)
+        {
+            string query = "SELECT * FROM Mission Where OffId = "+officerId;
+            List<Mission> missions = new List<Mission>();
+            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Mission mission = new Mission();
+                    mission.SetDate(DateTime.Parse(reader["Date"].ToString().ToString()));
+                    mission.SetDetails(reader["Details"].ToString());
+                    mission.SetSuccessRate(float.Parse(reader["SuccessRate"].ToString()));
+                    mission.SetIsComplete(bool.Parse(reader["IsComplete"].ToString()));
+                    missions.Add((mission) );
+                }
+                return missions;
+            }
+        }
     }
 }

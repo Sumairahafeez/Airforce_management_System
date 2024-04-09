@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(signIn));
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.InputPassword = new System.Windows.Forms.MaskedTextBox();
+            this.InputPakNo = new System.Windows.Forms.MaskedTextBox();
+            this.InputName = new System.Windows.Forms.MaskedTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -65,26 +65,26 @@
             this.richTextBox4.TabIndex = 26;
             this.richTextBox4.Text = "Pak No";
             // 
-            // maskedTextBox3
+            // InputPassword
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(959, 330);
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(188, 20);
-            this.maskedTextBox3.TabIndex = 25;
+            this.InputPassword.Location = new System.Drawing.Point(959, 330);
+            this.InputPassword.Name = "InputPassword";
+            this.InputPassword.Size = new System.Drawing.Size(188, 20);
+            this.InputPassword.TabIndex = 25;
             // 
-            // maskedTextBox2
+            // InputPakNo
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(959, 239);
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(188, 20);
-            this.maskedTextBox2.TabIndex = 24;
+            this.InputPakNo.Location = new System.Drawing.Point(959, 239);
+            this.InputPakNo.Name = "InputPakNo";
+            this.InputPakNo.Size = new System.Drawing.Size(188, 20);
+            this.InputPakNo.TabIndex = 24;
             // 
-            // maskedTextBox1
+            // InputName
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(959, 151);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(188, 20);
-            this.maskedTextBox1.TabIndex = 23;
+            this.InputName.Location = new System.Drawing.Point(959, 151);
+            this.InputName.Name = "InputName";
+            this.InputName.Size = new System.Drawing.Size(188, 20);
+            this.InputName.TabIndex = 23;
             // 
             // richTextBox3
             // 
@@ -138,9 +138,9 @@
             this.ClientSize = new System.Drawing.Size(1370, 729);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.richTextBox4);
-            this.Controls.Add(this.maskedTextBox3);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.InputPassword);
+            this.Controls.Add(this.InputPakNo);
+            this.Controls.Add(this.InputName);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button1);
@@ -157,9 +157,9 @@
 
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RichTextBox richTextBox4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox InputPassword;
+        private System.Windows.Forms.MaskedTextBox InputPakNo;
+        private System.Windows.Forms.MaskedTextBox InputName;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button1;

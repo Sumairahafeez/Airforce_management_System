@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace AirForceLibrary.BL
 {   //This Class is for GDP it is child or base class of AFPersonalle class and is specifically for GDP Officers Under the rank of Group Captain
-    internal class GDP:InFieldPersonalle
+    public class GDPilot:InFieldPersonalle
     {
        
         private int FlyingHours;
         
         //SET ITS CONSTRUCTORS
        
-        public GDP(string Name,string Rank,int PakNO,string PresentlyLocated,string Squadron):base(Name,Rank,PakNO,PresentlyLocated,Squadron)
+        public GDPilot(string Name,string Rank,int PakNO,string PresentlyLocated,string Squadron):base(Name,Rank,PakNO,PresentlyLocated,Squadron)
         {
             SetSquadron(Squadron);
            
