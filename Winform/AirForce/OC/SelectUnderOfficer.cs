@@ -51,7 +51,8 @@ namespace AirForce.OC
                
                 OfficerGV.DataSource = dataTable;
                 //Now fill the combo boxes with available data
-                string query1 = "SELECT PakNo From GDP g,OC o,AFPersonalle a WHERE g.OfficerId = a.Id OR o.OffId = a.Id";
+                string query1 = "SELECT * FROM  GDP g,AFPersonalle a where g.OfficerId = a.Id and g.OCId = (SELECT Id FROM OC WHERE OffId = (SELECT Id FROM AFPersonalle WHERE PakNo= "+CurrentOCPakNo+"))\r\n";
+
                 PakNoCB.DataSource = Validations.GetData(query1);
                 PakNoCB.DisplayMember = "PakNo";
 
@@ -64,13 +65,15 @@ namespace AirForce.OC
 
         private void Addbt_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
                 int PakNo = int.Parse(PakNoCB.Text);
                 bool isValid = Validations.IsValidAFPersonalle(PakNo);//It will check if the AF Personal is valid or not
                 if (isValid)
                 {
-                    AFPersonalle AF = Interfaces.AFInterface.GetAFPersonalleByID(PakNo);//From ID the personal is fetched
+                    GDPilot AF = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNo);//From ID the personal is fetched
                     string Squadron = InputSquadron.Text;
+                    MessageBox.Show("Iam " + CurrentOCPakNo);
                     //If valid it is checked if the squadrons and location of oc and underofficer matches of not
                     CommandingOfficers OC = Interfaces.OCInterface.GetOCbyId(CurrentOCPakNo);
 
@@ -80,9 +83,10 @@ namespace AirForce.OC
                         bool isAdded = OC.AskForApproval(AF);
                         if (isAdded)
                         {
-                            GDPilot gdp = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNo);
-                            gdp.SetCommandingOfficer(Interfaces.OCInterface.GetOCbyId(CurrentOCPakNo));
-                            Interfaces.GdpInterface.UpdateGDP(PakNo, gdp);
+                            AF.SetCommandingOfficer(OC);
+                            Interfaces.GdpInterface.UpdateGDP(PakNo, AF);
+
+                            Interfaces.OCInterface.UpdateOC(CurrentOCPakNo, OC);
                             MessageBox.Show("Officer Added Successfully");
                         }
                         else
@@ -100,10 +104,17 @@ namespace AirForce.OC
                 {
                     MessageBox.Show("Invalid Officer");
                 }
-            
-           
 
-           
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+
+
         }
 
         private void OfficerGV_CellContentClick(object sender, DataGridViewCellEventArgs e)

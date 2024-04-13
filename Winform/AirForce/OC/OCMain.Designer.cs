@@ -58,6 +58,7 @@ namespace AirForce.OC
             this.button7.TabIndex = 62;
             this.button7.Text = "Back";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Requestbt
             // 
@@ -70,6 +71,7 @@ namespace AirForce.OC
             this.Requestbt.TabIndex = 60;
             this.Requestbt.Text = "CheckRequests";
             this.Requestbt.UseVisualStyleBackColor = false;
+            this.Requestbt.Click += new System.EventHandler(this.Requestbt_Click);
             // 
             // button3
             // 
@@ -141,6 +143,7 @@ namespace AirForce.OC
             this.button2.TabIndex = 64;
             this.button2.Text = "AssignPosting";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // userBoxT
             // 

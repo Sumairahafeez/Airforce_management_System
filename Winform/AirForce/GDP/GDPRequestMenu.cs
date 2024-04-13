@@ -54,7 +54,9 @@ namespace AirForce.GDP
 
         private void Updatebt_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            DeletReq del = new DeletReq();
+            del.Show();
         }
     }
 }

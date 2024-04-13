@@ -62,8 +62,8 @@ namespace AirForce.IT
                     {
 
                         CommandingOfficers newOC = new CommandingOfficers(name, Rank, PakNO, presentlyLocated, squadron);
-                        IOC Oc = new DLCommandingOfficerDB();
-                        Oc.StoreOC(newOC);
+                       
+                        Interfaces.OCInterface.StoreOC(newOC);
                         MessageBox.Show("OC Added SuccessFully");
                         ClearData();
                     }

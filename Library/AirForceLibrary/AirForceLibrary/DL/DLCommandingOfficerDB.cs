@@ -20,7 +20,7 @@ namespace AirForceLibrary.DL
             IAFPersonalle IAF = new DLAFPersonalleDB();
             AFPersonalle A = new AFPersonalle(commandingOfficers.GetName(), commandingOfficers.GetRank(), commandingOfficers.GetPakNo(), commandingOfficers.GetPresentlyPosted());
             IAF.StoreAFPersonalle(A);
-            string query = string.Format("INSERT INTO OC Values('{0}',(SELECT Id from AFPersonalle WHERE PakNo = {1}))",commandingOfficers.GetSquadron(),commandingOfficers.GetPakNo());
+            string query = string.Format("INSERT INTO OC Values('{0}',(SELECT TOP 1 Id from AFPersonalle WHERE PakNo = {1}))",commandingOfficers.GetSquadron(),commandingOfficers.GetPakNo());
             
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
@@ -32,7 +32,7 @@ namespace AirForceLibrary.DL
         //This will give OC by Id
         public CommandingOfficers GetOCbyId(int PakNo)
         {
-            string query = "SELECT * FROM OC o ,AFPersonalle a WHERE o.OffId = a.Id AND  a.PakNo = " + PakNo ;
+            string query = "SELECT * FROM OC o,AFPersonalle a where o.OffId = (SELECT Id FROM AFPersonalle WHERE PakNo = " + PakNo +") AND a.Id = o.OffId";
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open() ;
@@ -44,8 +44,17 @@ namespace AirForceLibrary.DL
                     string Rank = reader["Rank"].ToString();
                     string loc = reader["PresentlyPosted"].ToString();
                     string squad = reader["Squadron"].ToString();
-                    CommandingOfficers c = new CommandingOfficers(name, Rank, PakNo, loc, squad);
-                    return c;
+                    int PakNO ;
+                    IGDP AFP = new DLGDPDB();
+                    List<GDPilot> underOff = AFP.GetAllUFofOC(int.Parse(reader["PakNo"].ToString()));
+
+                    if (int.TryParse(reader["PakNo"].ToString(),out PakNO))
+                    {
+                        CommandingOfficers c = new CommandingOfficers(name, Rank, PakNO, loc, squad);
+                        c.SetUnderOff(underOff);
+                        return c;
+                    }
+                    
                 }
                 return null;
             }
@@ -53,7 +62,7 @@ namespace AirForceLibrary.DL
        //This class dont have a delete query because when oc is to be deleted then its corresponding AFpersonalle will delete as well
        public List<CommandingOfficers> GetAll()
         {
-            string query = "SELECT * FROM OC o,AFPersonalle a,GDP g WHERE o.OffId = a.Id AND g.OCId = o.Id";
+            string query = "SELECT * FROM OC o,AFPersonalle a WHERE o.OffId = a.Id";
             List<CommandingOfficers> commandingOfficers = new List<CommandingOfficers>();
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
@@ -67,7 +76,10 @@ namespace AirForceLibrary.DL
                     string loc = reader["PresentlyPosted"].ToString();
                     int PakNo = int.Parse(reader["PakNo"].ToString());
                     string squad = reader["Squadron"].ToString();
+                    IGDP AFP = new DLGDPDB();
+                    List<GDPilot> underOff = AFP.GetAllUFofOC(int.Parse(reader["PakNo"].ToString()));
                     CommandingOfficers c = new CommandingOfficers(name,Rank,PakNo,loc, squad);
+                    c.SetUnderOff(underOff);
 
                     commandingOfficers.Add(c);
 

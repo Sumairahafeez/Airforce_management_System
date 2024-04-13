@@ -36,13 +36,13 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button3 = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.InputDetails = new System.Windows.Forms.RichTextBox();
+            this.MissionDGV = new System.Windows.Forms.DataGridView();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -105,6 +105,7 @@
             this.button3.TabIndex = 38;
             this.button3.Text = "Check";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.Checkbt_Click);
             // 
             // richTextBox2
             // 
@@ -117,32 +118,33 @@
             this.richTextBox2.TabIndex = 39;
             this.richTextBox2.Text = "DETAILS";
             // 
-            // richTextBox3
+            // InputDetails
             // 
-            this.richTextBox3.BackColor = System.Drawing.Color.Peru;
-            this.richTextBox3.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox3.Location = new System.Drawing.Point(1105, 271);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(213, 140);
-            this.richTextBox3.TabIndex = 40;
-            this.richTextBox3.Text = "";
+            this.InputDetails.BackColor = System.Drawing.Color.Peru;
+            this.InputDetails.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputDetails.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputDetails.Location = new System.Drawing.Point(1105, 271);
+            this.InputDetails.Name = "InputDetails";
+            this.InputDetails.Size = new System.Drawing.Size(213, 140);
+            this.InputDetails.TabIndex = 40;
+            this.InputDetails.Text = "";
             // 
-            // dataGridView1
+            // MissionDGV
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Peru;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(212, 420);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(517, 230);
-            this.dataGridView1.TabIndex = 41;
+            this.MissionDGV.BackgroundColor = System.Drawing.Color.Peru;
+            this.MissionDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MissionDGV.Location = new System.Drawing.Point(212, 349);
+            this.MissionDGV.Name = "MissionDGV";
+            this.MissionDGV.Size = new System.Drawing.Size(517, 230);
+            this.MissionDGV.TabIndex = 41;
+            this.MissionDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MissionDGV_CellContentClick);
             // 
             // richTextBox4
             // 
             this.richTextBox4.BackColor = System.Drawing.Color.Peru;
             this.richTextBox4.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox4.Location = new System.Drawing.Point(212, 359);
+            this.richTextBox4.Location = new System.Drawing.Point(212, 303);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.Size = new System.Drawing.Size(172, 40);
             this.richTextBox4.TabIndex = 42;
@@ -168,7 +170,7 @@
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(212, 678);
+            this.button5.Location = new System.Drawing.Point(212, 585);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(103, 39);
             this.button5.TabIndex = 44;
@@ -183,8 +185,8 @@
             this.ClientSize = new System.Drawing.Size(1370, 729);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.richTextBox4);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.richTextBox3);
+            this.Controls.Add(this.MissionDGV);
+            this.Controls.Add(this.InputDetails);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dateTimePicker1);
@@ -197,7 +199,7 @@
             this.Text = "ViewMission";
             this.Load += new System.EventHandler(this.ViewMission_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDGV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -211,8 +213,8 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.RichTextBox InputDetails;
+        private System.Windows.Forms.DataGridView MissionDGV;
         private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;

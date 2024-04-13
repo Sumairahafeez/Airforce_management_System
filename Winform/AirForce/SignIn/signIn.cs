@@ -24,8 +24,7 @@ namespace AirForce.SignIn
 
         private void button2_Click(object sender, EventArgs e)
         {   //this function goes for first check if it is an IT then it goes for the GDP and then it goes on for OC
-            try
-            {
+            
                 string name = InputName.Text;
                 int PakNo = int.Parse(InputPakNo.Text);
                 string Password = InputPassword.Text;
@@ -66,11 +65,8 @@ namespace AirForce.SignIn
                     }
                    
                 }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
+           
            
         }
     }

@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ADDFH));
-            this.richTextBox9 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox8 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox7 = new System.Windows.Forms.RichTextBox();
+            this.InputMirage = new System.Windows.Forms.RichTextBox();
+            this.InputF16 = new System.Windows.Forms.RichTextBox();
+            this.InputJF17 = new System.Windows.Forms.RichTextBox();
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.InputPakNO = new System.Windows.Forms.RichTextBox();
             this.Backbt = new System.Windows.Forms.Button();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.OfficerGV = new System.Windows.Forms.DataGridView();
             this.checkbt = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -46,45 +46,45 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.Savebt = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OfficerGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // richTextBox9
+            // InputMirage
             // 
-            this.richTextBox9.BackColor = System.Drawing.Color.Peru;
-            this.richTextBox9.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox9.Location = new System.Drawing.Point(1091, 409);
-            this.richTextBox9.Name = "richTextBox9";
-            this.richTextBox9.Size = new System.Drawing.Size(214, 37);
-            this.richTextBox9.TabIndex = 79;
-            this.richTextBox9.Text = "";
-            this.richTextBox9.Visible = false;
+            this.InputMirage.BackColor = System.Drawing.Color.Peru;
+            this.InputMirage.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputMirage.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputMirage.Location = new System.Drawing.Point(1091, 409);
+            this.InputMirage.Name = "InputMirage";
+            this.InputMirage.Size = new System.Drawing.Size(214, 37);
+            this.InputMirage.TabIndex = 79;
+            this.InputMirage.Text = "";
+            this.InputMirage.Visible = false;
             // 
-            // richTextBox8
+            // InputF16
             // 
-            this.richTextBox8.BackColor = System.Drawing.Color.Peru;
-            this.richTextBox8.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox8.Location = new System.Drawing.Point(1091, 335);
-            this.richTextBox8.Name = "richTextBox8";
-            this.richTextBox8.Size = new System.Drawing.Size(214, 37);
-            this.richTextBox8.TabIndex = 78;
-            this.richTextBox8.Text = "";
-            this.richTextBox8.Visible = false;
+            this.InputF16.BackColor = System.Drawing.Color.Peru;
+            this.InputF16.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputF16.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputF16.Location = new System.Drawing.Point(1091, 335);
+            this.InputF16.Name = "InputF16";
+            this.InputF16.Size = new System.Drawing.Size(214, 37);
+            this.InputF16.TabIndex = 78;
+            this.InputF16.Text = "";
+            this.InputF16.Visible = false;
             // 
-            // richTextBox7
+            // InputJF17
             // 
-            this.richTextBox7.BackColor = System.Drawing.Color.Peru;
-            this.richTextBox7.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox7.Location = new System.Drawing.Point(1091, 261);
-            this.richTextBox7.Name = "richTextBox7";
-            this.richTextBox7.Size = new System.Drawing.Size(214, 37);
-            this.richTextBox7.TabIndex = 77;
-            this.richTextBox7.Text = "";
-            this.richTextBox7.Visible = false;
+            this.InputJF17.BackColor = System.Drawing.Color.Peru;
+            this.InputJF17.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputJF17.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputJF17.Location = new System.Drawing.Point(1091, 261);
+            this.InputJF17.Name = "InputJF17";
+            this.InputJF17.Size = new System.Drawing.Size(214, 37);
+            this.InputJF17.TabIndex = 77;
+            this.InputJF17.Text = "";
+            this.InputJF17.Visible = false;
             // 
             // richTextBox6
             // 
@@ -122,16 +122,16 @@
             this.richTextBox2.Text = "JF-17 FH";
             this.richTextBox2.Visible = false;
             // 
-            // richTextBox5
+            // InputPakNO
             // 
-            this.richTextBox5.BackColor = System.Drawing.Color.Peru;
-            this.richTextBox5.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox5.Location = new System.Drawing.Point(1091, 134);
-            this.richTextBox5.Name = "richTextBox5";
-            this.richTextBox5.Size = new System.Drawing.Size(214, 37);
-            this.richTextBox5.TabIndex = 73;
-            this.richTextBox5.Text = "";
+            this.InputPakNO.BackColor = System.Drawing.Color.Peru;
+            this.InputPakNO.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputPakNO.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputPakNO.Location = new System.Drawing.Point(1091, 134);
+            this.InputPakNO.Name = "InputPakNO";
+            this.InputPakNO.Size = new System.Drawing.Size(214, 37);
+            this.InputPakNO.TabIndex = 73;
+            this.InputPakNO.Text = "";
             // 
             // Backbt
             // 
@@ -159,14 +159,15 @@
             this.richTextBox4.TabIndex = 70;
             this.richTextBox4.Text = "RECENT DATA";
             // 
-            // dataGridView1
+            // OfficerGV
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Peru;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(209, 300);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(517, 230);
-            this.dataGridView1.TabIndex = 69;
+            this.OfficerGV.BackgroundColor = System.Drawing.Color.Peru;
+            this.OfficerGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OfficerGV.Location = new System.Drawing.Point(209, 300);
+            this.OfficerGV.Name = "OfficerGV";
+            this.OfficerGV.Size = new System.Drawing.Size(517, 230);
+            this.OfficerGV.TabIndex = 69;
+            this.OfficerGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OfficerGV_CellContentClick);
             // 
             // checkbt
             // 
@@ -256,16 +257,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 729);
             this.Controls.Add(this.Savebt);
-            this.Controls.Add(this.richTextBox9);
-            this.Controls.Add(this.richTextBox8);
-            this.Controls.Add(this.richTextBox7);
+            this.Controls.Add(this.InputMirage);
+            this.Controls.Add(this.InputF16);
+            this.Controls.Add(this.InputJF17);
             this.Controls.Add(this.richTextBox6);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox5);
+            this.Controls.Add(this.InputPakNO);
             this.Controls.Add(this.Backbt);
             this.Controls.Add(this.richTextBox4);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.OfficerGV);
             this.Controls.Add(this.checkbt);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
@@ -275,7 +276,7 @@
             this.Name = "ADDFH";
             this.Text = "ADDFH";
             this.Load += new System.EventHandler(this.ADDFH_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OfficerGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -283,16 +284,16 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox9;
-        private System.Windows.Forms.RichTextBox richTextBox8;
-        private System.Windows.Forms.RichTextBox richTextBox7;
+        private System.Windows.Forms.RichTextBox InputMirage;
+        private System.Windows.Forms.RichTextBox InputF16;
+        private System.Windows.Forms.RichTextBox InputJF17;
         private System.Windows.Forms.RichTextBox richTextBox6;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.RichTextBox InputPakNO;
         private System.Windows.Forms.Button Backbt;
         private System.Windows.Forms.RichTextBox richTextBox4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView OfficerGV;
         private System.Windows.Forms.Button checkbt;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button2;

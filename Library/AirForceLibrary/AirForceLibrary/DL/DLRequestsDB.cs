@@ -37,9 +37,9 @@ namespace AirForceLibrary.DL
         //This function returns requests of a specific Officer Taking its PakNo
         public List<Requests> GetRequestsOfSpecificOfficer(int PakNo)
         {
-            string query = "SELECT * FROM Request WHERE PakNo = " + PakNo;
+            string query = "SELECT * FROM Request WHERE OfficerId = " + PakNo;
             List<Requests> requests = new List<Requests>();
-            using(SqlConnection con = new SqlConnection())
+            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query,con);
@@ -59,30 +59,23 @@ namespace AirForceLibrary.DL
         //This function will store request everytime a new request is made
         public void StoreRequests(Requests request)
         {
-            string query = "INSERT INTO Request VALUE(@Id,@PakNo,@Context,@Status)";
+            string query = string.Format("INSERT INTO Request VALUES( {0},{1},'{2}','{3}')",request.GetRequestId(),request.GetPakNo(),request.GetContext(),request.GetStatus());
             using(SqlConnection co = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 co.Open();
                 SqlCommand cmd = new SqlCommand(query, co);
-                cmd.Parameters.AddWithValue("@Id", request.GetRequestId());
-                cmd.Parameters.AddWithValue("@PakNo", request.GetPakNo());
-                cmd.Parameters.AddWithValue("@con", request.GetContext());
-                cmd.Parameters.AddWithValue("@Status", request.GetStatus());
                 cmd.ExecuteNonQuery();
             }
         }
         //This function will be used bu both ends officer as well as commander
         public void UpdateRequests(int RequestId,Requests request)
         {
-            string query = "UPDATE Request SET (Id = @Id,OficerId = @PakNo,Context = @con, Status = @Status)";
+            string query = string.Format("UPDATE Request SET Context = '{0}', Status = '{1}'", request.GetContext(), request.GetStatus());
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
                 SqlCommand cmdm = new SqlCommand(query, con);
-                cmdm.Parameters.AddWithValue("@Id",request.GetRequestId());
-                cmdm.Parameters.AddWithValue("@PakNo",request.GetPakNo());
-                cmdm.Parameters.AddWithValue("@con",request.GetContext());
-                cmdm.Parameters.AddWithValue("@Status",request.GetStatus());
+                
                 cmdm.ExecuteNonQuery();
             }
         }

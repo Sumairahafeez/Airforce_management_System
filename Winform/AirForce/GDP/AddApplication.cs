@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AirForceLibrary.BL;
+using AirForceLibrary.Utilis;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +24,64 @@ namespace AirForce.GDP
             this.Hide();
             GDPRequestMenu Menu = new GDPRequestMenu();
             Menu.Show();
+        }
+
+        private void Savebt_Click(object sender, EventArgs e)
+        {
+            int PakNo = int.Parse(InputPakNo.Text);
+            string context = InputContextT.Text;
+            int Id = int.Parse(InputId.Text);
+            bool isValid = Validations.IsValidGDP(PakNo);
+            if (isValid)
+            {
+                try
+                {
+                    Requests newReq = new Requests(Id, context, PakNo);
+                    Interfaces.RequestInterface.StoreRequests(newReq);
+                    MessageBox.Show("Request Sent Successfully");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("InValid PakNo");
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddApplication_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable data = new DataTable();
+                data.Columns.Add("ReqId", typeof(int));
+                data.Columns.Add("Context", typeof(string));
+                data.Columns.Add("PakNO", typeof(int));
+                data.Columns.Add("Status", typeof(string));
+                List<Requests> requ = Interfaces.RequestInterface.GetRequestsOfSpecificOfficer(ConnectionClass.CurrentGDP.GetPakNo());
+                for(int i = 0; i < requ.Count; i++)
+                {
+                    data.Rows.Add(requ[i].GetRequestId(), requ[i].GetContext(), requ[i].GetPakNo(), requ[i].GetStatus());
+                }
+                ApplicationsGV.DataSource = data;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

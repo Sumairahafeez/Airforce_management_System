@@ -51,7 +51,7 @@
             this.InputIsComplete = new System.Windows.Forms.RichTextBox();
             this.InputSuccessRate = new System.Windows.Forms.RichTextBox();
             this.Date = new System.Windows.Forms.DateTimePicker();
-            this.assign2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OfficerGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MissionDGV)).BeginInit();
@@ -312,26 +312,25 @@
             this.Date.TabIndex = 177;
             this.Date.Visible = false;
             // 
-            // assign2
+            // button3
             // 
-            this.assign2.BackColor = System.Drawing.Color.DimGray;
-            this.assign2.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.assign2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.assign2.Location = new System.Drawing.Point(415, 623);
-            this.assign2.Name = "assign2";
-            this.assign2.Size = new System.Drawing.Size(113, 37);
-            this.assign2.TabIndex = 178;
-            this.assign2.Text = "Assign ";
-            this.assign2.UseVisualStyleBackColor = false;
-            this.assign2.Visible = false;
-            this.assign2.Click += new System.EventHandler(this.assign2_Click);
+            this.button3.BackColor = System.Drawing.Color.DimGray;
+            this.button3.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(410, 623);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(200, 37);
+            this.button3.TabIndex = 179;
+            this.button3.Text = "Assign  Mission";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // AssignMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 729);
-            this.Controls.Add(this.assign2);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.Date);
             this.Controls.Add(this.InputSuccessRate);
             this.Controls.Add(this.InputIsComplete);
@@ -388,6 +387,6 @@
         private System.Windows.Forms.RichTextBox InputIsComplete;
         private System.Windows.Forms.RichTextBox InputSuccessRate;
         private System.Windows.Forms.DateTimePicker Date;
-        private System.Windows.Forms.Button assign2;
+        private System.Windows.Forms.Button button3;
     }
 }

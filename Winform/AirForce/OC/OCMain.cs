@@ -59,5 +59,26 @@ namespace AirForce.OC
             SelectUnderOfficer select = new SelectUnderOfficer(CurrentOCPakNo);
             select.Show();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 form = new Form1();
+            form.Show();
+        }
+
+        private void Requestbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CheckReq req = new CheckReq(CurrentOCPakNo);
+            req.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AssignPosting assign = new AssignPosting(CurrentOCPakNo);
+            assign.Show();
+        }
     }
 }

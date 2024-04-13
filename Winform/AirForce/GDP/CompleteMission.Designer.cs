@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompleteMission));
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.MissionDGV = new System.Windows.Forms.DataGridView();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.InputDetails = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -40,9 +40,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.IsComplete = new System.Windows.Forms.CheckBox();
             this.richTextBox5 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
+            this.InputSuccess = new System.Windows.Forms.RichTextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MissionDGV)).BeginInit();
@@ -68,17 +68,18 @@
             this.MissionDGV.Name = "MissionDGV";
             this.MissionDGV.Size = new System.Drawing.Size(517, 230);
             this.MissionDGV.TabIndex = 52;
+            this.MissionDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MissionDGV_CellContentClick);
             // 
-            // richTextBox3
+            // InputDetails
             // 
-            this.richTextBox3.BackColor = System.Drawing.Color.Peru;
-            this.richTextBox3.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox3.Location = new System.Drawing.Point(1102, 269);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(213, 140);
-            this.richTextBox3.TabIndex = 51;
-            this.richTextBox3.Text = "";
+            this.InputDetails.BackColor = System.Drawing.Color.Peru;
+            this.InputDetails.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputDetails.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputDetails.Location = new System.Drawing.Point(1102, 269);
+            this.InputDetails.Name = "InputDetails";
+            this.InputDetails.Size = new System.Drawing.Size(213, 140);
+            this.InputDetails.TabIndex = 51;
+            this.InputDetails.Text = "";
             // 
             // richTextBox2
             // 
@@ -165,19 +166,19 @@
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // checkBox1
+            // IsComplete
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.Peru;
-            this.checkBox1.Font = new System.Drawing.Font("Tempus Sans ITC", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkBox1.Location = new System.Drawing.Point(876, 378);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(137, 31);
-            this.checkBox1.TabIndex = 55;
-            this.checkBox1.Text = "Completed";
-            this.checkBox1.UseVisualStyleBackColor = false;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.IsComplete.AutoSize = true;
+            this.IsComplete.BackColor = System.Drawing.Color.Peru;
+            this.IsComplete.Font = new System.Drawing.Font("Tempus Sans ITC", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IsComplete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.IsComplete.Location = new System.Drawing.Point(876, 378);
+            this.IsComplete.Name = "IsComplete";
+            this.IsComplete.Size = new System.Drawing.Size(137, 31);
+            this.IsComplete.TabIndex = 55;
+            this.IsComplete.Text = "Completed";
+            this.IsComplete.UseVisualStyleBackColor = false;
+            this.IsComplete.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // richTextBox5
             // 
@@ -191,17 +192,17 @@
             this.richTextBox5.Text = "SUCCESSRATE";
             this.richTextBox5.Visible = false;
             // 
-            // richTextBox6
+            // InputSuccess
             // 
-            this.richTextBox6.BackColor = System.Drawing.Color.Peru;
-            this.richTextBox6.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox6.Location = new System.Drawing.Point(1102, 444);
-            this.richTextBox6.Name = "richTextBox6";
-            this.richTextBox6.Size = new System.Drawing.Size(213, 40);
-            this.richTextBox6.TabIndex = 57;
-            this.richTextBox6.Text = "";
-            this.richTextBox6.Visible = false;
+            this.InputSuccess.BackColor = System.Drawing.Color.Peru;
+            this.InputSuccess.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputSuccess.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputSuccess.Location = new System.Drawing.Point(1102, 444);
+            this.InputSuccess.Name = "InputSuccess";
+            this.InputSuccess.Size = new System.Drawing.Size(213, 40);
+            this.InputSuccess.TabIndex = 57;
+            this.InputSuccess.Text = "";
+            this.InputSuccess.Visible = false;
             // 
             // button5
             // 
@@ -231,6 +232,7 @@
             this.button6.TabIndex = 59;
             this.button6.Text = "Save";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // CompleteMission
             // 
@@ -239,12 +241,12 @@
             this.ClientSize = new System.Drawing.Size(1370, 729);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.richTextBox6);
+            this.Controls.Add(this.InputSuccess);
             this.Controls.Add(this.richTextBox5);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.IsComplete);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.MissionDGV);
-            this.Controls.Add(this.richTextBox3);
+            this.Controls.Add(this.InputDetails);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dateTimePicker1);
@@ -267,7 +269,7 @@
 
         private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.DataGridView MissionDGV;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox InputDetails;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -276,9 +278,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox IsComplete;
         private System.Windows.Forms.RichTextBox richTextBox5;
-        private System.Windows.Forms.RichTextBox richTextBox6;
+        private System.Windows.Forms.RichTextBox InputSuccess;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
     }

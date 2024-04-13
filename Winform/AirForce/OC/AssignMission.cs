@@ -36,6 +36,7 @@ namespace AirForce.OC
             InputIsComplete.Visible = true;
             SuccessT.Visible = true;
             InputSuccessRate.Visible = true;
+            MissionDGV.Visible = true;
             int PakNo =int.Parse(PakNoCB.Text);
             string Name = InputName.Text;
             try
@@ -53,7 +54,7 @@ namespace AirForce.OC
                 {
                     dataTable.Rows.Add(Name,PakNo,missions[i].GetDate(), missions[i].GetDetails(), missions[i].GetIsComplete(), missions[i].GetSuccessRate());
                 }
-               
+                MissionDGV.DataSource = dataTable;
 
             }
             catch (Exception ex)
@@ -69,11 +70,15 @@ namespace AirForce.OC
             DateT.Visible = true;
             InputDetails.Visible = true;
             DetailT.Visible = true;
-           assign2.Visible = true;
+           button3.Visible = true;
+            IsCompleteT.Visible = false;
+            InputIsComplete.Visible = false;
+            SuccessT.Visible = false;
+            InputSuccessRate.Visible = false;
 
         }
 
-        private void assign2_Click(object sender, EventArgs e)
+        private void assignMissionbt_Click(object sender, EventArgs e)
         {
             DateTime date = Date.Value;
             string Details = InputDetails.Text;
@@ -82,7 +87,8 @@ namespace AirForce.OC
             bool isValid = Validations.IsValidAFPersonalle(PakNO);
             if (isValid)
             {
-                AFPersonalle AF = Interfaces.AFInterface.GetAFPersonalleByID(PakNO);
+                
+                GDPilot AF = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNO);
                 CommandingOfficers OC = ConnectionClass.CurrentOC;
                 bool isUnderOfficer = OC.IsValidUnderOfficer(AF);
                 if(isUnderOfficer)
@@ -102,9 +108,9 @@ namespace AirForce.OC
         private void MissionDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int SelectedRow = e.RowIndex;
-            if (SelectedRow >= -2 && SelectedRow < OfficerGV.Rows.Count)
+            if (SelectedRow >= -2 && SelectedRow < MissionDGV.Rows.Count)
             {
-                DataGridViewRow row = OfficerGV.Rows[SelectedRow];
+                DataGridViewRow row = MissionDGV.Rows[SelectedRow];
                 if (row.Cells["PakNo"].Value != null)
 
                     PakNoCB.Text = row.Cells["PakNo"].Value.ToString();
@@ -115,11 +121,8 @@ namespace AirForce.OC
                     InputName.Text = row.Cells["Name"].Value.ToString();
                 else
                     InputName.Text = string.Empty;
-
-                if (row.Cells["Date"].Value != null)
-                    Date.Text = row.Cells["Date"].Value.ToString();
-                else
-                    Date.Text = string.Empty;
+                //Date.Value = DateTime.Parse(row.Cells["Date"].ToString());
+                
 
                 if (row.Cells["Details"].Value != null)
                     InputDetails.Text = row.Cells["Details"].Value.ToString();
@@ -148,14 +151,15 @@ namespace AirForce.OC
                 dataTable.Columns.Add("Rank", typeof(string));
                 dataTable.Columns.Add("Posted", typeof(string));
                 CommandingOfficers OC = Interfaces.OCInterface.GetOCbyId(CurrentOCPakNo);
-                List<AFPersonalle> Unders = OC.GetUnderOfficer();
+                List<GDPilot> Unders = Interfaces.GdpInterface.GetAllUFofOC(CurrentOCPakNo);
                 for (int i = 0; i < Unders.Count; i++)
                 {
                     dataTable.Rows.Add(Unders[i].GetName(), Unders[i].GetPakNo(), Unders[i].GetRank(), Unders[i].GetPresentlyPosted());
                 }
                 OfficerGV.DataSource = dataTable;
                 //Now fill the combo boxes with available data
-                string query1 = "SELECT PakNo From GDP g,OC o,AFPersonalle a WHERE g.OfficerId = a.Id AND g.OCId = o.Id";
+                string query1 = "SELECT * FROM  GDP g,AFPersonalle a where g.OfficerId = a.Id and g.OCId = (SELECT Id FROM OC WHERE OffId = (SELECT Id FROM AFPersonalle WHERE PakNo= " + CurrentOCPakNo + "))\r\n";
+
                 PakNoCB.DataSource = Validations.GetData(query1);
                 PakNoCB.DisplayMember = "PakNo";
 
@@ -171,6 +175,33 @@ namespace AirForce.OC
             this.Hide();
             OCMain main = new OCMain(CurrentOCPakNo);
             main.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DateTime date = DateTime.Parse(Date.Text);
+            string Details = InputDetails.Text;
+            int PakNO = int.Parse(PakNoCB.Text);
+            string name = InputName.Text;
+            bool isValid = Validations.IsValidAFPersonalle(PakNO);
+            if (isValid)
+            {
+
+                GDPilot AF = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNO);
+                CommandingOfficers OC = Interfaces.OCInterface.GetOCbyId(CurrentOCPakNo);
+               
+               
+                    MessageBox.Show("u HAVE REACHED HERE");
+                    Mission newMission = new Mission(date, Details);
+                    OC.AssignMission(PakNO, newMission);
+                    Interfaces.MissionInterface.StoreMission(newMission, PakNO);
+                    MessageBox.Show("Mission Assigned Successfully");
+                
+            }
+            else
+            {
+                MessageBox.Show("Invalid PakNo");
+            }
         }
     }
 }

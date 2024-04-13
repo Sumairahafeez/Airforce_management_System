@@ -67,6 +67,12 @@
     <Compile Include="GDP\CompleteMission.Designer.cs">
       <DependentUpon>CompleteMission.cs</DependentUpon>
     </Compile>
+    <Compile Include="GDP\DeletReq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GDP\DeletReq.Designer.cs">
+      <DependentUpon>DeletReq.cs</DependentUpon>
+    </Compile>
     <Compile Include="GDP\EditMission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +169,18 @@
     <Compile Include="OC\AssignMission.Designer.cs">
       <DependentUpon>AssignMission.cs</DependentUpon>
     </Compile>
+    <Compile Include="OC\AssignPosting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OC\AssignPosting.Designer.cs">
+      <DependentUpon>AssignPosting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OC\CheckReq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OC\CheckReq.Designer.cs">
+      <DependentUpon>CheckReq.cs</DependentUpon>
+    </Compile>
     <Compile Include="OC\OCMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GDP\CompleteMission.resx">
       <DependentUpon>CompleteMission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GDP\DeletReq.resx">
+      <DependentUpon>DeletReq.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GDP\EditMission.resx">
       <DependentUpon>EditMission.cs</DependentUpon>
@@ -240,6 +261,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OC\AssignMission.resx">
       <DependentUpon>AssignMission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OC\AssignPosting.resx">
+      <DependentUpon>AssignPosting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OC\CheckReq.resx">
+      <DependentUpon>CheckReq.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OC\OCMain.resx">
       <DependentUpon>OCMain.cs</DependentUpon>

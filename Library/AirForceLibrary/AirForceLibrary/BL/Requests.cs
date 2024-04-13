@@ -17,7 +17,7 @@ namespace AirForceLibrary.BL
         public Requests(int RequestId, string Context,int PAkNo)
         {
             SetContext(Context);
-            SetPakNo(PakNo);
+            SetPakNo(PAkNo);
             SetRequestId(RequestId);
         }
         //Define Getters and Setters

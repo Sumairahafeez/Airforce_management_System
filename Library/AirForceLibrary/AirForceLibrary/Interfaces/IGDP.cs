@@ -14,5 +14,6 @@ namespace AirForceLibrary.Interfaces
         void DeleteGDP(int PakNo);
         GDPilot GetGDPThroughPakNo(int PakNo);
         void UpdateGDP(int PakNo, GDPilot newGDP);
+        List<GDPilot> GetAllUFofOC(int PakNo);
     }
 }

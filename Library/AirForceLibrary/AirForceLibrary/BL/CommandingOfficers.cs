@@ -11,13 +11,13 @@ namespace AirForceLibrary.BL
     public class CommandingOfficers:AFPersonalle
     {   //This consist of the attributes of OC
         private string Squadron;
-        private List<AFPersonalle> UnderOfficers;
+        private List<GDPilot> UnderOfficers;
         //Define constructors
         public CommandingOfficers() { }
         public CommandingOfficers(string Name, string Rank, int PAkNo, string PresentlyPosted, string Sqadron):base(Name, Rank, PAkNo,PresentlyPosted)
         {
             SetSquadron(Sqadron);
-            UnderOfficers = new List<AFPersonalle>();
+            UnderOfficers = new List<GDPilot>();
         }
         //Define Getters And Setters
         public void SetSquadron(string Squadron)
@@ -28,13 +28,17 @@ namespace AirForceLibrary.BL
         {
             return this.Squadron;
         }
-        public List<AFPersonalle> GetUnderOfficer()
+        public List<GDPilot>GetUnderOfficer()
         {
             return UnderOfficers.ToList();
         }
+        public void SetUnderOff(List<GDPilot> UnderOfficer)
+        {
+            this.UnderOfficers = UnderOfficer;
+        }
         //Now Define the behaviours of Commanding Officers
         //1. Define the CRUD of its under officers
-        public void AddUnderOfficer(AFPersonalle inFieldPersonalle)
+        public void AddUnderOfficer(GDPilot inFieldPersonalle)
         {
             UnderOfficers.Add(inFieldPersonalle);
             
@@ -64,9 +68,9 @@ namespace AirForceLibrary.BL
         //4. They can Assign their under officers to different posting locations first they will ask the OC of that Location fro approval
         public bool SetPosting(int PakNo, string LOcation,CommandingOfficers NewOC)
         {
-            foreach(InFieldPersonalle Officer in UnderOfficers)
+            foreach(GDPilot Officer in UnderOfficers)
             {
-                if(Officer.GetPakNo().Equals(PakNo))
+                if(Officer.GetPakNo().Equals(PakNo) && !(NewOC.IsValidUnderOfficer(Officer) && (NewOC.GetSquadron() == GetSquadron())))
                 {
                     
                      bool IsOK =  NewOC.AskForApproval(Officer);
@@ -74,6 +78,7 @@ namespace AirForceLibrary.BL
                      {
                         Officer.SetPresentlyPosted(LOcation);
                         Officer.SetCommandingOfficer(NewOC);
+                        UnderOfficers.Remove(Officer);
                         return true;
                      }
                      
@@ -82,7 +87,7 @@ namespace AirForceLibrary.BL
             return false;
         }
         //5. It can Approve new Officers
-        public bool AskForApproval(AFPersonalle NewOFFICER)
+        public bool AskForApproval(GDPilot NewOFFICER)
         {
             if(UnderOfficers.Count <10 && !(IsValidUnderOfficer(NewOFFICER)))
             {
@@ -92,9 +97,9 @@ namespace AirForceLibrary.BL
             return false;
         }
         //6. Traversing the UnderOFFICERS AND CHECK IF IT IS VALID This function can also be used for validation
-        public bool IsValidUnderOfficer(AFPersonalle Officer)
+        public bool IsValidUnderOfficer(GDPilot Officer)
         {
-            foreach(AFPersonalle aFPersonalle in UnderOfficers)
+            foreach(GDPilot aFPersonalle in UnderOfficers)
             {
                 if (aFPersonalle == Officer)
                     return true;

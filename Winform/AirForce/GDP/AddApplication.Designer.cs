@@ -31,17 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddApplication));
             this.InputContextT = new System.Windows.Forms.RichTextBox();
             this.contextBoxT = new System.Windows.Forms.RichTextBox();
-            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.InputPakNo = new System.Windows.Forms.RichTextBox();
             this.Backbt = new System.Windows.Forms.Button();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ApplicationsGV = new System.Windows.Forms.DataGridView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.Savebt = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.InputId = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.ApplicationsGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@
             this.InputContextT.BackColor = System.Drawing.Color.Peru;
             this.InputContextT.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputContextT.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InputContextT.Location = new System.Drawing.Point(1078, 251);
+            this.InputContextT.Location = new System.Drawing.Point(1091, 251);
             this.InputContextT.Name = "InputContextT";
             this.InputContextT.Size = new System.Drawing.Size(214, 148);
             this.InputContextT.TabIndex = 94;
@@ -67,16 +69,16 @@
             this.contextBoxT.TabIndex = 91;
             this.contextBoxT.Text = "Context";
             // 
-            // richTextBox5
+            // InputPakNo
             // 
-            this.richTextBox5.BackColor = System.Drawing.Color.Peru;
-            this.richTextBox5.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox5.Location = new System.Drawing.Point(1091, 134);
-            this.richTextBox5.Name = "richTextBox5";
-            this.richTextBox5.Size = new System.Drawing.Size(214, 37);
-            this.richTextBox5.TabIndex = 89;
-            this.richTextBox5.Text = "";
+            this.InputPakNo.BackColor = System.Drawing.Color.Peru;
+            this.InputPakNo.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputPakNo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputPakNo.Location = new System.Drawing.Point(1091, 134);
+            this.InputPakNo.Name = "InputPakNo";
+            this.InputPakNo.Size = new System.Drawing.Size(214, 37);
+            this.InputPakNo.TabIndex = 89;
+            this.InputPakNo.Text = "";
             // 
             // Backbt
             // 
@@ -104,14 +106,14 @@
             this.richTextBox4.TabIndex = 86;
             this.richTextBox4.Text = "RECENT APPLICATIONS";
             // 
-            // dataGridView1
+            // ApplicationsGV
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Peru;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(209, 251);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(517, 230);
-            this.dataGridView1.TabIndex = 85;
+            this.ApplicationsGV.BackgroundColor = System.Drawing.Color.Peru;
+            this.ApplicationsGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ApplicationsGV.Location = new System.Drawing.Point(209, 251);
+            this.ApplicationsGV.Name = "ApplicationsGV";
+            this.ApplicationsGV.Size = new System.Drawing.Size(517, 230);
+            this.ApplicationsGV.TabIndex = 85;
             // 
             // richTextBox1
             // 
@@ -142,6 +144,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 81;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button1
             // 
@@ -166,6 +169,7 @@
             this.button4.TabIndex = 87;
             this.button4.Text = "APPLICATION DETAILS";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Savebt
             // 
@@ -180,19 +184,44 @@
             this.Savebt.TabIndex = 95;
             this.Savebt.Text = "Send";
             this.Savebt.UseVisualStyleBackColor = false;
+            this.Savebt.Click += new System.EventHandler(this.Savebt_Click);
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BackColor = System.Drawing.Color.Peru;
+            this.richTextBox2.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.richTextBox2.Location = new System.Drawing.Point(876, 190);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(172, 40);
+            this.richTextBox2.TabIndex = 96;
+            this.richTextBox2.Text = "Enter Req Id";
+            // 
+            // InputId
+            // 
+            this.InputId.BackColor = System.Drawing.Color.Peru;
+            this.InputId.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputId.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputId.Location = new System.Drawing.Point(1091, 190);
+            this.InputId.Name = "InputId";
+            this.InputId.Size = new System.Drawing.Size(214, 37);
+            this.InputId.TabIndex = 97;
+            this.InputId.Text = "";
             // 
             // AddApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 729);
+            this.Controls.Add(this.InputId);
+            this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.Savebt);
             this.Controls.Add(this.InputContextT);
             this.Controls.Add(this.contextBoxT);
-            this.Controls.Add(this.richTextBox5);
+            this.Controls.Add(this.InputPakNo);
             this.Controls.Add(this.Backbt);
             this.Controls.Add(this.richTextBox4);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ApplicationsGV);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox1);
@@ -200,7 +229,8 @@
             this.Controls.Add(this.button4);
             this.Name = "AddApplication";
             this.Text = "AddApplication";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.AddApplication_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ApplicationsGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -209,15 +239,17 @@
         #endregion
         private System.Windows.Forms.RichTextBox InputContextT;
         private System.Windows.Forms.RichTextBox contextBoxT;
-        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.RichTextBox InputPakNo;
         private System.Windows.Forms.Button Backbt;
         private System.Windows.Forms.RichTextBox richTextBox4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ApplicationsGV;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button Savebt;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox InputId;
     }
 }

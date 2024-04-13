@@ -66,7 +66,7 @@
             this.Updatebt.Name = "Updatebt";
             this.Updatebt.Size = new System.Drawing.Size(128, 37);
             this.Updatebt.TabIndex = 63;
-            this.Updatebt.Text = "Update";
+            this.Updatebt.Text = "Delete";
             this.Updatebt.UseVisualStyleBackColor = false;
             this.Updatebt.Click += new System.EventHandler(this.Updatebt_Click);
             // 

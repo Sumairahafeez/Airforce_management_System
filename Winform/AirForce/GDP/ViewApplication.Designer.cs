@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewApplication));
             this.InputContextT = new System.Windows.Forms.RichTextBox();
             this.contextBoxT = new System.Windows.Forms.RichTextBox();
-            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.InputPakNo = new System.Windows.Forms.RichTextBox();
             this.Backbt = new System.Windows.Forms.Button();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ApplicationDV = new System.Windows.Forms.DataGridView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -43,9 +43,9 @@
             this.InputStatusT = new System.Windows.Forms.RichTextBox();
             this.StatusBoxT = new System.Windows.Forms.RichTextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.richTextBox7 = new System.Windows.Forms.RichTextBox();
+            this.InputId = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ApplicationDV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,16 +73,16 @@
             this.contextBoxT.Text = "Context";
             this.contextBoxT.Visible = false;
             // 
-            // richTextBox5
+            // InputPakNo
             // 
-            this.richTextBox5.BackColor = System.Drawing.Color.Peru;
-            this.richTextBox5.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox5.Location = new System.Drawing.Point(1091, 134);
-            this.richTextBox5.Name = "richTextBox5";
-            this.richTextBox5.Size = new System.Drawing.Size(214, 37);
-            this.richTextBox5.TabIndex = 73;
-            this.richTextBox5.Text = "";
+            this.InputPakNo.BackColor = System.Drawing.Color.Peru;
+            this.InputPakNo.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputPakNo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputPakNo.Location = new System.Drawing.Point(1091, 134);
+            this.InputPakNo.Name = "InputPakNo";
+            this.InputPakNo.Size = new System.Drawing.Size(214, 37);
+            this.InputPakNo.TabIndex = 73;
+            this.InputPakNo.Text = "";
             // 
             // Backbt
             // 
@@ -110,14 +110,15 @@
             this.richTextBox4.TabIndex = 70;
             this.richTextBox4.Text = "RECENT APPLICATIONS";
             // 
-            // dataGridView1
+            // ApplicationDV
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Peru;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(209, 297);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(517, 230);
-            this.dataGridView1.TabIndex = 69;
+            this.ApplicationDV.BackgroundColor = System.Drawing.Color.Peru;
+            this.ApplicationDV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ApplicationDV.Location = new System.Drawing.Point(209, 297);
+            this.ApplicationDV.Name = "ApplicationDV";
+            this.ApplicationDV.Size = new System.Drawing.Size(517, 230);
+            this.ApplicationDV.TabIndex = 69;
+            this.ApplicationDV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationDV_CellContentClick);
             // 
             // richTextBox1
             // 
@@ -210,16 +211,17 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.Checkbt_Click);
             // 
-            // richTextBox7
+            // InputId
             // 
-            this.richTextBox7.BackColor = System.Drawing.Color.Peru;
-            this.richTextBox7.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox7.Location = new System.Drawing.Point(1091, 196);
-            this.richTextBox7.Name = "richTextBox7";
-            this.richTextBox7.Size = new System.Drawing.Size(214, 37);
-            this.richTextBox7.TabIndex = 77;
-            this.richTextBox7.Text = "";
+            this.InputId.BackColor = System.Drawing.Color.Peru;
+            this.InputId.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputId.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputId.Location = new System.Drawing.Point(1091, 196);
+            this.InputId.Name = "InputId";
+            this.InputId.Size = new System.Drawing.Size(214, 37);
+            this.InputId.TabIndex = 77;
+            this.InputId.Text = "";
+            this.InputId.TextChanged += new System.EventHandler(this.richTextBox7_TextChanged);
             // 
             // richTextBox2
             // 
@@ -239,14 +241,14 @@
             this.ClientSize = new System.Drawing.Size(1370, 729);
             this.Controls.Add(this.InputStatusT);
             this.Controls.Add(this.InputContextT);
-            this.Controls.Add(this.richTextBox7);
+            this.Controls.Add(this.InputId);
             this.Controls.Add(this.StatusBoxT);
             this.Controls.Add(this.contextBoxT);
             this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox5);
+            this.Controls.Add(this.InputPakNo);
             this.Controls.Add(this.Backbt);
             this.Controls.Add(this.richTextBox4);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ApplicationDV);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
@@ -255,7 +257,8 @@
             this.Controls.Add(this.button4);
             this.Name = "ViewApplication";
             this.Text = "ViewApplication";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.ViewApplication_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ApplicationDV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -264,10 +267,10 @@
         #endregion
         private System.Windows.Forms.RichTextBox InputContextT;
         private System.Windows.Forms.RichTextBox contextBoxT;
-        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.RichTextBox InputPakNo;
         private System.Windows.Forms.Button Backbt;
         private System.Windows.Forms.RichTextBox richTextBox4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ApplicationDV;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -276,7 +279,7 @@
         private System.Windows.Forms.RichTextBox InputStatusT;
         private System.Windows.Forms.RichTextBox StatusBoxT;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.RichTextBox richTextBox7;
+        private System.Windows.Forms.RichTextBox InputId;
         private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }

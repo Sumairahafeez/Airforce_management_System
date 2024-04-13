@@ -177,7 +177,19 @@ namespace AirForceLibrary.Utilis
          *   }
          *   return false
          * }*/
-       
+       //This will check the valididty of the requests
+         public static Requests IsValidRequest(int PakNo,int id)
+        {
+            List<Requests> req = Interfaces.RequestInterface.GetRequestsOfSpecificOfficer(PakNo);
+            foreach(Requests Req in req)
+            {
+                if(Req.GetRequestId() == id)
+                {
+                    return Req;
+                }
+            }
+            return null;
+        }
         
     }
 }

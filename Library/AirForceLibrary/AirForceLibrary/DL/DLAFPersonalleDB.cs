@@ -89,5 +89,26 @@ namespace AirForceLibrary.DL
                 cmd.ExecuteNonQuery();
             }
         }
+        // this function is used to give af personalles that work under an oc
+        public List<AFPersonalle> GetAllAFofOC(int OCId)
+        {   List<AFPersonalle> list = new List<AFPersonalle> ();
+            string query = string.Format("SELECT * FROM AFPersonalle WHERE Id = (SELECT OfficerId FROM GDP Where OCId = (SELECT o.Id FROM OC o,AFPersonalle a WHERE o.OffId = a.Id AND a.PakNo ={0}))", OCId);
+            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    string name = reader["Name"].ToString();
+                    string Rank = reader["Rank"].ToString();
+                    int PakNo = int.Parse(reader["PakNo"].ToString());
+                    string Present = reader["PresentlyPosted"].ToString();
+                    AFPersonalle A = new AFPersonalle(name, Rank, PakNo, Present);
+                    list.Add(A);
+                }
+                return list;
+            }
+        }
     }
 }
