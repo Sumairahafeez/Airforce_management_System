@@ -30,5 +30,26 @@ namespace AirForce.IT
             AddOfficer add = new AddOfficer();
             add.Show();
         }
+
+        private void Removebt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RemoveOfficer remove = new RemoveOfficer();
+            remove.Show();
+        }
+
+        private void Viewbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ViewOfficer view = new ViewOfficer();
+            view.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EditOfficer edit = new EditOfficer();
+            edit.Show();
+        }
     }
 }

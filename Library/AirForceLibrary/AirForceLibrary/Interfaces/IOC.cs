@@ -12,5 +12,7 @@ namespace AirForceLibrary.Interfaces
         void StoreOC(CommandingOfficers officers);
         CommandingOfficers GetOCbyId(int id);
         List<CommandingOfficers> GetAll();
+        void DeleteOC(int PakNo);
+        void UpdateOC(int  PakNo,CommandingOfficers OC);
     }
 }

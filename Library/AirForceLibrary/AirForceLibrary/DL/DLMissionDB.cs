@@ -14,27 +14,22 @@ namespace AirForceLibrary.DL
     {
         public void StoreMission(Mission mission,int PakNo)
         {
-            string query = "INSERT INTO Mission Values(@Date,@Details,(SELECT Id From AFPersonalle Where PakNo = "+PakNo+")";
+            string query = string.Format("INSERT INTO Mission Values('{0}','{1}',{2},{3},(SELECT Id From AFPersonalle Where PakNo = {4}",mission.GetDate(),mission.GetDetails(),mission.GetIsComplete(),mission.GetSuccessRate(),PakNo);
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@Date",mission.GetDate());
-                cmd.Parameters.AddWithValue("@Details",mission.GetDetails());
                 cmd.ExecuteNonQuery();
             }
         }
         public void UpdateMission(DateTime Date,Mission mission)
         {
-            string query = "UPDATE Mission Set(Date = @Date,Details = @Details,IsComplete = @IsComp, SuccessRate = @Success) WHERE (SELECT Top 1 Id FROM Mission WHERE Date = Date)";
+            string query = string.Format("UPDATE Mission Set Date = '{0}',Details = '{1}',IsComplete = {2}, SuccessRate = {3} WHERE (SELECT Top 1 Id FROM Mission WHERE Date = '{4}')", mission.GetDate(), mission.GetDetails(), mission.GetIsComplete(), mission.GetSuccessRate(),Date);
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
                 SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@Date",mission.GetDate());
-                command.Parameters.AddWithValue("@Detail",mission.GetDetails());
-                command.Parameters.AddWithValue("@IsComp",mission.GetIsComplete());
-                command.Parameters.AddWithValue("@Success",mission.GetSuccessRate());
+              
                 command.ExecuteNonQuery ();
             }
         }
@@ -89,9 +84,9 @@ namespace AirForceLibrary.DL
                 return missions; 
             }
         }
-        public List<Mission> GetAllMissionsOfSpecificOfficer(int officerId)
+        public List<Mission> GetAllMissionsOfSpecificOfficer(int PakNo)
         {
-            string query = "SELECT * FROM Mission Where OffId = "+officerId;
+            string query = "SELECT * FROM Mission Where OffId = (SELECT Id FROM AFPersonalle WHERE PakNo = "+PakNo+")";
             List<Mission> missions = new List<Mission>();
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {

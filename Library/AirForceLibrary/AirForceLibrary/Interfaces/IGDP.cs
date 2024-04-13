@@ -12,5 +12,7 @@ namespace AirForceLibrary.Interfaces
         void StoreGDP(GDPilot newGDP);
         List<GDPilot> GetAllGdps();
         void DeleteGDP(int PakNo);
+        GDPilot GetGDPThroughPakNo(int PakNo);
+        void UpdateGDP(int PakNo, GDPilot newGDP);
     }
 }

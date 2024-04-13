@@ -40,12 +40,12 @@
             this.InputPakNo = new System.Windows.Forms.RichTextBox();
             this.InputPosting = new System.Windows.Forms.ComboBox();
             this.TextSquadron = new System.Windows.Forms.RichTextBox();
-            this.InputSquadron = new System.Windows.Forms.RichTextBox();
             this.Addbt = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.InputRank = new System.Windows.Forms.ComboBox();
             this.BranchT = new System.Windows.Forms.RichTextBox();
             this.InputBranch = new System.Windows.Forms.ComboBox();
+            this.InputRank = new System.Windows.Forms.ComboBox();
+            this.InputSquadron = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,17 +174,6 @@
             this.TextSquadron.TabIndex = 100;
             this.TextSquadron.Text = "Squadron";
             // 
-            // InputSquadron
-            // 
-            this.InputSquadron.BackColor = System.Drawing.Color.DimGray;
-            this.InputSquadron.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputSquadron.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InputSquadron.Location = new System.Drawing.Point(628, 465);
-            this.InputSquadron.Name = "InputSquadron";
-            this.InputSquadron.Size = new System.Drawing.Size(195, 39);
-            this.InputSquadron.TabIndex = 101;
-            this.InputSquadron.Text = "";
-            // 
             // Addbt
             // 
             this.Addbt.BackColor = System.Drawing.Color.DimGray;
@@ -213,28 +202,6 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.Backbt_Click);
             // 
-            // InputRank
-            // 
-            this.InputRank.BackColor = System.Drawing.Color.DimGray;
-            this.InputRank.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputRank.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InputRank.FormattingEnabled = true;
-            this.InputRank.Items.AddRange(new object[] {
-            "FlyingOfficer",
-            "Flight Lieutanat",
-            "Squadron Leader",
-            "Wing Commander",
-            "Group Captain",
-            "Air Commander",
-            "Air Vice Marshal",
-            "Vice Marshal",
-            "Air Chielf"});
-            this.InputRank.Location = new System.Drawing.Point(628, 304);
-            this.InputRank.Name = "InputRank";
-            this.InputRank.Size = new System.Drawing.Size(195, 38);
-            this.InputRank.TabIndex = 91;
-            this.InputRank.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // BranchT
             // 
             this.BranchT.BackColor = System.Drawing.Color.DimGray;
@@ -262,16 +229,57 @@
             this.InputBranch.Size = new System.Drawing.Size(195, 38);
             this.InputBranch.TabIndex = 105;
             // 
+            // InputRank
+            // 
+            this.InputRank.BackColor = System.Drawing.Color.DimGray;
+            this.InputRank.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputRank.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputRank.FormattingEnabled = true;
+            this.InputRank.Items.AddRange(new object[] {
+            "FlyingOfficer",
+            "Flight Lieutanat",
+            "Squadron Leader",
+            "Wing Commander",
+            "Group Captain",
+            "Air Commander",
+            "Air Vice Marshal",
+            "Vice Marshal",
+            "Air Chielf"});
+            this.InputRank.Location = new System.Drawing.Point(628, 304);
+            this.InputRank.Name = "InputRank";
+            this.InputRank.Size = new System.Drawing.Size(195, 38);
+            this.InputRank.TabIndex = 91;
+            this.InputRank.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // InputSquadron
+            // 
+            this.InputSquadron.BackColor = System.Drawing.Color.DimGray;
+            this.InputSquadron.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputSquadron.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputSquadron.FormattingEnabled = true;
+            this.InputSquadron.Items.AddRange(new object[] {
+            "No 2 Minhas",
+            "No 5 Falcons",
+            "No 9 Griffins",
+            "No 14 Tail Choppers",
+            "No 15 Cobras",
+            "No 19 Sherdils",
+            "No 27 Zarrars"});
+            this.InputSquadron.Location = new System.Drawing.Point(628, 465);
+            this.InputSquadron.Name = "InputSquadron";
+            this.InputSquadron.Size = new System.Drawing.Size(195, 38);
+            this.InputSquadron.TabIndex = 106;
+            // 
             // AddOfficer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 729);
+            this.Controls.Add(this.InputSquadron);
             this.Controls.Add(this.InputBranch);
             this.Controls.Add(this.BranchT);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.Addbt);
-            this.Controls.Add(this.InputSquadron);
             this.Controls.Add(this.TextSquadron);
             this.Controls.Add(this.InputPosting);
             this.Controls.Add(this.InputRank);
@@ -303,11 +311,11 @@
         private System.Windows.Forms.RichTextBox InputPakNo;
         private System.Windows.Forms.ComboBox InputPosting;
         private System.Windows.Forms.RichTextBox TextSquadron;
-        private System.Windows.Forms.RichTextBox InputSquadron;
         private System.Windows.Forms.Button Addbt;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox InputRank;
         private System.Windows.Forms.RichTextBox BranchT;
         private System.Windows.Forms.ComboBox InputBranch;
+        private System.Windows.Forms.ComboBox InputRank;
+        private System.Windows.Forms.ComboBox InputSquadron;
     }
 }

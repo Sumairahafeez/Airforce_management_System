@@ -36,6 +36,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(1255, 632);
+            this.button7.Location = new System.Drawing.Point(1178, 643);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(103, 39);
             this.button7.TabIndex = 75;
@@ -59,33 +60,35 @@
             this.Viewbt.BackColor = System.Drawing.Color.MidnightBlue;
             this.Viewbt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Viewbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Viewbt.Location = new System.Drawing.Point(880, 632);
+            this.Viewbt.Location = new System.Drawing.Point(878, 632);
             this.Viewbt.Name = "Viewbt";
-            this.Viewbt.Size = new System.Drawing.Size(318, 55);
+            this.Viewbt.Size = new System.Drawing.Size(264, 55);
             this.Viewbt.TabIndex = 70;
             this.Viewbt.Text = "View Officers";
             this.Viewbt.UseVisualStyleBackColor = false;
+            this.Viewbt.Click += new System.EventHandler(this.Viewbt_Click);
             // 
             // Removebt
             // 
             this.Removebt.BackColor = System.Drawing.Color.MidnightBlue;
             this.Removebt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Removebt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Removebt.Location = new System.Drawing.Point(510, 632);
+            this.Removebt.Location = new System.Drawing.Point(582, 632);
             this.Removebt.Name = "Removebt";
-            this.Removebt.Size = new System.Drawing.Size(318, 55);
+            this.Removebt.Size = new System.Drawing.Size(290, 55);
             this.Removebt.TabIndex = 69;
             this.Removebt.Text = "Remove Officer";
             this.Removebt.UseVisualStyleBackColor = false;
+            this.Removebt.Click += new System.EventHandler(this.Removebt_Click);
             // 
             // Addbt
             // 
             this.Addbt.BackColor = System.Drawing.Color.MidnightBlue;
             this.Addbt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Addbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Addbt.Location = new System.Drawing.Point(146, 632);
+            this.Addbt.Location = new System.Drawing.Point(42, 632);
             this.Addbt.Name = "Addbt";
-            this.Addbt.Size = new System.Drawing.Size(318, 55);
+            this.Addbt.Size = new System.Drawing.Size(251, 55);
             this.Addbt.TabIndex = 68;
             this.Addbt.Text = "Add Officer";
             this.Addbt.UseVisualStyleBackColor = false;
@@ -124,11 +127,25 @@
             this.pictureBox1.TabIndex = 76;
             this.pictureBox1.TabStop = false;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
+            this.button2.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(299, 632);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(277, 55);
+            this.button2.TabIndex = 77;
+            this.button2.Text = "Edit Officer";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // ITMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 729);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.Viewbt);
             this.Controls.Add(this.Removebt);
@@ -152,5 +169,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button2;
     }
 }

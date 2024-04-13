@@ -127,6 +127,12 @@
     <Compile Include="IT\AddOfficer.Designer.cs">
       <DependentUpon>AddOfficer.cs</DependentUpon>
     </Compile>
+    <Compile Include="IT\EditOfficer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IT\EditOfficer.Designer.cs">
+      <DependentUpon>EditOfficer.cs</DependentUpon>
+    </Compile>
     <Compile Include="IT\ITMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,12 +145,37 @@
     <Compile Include="IT\RemoveOfficer.Designer.cs">
       <DependentUpon>RemoveOfficer.cs</DependentUpon>
     </Compile>
+    <Compile Include="IT\ViewOfficer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IT\ViewOfficer.Designer.cs">
+      <DependentUpon>ViewOfficer.cs</DependentUpon>
+    </Compile>
     <Compile Include="LandingPage\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LandingPage\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="OC\AssignMission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OC\AssignMission.Designer.cs">
+      <DependentUpon>AssignMission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OC\OCMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OC\OCMain.Designer.cs">
+      <DependentUpon>OCMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OC\SelectUnderOfficer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OC\SelectUnderOfficer.Designer.cs">
+      <DependentUpon>SelectUnderOfficer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OC\Users.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignIn\signIn.cs">
@@ -192,14 +223,29 @@
     <EmbeddedResource Include="IT\AddOfficer.resx">
       <DependentUpon>AddOfficer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IT\EditOfficer.resx">
+      <DependentUpon>EditOfficer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IT\ITMain.resx">
       <DependentUpon>ITMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IT\RemoveOfficer.resx">
       <DependentUpon>RemoveOfficer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IT\ViewOfficer.resx">
+      <DependentUpon>ViewOfficer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LandingPage\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OC\AssignMission.resx">
+      <DependentUpon>AssignMission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OC\OCMain.resx">
+      <DependentUpon>OCMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OC\SelectUnderOfficer.resx">
+      <DependentUpon>SelectUnderOfficer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

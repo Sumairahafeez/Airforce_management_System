@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AirForceLibrary.Utilis;
 
 namespace AirForceLibrary.BL
 {   //This class is for all the OC's Commanding officers who are the commanders and incharges of other officers they are the personalles of ranks higher than group captain
@@ -10,13 +11,13 @@ namespace AirForceLibrary.BL
     public class CommandingOfficers:AFPersonalle
     {   //This consist of the attributes of OC
         private string Squadron;
-        private List<InFieldPersonalle> UnderOfficers;
+        private List<AFPersonalle> UnderOfficers;
         //Define constructors
         public CommandingOfficers() { }
         public CommandingOfficers(string Name, string Rank, int PAkNo, string PresentlyPosted, string Sqadron):base(Name, Rank, PAkNo,PresentlyPosted)
         {
-            SetSquadron(Squadron);
-            UnderOfficers = new List<InFieldPersonalle>();
+            SetSquadron(Sqadron);
+            UnderOfficers = new List<AFPersonalle>();
         }
         //Define Getters And Setters
         public void SetSquadron(string Squadron)
@@ -27,15 +28,16 @@ namespace AirForceLibrary.BL
         {
             return this.Squadron;
         }
-        public List<InFieldPersonalle> GetUnderOfficer()
+        public List<AFPersonalle> GetUnderOfficer()
         {
             return UnderOfficers.ToList();
         }
         //Now Define the behaviours of Commanding Officers
         //1. Define the CRUD of its under officers
-        public void AddUnderOfficer(InFieldPersonalle inFieldPersonalle)
+        public void AddUnderOfficer(AFPersonalle inFieldPersonalle)
         {
             UnderOfficers.Add(inFieldPersonalle);
+            
         }
         //2. They can assign missions to their under officers
         public void AssignMission(int PakNo,Mission TheMission)
@@ -80,13 +82,27 @@ namespace AirForceLibrary.BL
             return false;
         }
         //5. It can Approve new Officers
-        public bool AskForApproval(InFieldPersonalle NewOFFICER)
+        public bool AskForApproval(AFPersonalle NewOFFICER)
         {
-            if(UnderOfficers.Count <10)
+            if(UnderOfficers.Count <10 && !(IsValidUnderOfficer(NewOFFICER)))
             {
+                AddUnderOfficer(NewOFFICER);
                 return true;
             }
             return false;
         }
+        //6. Traversing the UnderOFFICERS AND CHECK IF IT IS VALID This function can also be used for validation
+        public bool IsValidUnderOfficer(AFPersonalle Officer)
+        {
+            foreach(AFPersonalle aFPersonalle in UnderOfficers)
+            {
+                if (aFPersonalle == Officer)
+                    return true;
+               
+            }
+            return false;
+        }
+        
+        
     }
 }

@@ -28,7 +28,7 @@ namespace AirForceLibrary.DL
         }
         public List<GDPilot> GetAllGdps()
         {
-            string query = "SELECT * FROM GDP g,AFPersonalle a WHERE g.OffId  = a.Id";
+            string query = "SELECT * FROM GDP g,AFPersonalle a WHERE g.OfficerId  = a.Id";
             List<GDPilot> gdps = new List<GDPilot>();
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
@@ -39,17 +39,25 @@ namespace AirForceLibrary.DL
                 {   string name = reader["Name"].ToString();
                     string Rank = reader["Rank"].ToString();
                     int PakNo = int.Parse(reader["PakNo"].ToString());
-                    string loc = reader["PresentlyLocated"].ToString() ;
+                    string loc = reader["PresentlyPosted"].ToString() ;
                     string sq = reader["Squadron"].ToString();
 
                     GDPilot G = new GDPilot(name,Rank,PakNo,loc,sq);
-                    G.SetFlyingHours(int.Parse(reader["FlyingHours"].ToString()));
+                   /* G.SetFlyingHours(int.Parse(reader["FlyingHours"].ToString()));
                     IOC OC = new DLCommandingOfficerDB();
                     IMission mission = new DLMissionDB();
                     IRequest req = new DLRequestsDB();
-                    G.SetCommandingOfficer(OC.GetOCbyId(int.Parse(reader["OCId"].ToString())));
-                    G.SetMission(mission.GetAllMissionsOfSpecificOfficer(int.Parse(reader["a.Id"].ToString())));
-                    G.SetRequests(req.GetRequestsOfSpecificOfficer(int.Parse(reader["PakNo"].ToString())));
+                    if (reader["OCId"].ToString() != null)
+                    {
+                        G.SetCommandingOfficer(OC.GetOCbyId(int.Parse(reader["OCId"].ToString())));
+                    }
+                    else
+                    {
+                        G.SetCommandingOfficer(null);
+                    }
+                   
+                    //G.SetMission(mission.GetAllMissionsOfSpecificOfficer(int.Parse(reader["a.Id"].ToString())));
+                    //G.SetRequests(req.GetRequestsOfSpecificOfficer(int.Parse(reader["PakNo"].ToString())));*/
                     gdps.Add(G);
                 }
                 return gdps;
@@ -57,13 +65,51 @@ namespace AirForceLibrary.DL
         }
         public void DeleteGDP(int PakNo)
         {
-            string query = "DELETE GDP WHERE OffId = (SELECT Id From InfieldOfficer = " + PakNo + ")";
+            string query = string.Format("DELETE FROM GDP WHERE OfficerId IN (SELECT Id FROM AFPersonalle WHERE PakNo = {0});\r\nDELETE FROM AFPersonalle WHERE PakNo = {0};\r\n",PakNo);
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
                 SqlCommand mcd = new SqlCommand(query,con);
                 mcd.ExecuteNonQuery();
             }
+        }
+        //This function returns a GDP throiugh its PakNo
+        public GDPilot GetGDPThroughPakNo(int PakNo)
+        {
+            string query = "SELECT * FROM GDP g,AFPersonalle a WHERE g.OfficerId  = a.Id AND a.PakNo = "+PakNo;
+            List<GDPilot> gdps = new List<GDPilot>();
+            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string name = reader["Name"].ToString();
+                    string Rank = reader["Rank"].ToString();
+                    string loc = reader["PresentlyPosted"].ToString();
+                    string sq = reader["Squadron"].ToString();
+
+                    GDPilot G = new GDPilot(name, Rank, PakNo, loc, sq);
+                    return G;
+                }
+                return null;
+            }
+        }
+        //This is update function for GDP
+        public void UpdateGDP(int PakNo,GDPilot Gdp)
+        {
+            AFPersonalle AF = new AFPersonalle(Gdp.GetName(), Gdp.GetRank(), Gdp.GetPakNo(), Gdp.GetPresentlyPosted());
+            IAFPersonalle Data = new DLAFPersonalleDB();
+            Data.UpdateAFPersonalle(PakNo, AF);
+            string query = string.Format("UPDATE GDP SET Squadron = '{0}',OCId = (SELECT Id FROM OC Where OffId = (SELECT Id FROM AFPersonalle WHERE PakNo = {1})), FlyingHours = {2} WHERE OfficerId = (SELECT Id FROM AFPersonalle WHERE PakNo = {3})", Gdp.GetSquadron(),Gdp.GetOC().GetPakNo(),Gdp.GetFlyingHours(),PakNo);
+            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+            }
+
         }
     }
 }

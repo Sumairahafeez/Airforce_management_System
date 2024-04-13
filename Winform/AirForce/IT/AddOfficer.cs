@@ -65,12 +65,14 @@ namespace AirForce.IT
                         IOC Oc = new DLCommandingOfficerDB();
                         Oc.StoreOC(newOC);
                         MessageBox.Show("OC Added SuccessFully");
+                        ClearData();
                     }
                     else
                     {
                         GDPilot newgdp = new GDPilot(name, Rank, PakNO, presentlyLocated, squadron);
                         Interfaces.GdpInterface.StoreGDP(newgdp);
                         MessageBox.Show("Officer Added SuccessFully");
+                        ClearData();
                     }
 
                    
@@ -78,6 +80,7 @@ namespace AirForce.IT
                 else
                 {
                     MessageBox.Show("Pak No Already Exists");
+                    ClearData() ;
                 }
             
             }
@@ -86,6 +89,15 @@ namespace AirForce.IT
                 MessageBox.Show(ex.Message);
             }
             
+        }
+        public void ClearData()
+        {
+            InputName.Text = string.Empty;
+            InputPakNo.Text = string.Empty;
+            InputRank.Text = string.Empty;
+            InputSquadron.Text = string.Empty;
+            InputPosting.Text = string.Empty;
+            InputBranch.Text = string.Empty;
         }
        
     }

@@ -33,11 +33,10 @@
             this.BranchT = new System.Windows.Forms.RichTextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.Deletebt = new System.Windows.Forms.Button();
-            this.InputSquadron = new System.Windows.Forms.RichTextBox();
             this.TextSquadron = new System.Windows.Forms.RichTextBox();
             this.InputPosting = new System.Windows.Forms.ComboBox();
             this.InputRank = new System.Windows.Forms.ComboBox();
-            this.InputPakNo = new System.Windows.Forms.RichTextBox();
+            this.InputName = new System.Windows.Forms.RichTextBox();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -48,6 +47,7 @@
             this.PakNoCB = new System.Windows.Forms.ComboBox();
             this.OfficerGV = new System.Windows.Forms.DataGridView();
             this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.InputSquadron = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OfficerGV)).BeginInit();
             this.SuspendLayout();
@@ -105,17 +105,7 @@
             this.Deletebt.TabIndex = 119;
             this.Deletebt.Text = "Delete";
             this.Deletebt.UseVisualStyleBackColor = false;
-            // 
-            // InputSquadron
-            // 
-            this.InputSquadron.BackColor = System.Drawing.Color.DimGray;
-            this.InputSquadron.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputSquadron.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InputSquadron.Location = new System.Drawing.Point(415, 451);
-            this.InputSquadron.Name = "InputSquadron";
-            this.InputSquadron.Size = new System.Drawing.Size(195, 39);
-            this.InputSquadron.TabIndex = 118;
-            this.InputSquadron.Text = "";
+            this.Deletebt.Click += new System.EventHandler(this.Deletebt_Click);
             // 
             // TextSquadron
             // 
@@ -165,16 +155,16 @@
             this.InputRank.Size = new System.Drawing.Size(195, 38);
             this.InputRank.TabIndex = 115;
             // 
-            // InputPakNo
+            // InputName
             // 
-            this.InputPakNo.BackColor = System.Drawing.Color.DimGray;
-            this.InputPakNo.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputPakNo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InputPakNo.Location = new System.Drawing.Point(415, 221);
-            this.InputPakNo.Name = "InputPakNo";
-            this.InputPakNo.Size = new System.Drawing.Size(195, 39);
-            this.InputPakNo.TabIndex = 114;
-            this.InputPakNo.Text = "";
+            this.InputName.BackColor = System.Drawing.Color.DimGray;
+            this.InputName.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputName.Location = new System.Drawing.Point(415, 221);
+            this.InputName.Name = "InputName";
+            this.InputName.Size = new System.Drawing.Size(195, 39);
+            this.InputName.TabIndex = 114;
+            this.InputName.Text = "";
             // 
             // richTextBox4
             // 
@@ -270,6 +260,7 @@
             this.OfficerGV.Name = "OfficerGV";
             this.OfficerGV.Size = new System.Drawing.Size(377, 209);
             this.OfficerGV.TabIndex = 124;
+            this.OfficerGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OfficerGV_CellContentClick);
             // 
             // richTextBox5
             // 
@@ -282,11 +273,31 @@
             this.richTextBox5.TabIndex = 125;
             this.richTextBox5.Text = "All Officers";
             // 
+            // InputSquadron
+            // 
+            this.InputSquadron.BackColor = System.Drawing.Color.DimGray;
+            this.InputSquadron.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputSquadron.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputSquadron.FormattingEnabled = true;
+            this.InputSquadron.Items.AddRange(new object[] {
+            "No 2 Minhas",
+            "No 5 Falcons",
+            "No 9 Griffins",
+            "No 14 Tail Choppers",
+            "No 15 Cobras",
+            "No 19 Sherdils",
+            "No 27 Zarrars"});
+            this.InputSquadron.Location = new System.Drawing.Point(415, 451);
+            this.InputSquadron.Name = "InputSquadron";
+            this.InputSquadron.Size = new System.Drawing.Size(195, 38);
+            this.InputSquadron.TabIndex = 126;
+            // 
             // RemoveOfficer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 729);
+            this.Controls.Add(this.InputSquadron);
             this.Controls.Add(this.richTextBox5);
             this.Controls.Add(this.OfficerGV);
             this.Controls.Add(this.PakNoCB);
@@ -294,11 +305,10 @@
             this.Controls.Add(this.BranchT);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.Deletebt);
-            this.Controls.Add(this.InputSquadron);
             this.Controls.Add(this.TextSquadron);
             this.Controls.Add(this.InputPosting);
             this.Controls.Add(this.InputRank);
-            this.Controls.Add(this.InputPakNo);
+            this.Controls.Add(this.InputName);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox2);
@@ -321,11 +331,10 @@
         private System.Windows.Forms.RichTextBox BranchT;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button Deletebt;
-        private System.Windows.Forms.RichTextBox InputSquadron;
         private System.Windows.Forms.RichTextBox TextSquadron;
         private System.Windows.Forms.ComboBox InputPosting;
         private System.Windows.Forms.ComboBox InputRank;
-        private System.Windows.Forms.RichTextBox InputPakNo;
+        private System.Windows.Forms.RichTextBox InputName;
         private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox2;
@@ -336,5 +345,6 @@
         private System.Windows.Forms.ComboBox PakNoCB;
         private System.Windows.Forms.DataGridView OfficerGV;
         private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.ComboBox InputSquadron;
     }
 }

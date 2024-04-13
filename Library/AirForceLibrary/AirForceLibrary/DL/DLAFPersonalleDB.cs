@@ -47,9 +47,9 @@ namespace AirForceLibrary.DL
             }
         }
         //This Function will give only those AFPersonals whose id are given
-        public  AFPersonalle GetAFPersonalleByID(int  id)
+        public  AFPersonalle GetAFPersonalleByID(int  PakNo)
         {
-            string query = "SELECT * FROM AFPersonalle WHERE Id = " + id;
+            string query = "SELECT * FROM AFPersonalle WHERE PakNo = " + PakNo;
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open ();
@@ -59,8 +59,8 @@ namespace AirForceLibrary.DL
                 {
                     string name = reader["Name"].ToString();
                     string Rank = reader["Rank"].ToString();
-                    int PakNo = int.Parse(reader["PakNo"].ToString()) ;
-                    string Present = reader["PresentlyLocated"].ToString() ;
+                    
+                    string Present = reader["PresentlyPosted"].ToString() ;
                     AFPersonalle A = new AFPersonalle(name,Rank,PakNo,Present);
                     return A;
                 }
@@ -70,7 +70,7 @@ namespace AirForceLibrary.DL
         //This Function will Update afpersonalles
         public  void UpdateAFPersonalle(int PakNo,AFPersonalle a)
         {
-            string query =string.Format("UPDATE AFPersonalle SET (@Name = {0},@Rank = {1},@PresetlyPosted = {2} WHERE PakNo = {3}",a.GetName(),a.GetRank(),a.GetPresentlyPosted(),a.GetPakNo() );
+            string query =string.Format("UPDATE AFPersonalle SET Name = '{0}',Rank = '{1}',PresentlyPosted = '{2}' WHERE PakNo = {3}",a.GetName(),a.GetRank(),a.GetPresentlyPosted(),a.GetPakNo() );
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();

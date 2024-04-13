@@ -30,19 +30,21 @@ namespace AirForceLibrary.DL
             }
         }
         //This will give OC by Id
-        public CommandingOfficers GetOCbyId(int id)
+        public CommandingOfficers GetOCbyId(int PakNo)
         {
-            string query = "SELECT * FROM OC WHERE Id = " + id;
+            string query = "SELECT * FROM OC o ,AFPersonalle a WHERE o.OffId = a.Id AND  a.PakNo = " + PakNo ;
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open() ;
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
-                {   IAFPersonalle Data = new DLAFPersonalleDB();
-                    AFPersonalle A = Data.GetAFPersonalleByID(int.Parse(reader["OffId"].ToString()));
+                {
+                    string name = reader["Name"].ToString();
+                    string Rank = reader["Rank"].ToString();
+                    string loc = reader["PresentlyPosted"].ToString();
                     string squad = reader["Squadron"].ToString();
-                    CommandingOfficers c = new CommandingOfficers(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), squad);
+                    CommandingOfficers c = new CommandingOfficers(name, Rank, PakNo, loc, squad);
                     return c;
                 }
                 return null;
@@ -51,7 +53,7 @@ namespace AirForceLibrary.DL
        //This class dont have a delete query because when oc is to be deleted then its corresponding AFpersonalle will delete as well
        public List<CommandingOfficers> GetAll()
         {
-            string query = "SELECT * FROM OC ";
+            string query = "SELECT * FROM OC o,AFPersonalle a,GDP g WHERE o.OffId = a.Id AND g.OCId = o.Id";
             List<CommandingOfficers> commandingOfficers = new List<CommandingOfficers>();
             using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
@@ -60,15 +62,43 @@ namespace AirForceLibrary.DL
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    IAFPersonalle Data = new DLAFPersonalleDB();
-                    AFPersonalle A = Data.GetAFPersonalleByID(int.Parse(reader["OffId"].ToString()));
+                    string name = reader["Name"].ToString();
+                    string Rank = reader["Rank"].ToString();
+                    string loc = reader["PresentlyPosted"].ToString();
+                    int PakNo = int.Parse(reader["PakNo"].ToString());
                     string squad = reader["Squadron"].ToString();
-                    CommandingOfficers c = new CommandingOfficers(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), squad);
+                    CommandingOfficers c = new CommandingOfficers(name,Rank,PakNo,loc, squad);
+
                     commandingOfficers.Add(c);
 
                 }
                 return commandingOfficers;
             }
+        }
+        //this function deletes an OC
+        public void DeleteOC(int PakNo)
+        {
+            string query = string.Format("DELETE FROM OC WHERE OffId IN (SELECT Id FROM AFPersonalle WHERE PakNo = {0});\r\nDELETE FROM AFPersonalle WHERE PakNo={0};\r\nUPDATE GDP SET OCId = null WHERE OCId IN(SELECT Id FROM AFPersonalle WHERE PakNo = {0})", PakNo);
+            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void UpdateOC(int PakNo, CommandingOfficers UpdatedOC)
+        {
+           AFPersonalle AF = new AFPersonalle(UpdatedOC.GetName(),UpdatedOC.GetRank(),UpdatedOC.GetPakNo(),UpdatedOC.GetPresentlyPosted());
+            IAFPersonalle Data = new DLAFPersonalleDB();
+            Data.UpdateAFPersonalle(PakNo, AF);
+            string query = string.Format("UPDATE OC SET Squadron = '{0}' WHERE OffId = (SELECT Id FROM AFPersonalle WHERE PakNo = {1})",UpdatedOC.GetSquadron(),PakNo);
+            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+            }
+
         }
 
     }

@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompleteMission));
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.MissionDGV = new System.Windows.Forms.DataGridView();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -45,7 +45,7 @@
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,14 +60,14 @@
             this.richTextBox4.TabIndex = 53;
             this.richTextBox4.Text = "ALLMISSIONS";
             // 
-            // dataGridView1
+            // MissionDGV
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Peru;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(209, 359);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(517, 230);
-            this.dataGridView1.TabIndex = 52;
+            this.MissionDGV.BackgroundColor = System.Drawing.Color.Peru;
+            this.MissionDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MissionDGV.Location = new System.Drawing.Point(209, 359);
+            this.MissionDGV.Name = "MissionDGV";
+            this.MissionDGV.Size = new System.Drawing.Size(517, 230);
+            this.MissionDGV.TabIndex = 52;
             // 
             // richTextBox3
             // 
@@ -243,7 +243,7 @@
             this.Controls.Add(this.richTextBox5);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.richTextBox4);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.MissionDGV);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.button3);
@@ -256,7 +256,7 @@
             this.Name = "CompleteMission";
             this.Text = "CompleteMission";
             this.Load += new System.EventHandler(this.CompleteMission_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -266,7 +266,7 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox richTextBox4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView MissionDGV;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button button3;

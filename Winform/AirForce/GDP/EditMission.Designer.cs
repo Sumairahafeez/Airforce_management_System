@@ -217,7 +217,6 @@
             this.button4.Size = new System.Drawing.Size(827, 99);
             this.button4.TabIndex = 69;
             this.button4.Text = "MISSION DETAILS";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = false;
             // 
             // button6

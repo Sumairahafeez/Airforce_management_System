@@ -1,5 +1,7 @@
 ﻿using AirForce.GDP;
 using AirForce.IT;
+using AirForce.OC;
+using AirForceLibrary.BL;
 using AirForceLibrary.Utilis;
 using System;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ namespace AirForce.SignIn
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {   //this function goes for first check if it is an IT then it goes for the GDP and then it goes on for OC
             try
             {
                 string name = InputName.Text;
@@ -34,9 +36,35 @@ namespace AirForce.SignIn
                     ITMain menu = new ITMain();
                     menu.Show();
                 }
-                else
-                {
-                    MessageBox.Show("InValid Input");
+                else//if it is not an IT then it should check if it is an GDP
+                {   bool IsValidGDP = Validations.IsValidGDP(name, PakNo, Password);
+                    if(IsValidGDP)
+                    {
+                        GDPilot GDP = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNo);
+                        ConnectionClass.CurrentGDP = GDP;
+                        this.Hide();
+                        GDPMenu menu = new GDPMenu();
+                        menu.Show();
+                    }
+                    else//If it is not a GDP then it should check if it is an OC
+                    {
+                        bool IsValidOC = Validations.IsValidOC(name,PakNo, Password);
+                        if(IsValidOC)
+                        {
+                            CommandingOfficers CO = Interfaces.OCInterface.GetOCbyId(PakNo);
+                            ConnectionClass.SetCurrentOC(CO);
+                            this.Hide();
+                            OCMain main = new OCMain(PakNo);
+                            
+                            //Users.CurrentOC = CO;
+                            main.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("InValid Input");
+                        }
+                    }
+                   
                 }
             }
             catch(Exception ex)

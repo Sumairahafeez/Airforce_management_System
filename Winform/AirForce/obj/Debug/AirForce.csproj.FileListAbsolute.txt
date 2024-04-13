@@ -46,3 +46,9 @@ F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\bi
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.IT.AddOfficer.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.IT.ITMain.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.csproj.Up2Date
+F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.IT.RemoveOfficer.resources
+F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.IT.ViewOfficer.resources
+F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.OC.AssignMission.resources
+F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.OC.OCMain.resources
+F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.OC.SelectUnderOfficer.resources
+F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.IT.EditOfficer.resources
