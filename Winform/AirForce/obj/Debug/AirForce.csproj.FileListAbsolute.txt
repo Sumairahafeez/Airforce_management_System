@@ -54,3 +54,4 @@ F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\ob
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.IT.EditOfficer.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.OC.AssignPosting.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.OC.CheckReq.resources
+F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.DeletReq.resources

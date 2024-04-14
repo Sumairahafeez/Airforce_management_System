@@ -58,5 +58,10 @@ namespace AirForce.GDP
             DeletReq del = new DeletReq();
             del.Show();
         }
+
+        private void GDPRequestMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

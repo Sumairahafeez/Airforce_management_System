@@ -55,18 +55,24 @@ namespace AirForce.GDP
         }
 
         private void button3_Click(object sender, EventArgs e)
-        {
-            int Pakno = int.Parse(InputPakNo.Text);
-            int id = int.Parse(InputId.Text);
-            Requests req = Validations.IsValidRequest(Pakno, id);
-            if (req != null)
+        {   try
             {
-                InputContextT.Visible = true;
-                InputContextT.Text = req.GetContext();
-                contextBoxT.Visible = true;
-                InputStatusT.Visible = true;
-                StatusBoxT.Visible = true;
-                InputStatusT.Text = req.GetStatus();
+                int Pakno = int.Parse(InputPakNo.Text);
+                int id = int.Parse(InputId.Text);
+                Requests req = Validations.IsValidRequest(Pakno, id);
+                if (req != null)
+                {
+                    InputContextT.Visible = true;
+                    InputContextT.Text = req.GetContext();
+                    contextBoxT.Visible = true;
+                    InputStatusT.Visible = true;
+                    StatusBoxT.Visible = true;
+                    InputStatusT.Text = req.GetStatus();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

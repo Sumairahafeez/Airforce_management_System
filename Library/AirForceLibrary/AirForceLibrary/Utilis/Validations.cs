@@ -13,33 +13,26 @@ using System.Xml.Linq;
 namespace AirForceLibrary.Utilis
 {
     public class Validations
-    {   //It checks through ranks if the given set is a valid OC
+    {
+        // Checks if the given rank is valid for an OC
         public static bool IsValidOC(string Rank)
         {
-            if (Rank == "Group Captain" || Rank == "Wing Commander" || Rank == "Air Commander")
-            {
-                return true;
-            }
-            return false;
+            return Rank == "Group Captain" || Rank == "Wing Commander" || Rank == "Air Commander";
         }
+
+        // Checks if the given rank indicates an IF Officer
         public static bool IsValidIFOfficer(string Rank)
         {
-            if (Rank == "Yes")
-            {
-                return true;
-            }
-            return false;
+            return Rank == "Yes";
         }
-        //It checks the valid IT Officers
+
+        // Validates IT Officer credentials
         public static bool IsValidIT(string name, int PakNo, string Password)
         {
-            if (PakNo == 123 && Password == "123")
-            {
-                return true;
-            }
-            return false;
+            return PakNo == 123 && Password == "123";
         }
-        //IT VALIDATES TH EPAKNO SO TAHT it dont repeats
+
+        // Validates the uniqueness of PakNo
         public static bool IsValidPakNo(int PakNO)
         {
             List<AFPersonalle> AF = Interfaces.AFInterface.GetAFPersonalles();
@@ -52,37 +45,40 @@ namespace AirForceLibrary.Utilis
             }
             return true;
         }
-        //This checks if the given name and pakno are valid GDP
-        public static bool IsValidGDP(string name, int PakNO, string Password) 
+
+        // Checks if the given name, PakNo, and password match a valid GDPilot
+        public static bool IsValidGDP(string name, int PakNO, string Password)
         {
             List<GDPilot> gDPilots = Interfaces.GdpInterface.GetAllGdps();
             foreach (GDPilot G in gDPilots)
-            { 
-                if(G.GetName() == name && G.GetPakNo() == PakNO )
+            {
+                if (G.GetName() == name && G.GetPakNo() == PakNO)
                 {
                     return true;
                 }
             }
             return false;
         }
-        //This is to check if the given name pakno is an valid OC it is an eample of static polymorphism
-        public static bool IsValidOC(string name,int PakNO, string Password)
+
+        // Checks if the given name, PakNo, and password match a valid OC
+        public static bool IsValidOC(string name, int PakNO, string Password)
         {
             List<CommandingOfficers> OCs = Interfaces.OCInterface.GetAll();
-            foreach(CommandingOfficers OC in OCs)
+            foreach (CommandingOfficers OC in OCs)
             {
-                if(OC.GetName() == name && OC.GetPakNo()==PakNO)
+                if (OC.GetName() == name && OC.GetPakNo() == PakNO)
                 {
                     return true;
                 }
             }
             return false;
         }
-        //This one fetches dat ain dataTable
+
+        // Retrieves data from a DataTable using the provided query
         public static DataTable GetData(string query)
         {
             DataTable dt = new DataTable();
-            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -91,8 +87,9 @@ namespace AirForceLibrary.Utilis
                 return dt;
             }
         }
-        //Another Example of static Polymorphism
-        public static bool IsValidOC(int PakNo,string Name)
+
+        // Checks if the given name and PakNo match a valid OC
+        public static bool IsValidOC(int PakNo, string Name)
         {
             List<CommandingOfficers> OCs = Interfaces.OCInterface.GetAll();
             foreach (CommandingOfficers OC in OCs)
@@ -104,10 +101,10 @@ namespace AirForceLibrary.Utilis
             }
             return false;
         }
-        //Same for GDP Class
-        public static bool IsValidGDP(int PakNo,string Name)
-        {
 
+        // Checks if the given name and PakNo match a valid GDPilot
+        public static bool IsValidGDP(int PakNo, string Name)
+        {
             List<GDPilot> gDPilots = Interfaces.GdpInterface.GetAllGdps();
             foreach (GDPilot G in gDPilots)
             {
@@ -118,78 +115,77 @@ namespace AirForceLibrary.Utilis
             }
             return false;
         }
-        //This function checks GDP only through its PakNo
+
+        // Checks if a GDPilot with the given PakNo exists
         public static bool IsValidGDP(int PakNo)
         {
             List<GDPilot> gDPilots = Interfaces.GdpInterface.GetAllGdps();
             foreach (GDPilot G in gDPilots)
             {
-                if ( G.GetPakNo() == PakNo)
+                if (G.GetPakNo() == PakNo)
                 {
                     return true;
                 }
             }
             return false;
         }
-        //This function checks the OC only through its PakNo
+
+        // Checks if an OC with the given PakNo exists
         public static bool IsValidOC(int PakNo)
         {
             List<CommandingOfficers> OCs = Interfaces.OCInterface.GetAll();
             foreach (CommandingOfficers OC in OCs)
             {
-                if ( OC.GetPakNo() == PakNo)
+                if (OC.GetPakNo() == PakNo)
                 {
                     return true;
                 }
             }
             return false;
         }
-        //Lets check foro a valid AFPersonalle
+
+        // Checks if an AFPersonalle with the given PakNo exists
         public static bool IsValidAFPersonalle(int PakNo)
         {
             List<AFPersonalle> AFs = Interfaces.AFInterface.GetAFPersonalles();
-            foreach(AFPersonalle AF in AFs)
+            foreach (AFPersonalle AF in AFs)
             {
-                if(AF.GetPakNo()==PakNo)
+                if (AF.GetPakNo() == PakNo)
                 {
                     return true;
                 }
             }
             return false;
         }
-        //Lets check if the squadron and their current posted locations match this function wil work if an Infield Officer want sto add under officer however if an outfield like IT OC wants to do the same
-        //another fucntion would implement that will check only presemtly posted
-        public static bool IsFitForTHEOC(CommandingOfficers OC,AFPersonalle AF,string squadron)
+
+        // Checks if an AFPersonalle is fit to be under an OC based on squadron and currently posted location
+        public static bool IsFitForTHEOC(CommandingOfficers OC, AFPersonalle AF, string squadron)
         {
-           
-            if(OC.GetSquadron() == squadron && OC.GetPresentlyPosted() == AF.GetPresentlyPosted())
-            {
-                return true;
-            }
-            return false;
+            return OC.GetSquadron() == squadron && OC.GetPresentlyPosted() == AF.GetPresentlyPosted();
         }
-        /* IF AN OUT FIELD OC WANTS TO ADD UNDER OFFICER THEN THIS FUCNTION WILL IMPLEMENT
-         * Public static bool IsFitForTHEOC(string OCLocation,string OfficerLOc)
-         * {
-         *   if(OCLocation == OfficerLOc)
-         *   {
-         *      return true;
-         *   }
-         *   return false
-         * }*/
-       //This will check the valididty of the requests
-         public static Requests IsValidRequest(int PakNo,int id)
+
+        // Validates a request based on PakNo and ID
+        public static Requests IsValidRequest(int PakNo, int id)
         {
             List<Requests> req = Interfaces.RequestInterface.GetRequestsOfSpecificOfficer(PakNo);
-            foreach(Requests Req in req)
+            foreach (Requests Req in req)
             {
-                if(Req.GetRequestId() == id)
+                if (Req.GetRequestId() == id)
                 {
                     return Req;
                 }
             }
             return null;
         }
-        
+        /* IF AN OUT FIELD OC WANTS TO ADD UNDER OFFICER THEN THIS FUCNTION WILL IMPLEMENT
+   * Public static bool IsFitForTHEOC(string OCLocation,string OfficerLOc)
+   * {
+   *   if(OCLocation == OfficerLOc)
+   *   {
+   *      return true;
+   *   }
+   *   return false
+   * }*/
     }
+
 }

@@ -184,6 +184,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "GDPRequestMenu";
             this.Text = "GDPRequestMenu";
+            this.Load += new System.EventHandler(this.GDPRequestMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

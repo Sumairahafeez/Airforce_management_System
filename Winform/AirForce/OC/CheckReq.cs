@@ -36,7 +36,7 @@ namespace AirForce.OC
                 data.Columns.Add("Context", typeof(string));
                
                 data.Columns.Add("Status", typeof(string));
-                List<AFPersonalle> Under = Interfaces.AFInterface.GetAllAFofOC(CurrentOCPakNo);
+                List<GDPilot> Under = Interfaces.GdpInterface.GetAllUFofOC(CurrentOCPakNo);
                
                 foreach(AFPersonalle a in  Under)
                 {

@@ -9,7 +9,7 @@ namespace AirForceLibrary.BL
     public class GDPilot:InFieldPersonalle
     {
        
-        private int FlyingHours;
+        private int FlyingHours=0;
         
         //SET ITS CONSTRUCTORS
        

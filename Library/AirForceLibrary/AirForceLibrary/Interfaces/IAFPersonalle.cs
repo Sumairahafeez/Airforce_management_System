@@ -14,7 +14,7 @@ namespace AirForceLibrary.Interfaces
         void DeleteAFPersonalle(int PakNo);
         void UpdateAFPersonalle(int PakNo, AFPersonalle a);
         AFPersonalle GetAFPersonalleByID(int id);
-        List<AFPersonalle> GetAllAFofOC(int OCId);
+       
         
     }
 }

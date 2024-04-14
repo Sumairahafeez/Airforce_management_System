@@ -13,23 +13,30 @@ namespace AirForceLibrary.DL
 {
     public class DLAFPersonalleDB:IAFPersonalle
     {   //This class will store AFPersonalles
-        public  void StoreAFPersonalle(AFPersonalle a)
+        /// <summary>
+        /// Stores an AFPersonalle in the database.
+        /// </summary>
+        /// <param name="a">The AFPersonalle to store.</param>
+        public void StoreAFPersonalle(AFPersonalle a)
         {
-            string query = string.Format("INSERT INTO AFPersonalle VALUES('{0}','{1}',{2},'{3}')",a.GetName(),a.GetRank(),a.GetPakNo(),a.GetPresentlyPosted());
-            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            string query = string.Format("INSERT INTO AFPersonalle VALUES('{0}','{1}',{2},'{3}')", a.GetName(), a.GetRank(), a.GetPakNo(), a.GetPresentlyPosted());
+            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
-               
-                cmd.ExecuteNonQuery ();
+                cmd.ExecuteNonQuery();
             }
         }
-        //This fuction will get all th afpersonalle
-        public  List<AFPersonalle> GetAFPersonalles()
+
+        /// <summary>
+        /// Retrieves all AFPersonalles from the database.
+        /// </summary>
+        /// <returns>A list of all AFPersonalles stored in the database.</returns>
+        public List<AFPersonalle> GetAFPersonalles()
         {
             string query = "SELECT * FROM AFPersonalle";
             List<AFPersonalle> aFPersonalles = new List<AFPersonalle>();
-            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -46,49 +53,64 @@ namespace AirForceLibrary.DL
                 return aFPersonalles;
             }
         }
-        //This Function will give only those AFPersonals whose id are given
-        public  AFPersonalle GetAFPersonalleByID(int  PakNo)
+
+        /// <summary>
+        /// Retrieves an AFPersonalle by its PakNo.
+        /// </summary>
+        /// <param name="PakNo">The PakNo of the AFPersonalle to retrieve.</param>
+        /// <returns>The AFPersonalle with the specified PakNo.</returns>
+        public AFPersonalle GetAFPersonalleByID(int PakNo)
         {
             string query = "SELECT * FROM AFPersonalle WHERE PakNo = " + PakNo;
-            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
-                con.Open ();
-                SqlCommand cmd = new SqlCommand (query, con);
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader reader = cmd.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     string name = reader["Name"].ToString();
                     string Rank = reader["Rank"].ToString();
-                    
-                    string Present = reader["PresentlyPosted"].ToString() ;
-                    AFPersonalle A = new AFPersonalle(name,Rank,PakNo,Present);
+                    string Present = reader["PresentlyPosted"].ToString();
+                    AFPersonalle A = new AFPersonalle(name, Rank, PakNo, Present);
                     return A;
                 }
                 return null;
             }
         }
-        //This Function will Update afpersonalles
-        public  void UpdateAFPersonalle(int PakNo,AFPersonalle a)
+
+        /// <summary>
+        /// Updates an AFPersonalle in the database.
+        /// </summary>
+        /// <param name="PakNo">The PakNo of the AFPersonalle to update.</param>
+        /// <param name="a">The updated AFPersonalle information.</param>
+        public void UpdateAFPersonalle(int PakNo, AFPersonalle a)
         {
-            string query =string.Format("UPDATE AFPersonalle SET Name = '{0}',Rank = '{1}',PresentlyPosted = '{2}' WHERE PakNo = {3}",a.GetName(),a.GetRank(),a.GetPresentlyPosted(),a.GetPakNo() );
-            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            string query = string.Format("UPDATE AFPersonalle SET Name = '{0}', Rank = '{1}', PresentlyPosted = '{2}' WHERE PakNo = {3}", a.GetName(), a.GetRank(), a.GetPresentlyPosted(), a.GetPakNo());
+            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
-                SqlCommand cd = new SqlCommand(query,con);
+                SqlCommand cd = new SqlCommand(query, con);
                 cd.ExecuteNonQuery();
             }
         }
-        //This Function will delete a specific AFPersonalle
-        public  void DeleteAFPersonalle(int PakNo)
+
+        /// <summary>
+        /// Deletes a specific AFPersonalle from the database.
+        /// </summary>
+        /// <param name="PakNo">The PakNo of the AFPersonalle to delete.</param>
+        public void DeleteAFPersonalle(int PakNo)
         {
-            string query = "DELETE AFPersonalle WHERE PakNo = " + PakNo;
-            using(SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            string query = "DELETE FROM AFPersonalle WHERE PakNo = " + PakNo;
+            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
             }
         }
+
+        /*
         // this function is used to give af personalles that work under an oc
         public List<AFPersonalle> GetAllAFofOC(int OCId)
         {   List<AFPersonalle> list = new List<AFPersonalle> ();
@@ -110,5 +132,6 @@ namespace AirForceLibrary.DL
                 return list;
             }
         }
+        */
     }
 }
