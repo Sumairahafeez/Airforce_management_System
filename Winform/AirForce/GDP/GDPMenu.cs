@@ -39,23 +39,103 @@ namespace AirForce.GDP
 
         private void Missionbt_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
-            GDPMissionMENU menu = new GDPMissionMENU();
-            menu.Show();
+            ViewMissionbt.Visible = true;
+            CompleteMissionbt.Visible = true;
+            Editbt.Visible = true;
+            ViewFHbt.Visible = false;
+            Addbt.Visible = false;
+            Updatebt.Visible = false;
+            ViewRequest.Visible = false;
+            AddRequestbt.Visible = false;
+            Delbt.Visible = false;
         }
 
         private void FlyingHoursbt_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            GDPFlyingHoursMenu menu = new GDPFlyingHoursMenu();
-            menu.Show();
+        {   ViewFHbt.Visible = true;
+            Addbt.Visible = true;
+            Updatebt.Visible = true;
+            ViewRequest.Visible = false;
+            AddRequestbt.Visible = false;
+            Delbt.Visible = false;
+            ViewMissionbt.Visible = false;
+            CompleteMissionbt.Visible = false;
+            Editbt.Visible = false;
         }
 
         private void Requestbt_Click(object sender, EventArgs e)
         {
+             ViewRequest.Visible = true;
+             AddRequestbt.Visible = true;
+             Delbt.Visible = true;
+             ViewMissionbt.Visible = false;
+             CompleteMissionbt.Visible = false;
+             Editbt.Visible = false;
+             ViewFHbt.Visible = false;
+             Addbt.Visible = false;
+             Updatebt.Visible = false;
+        }
+
+        private void ViewMissionbt_Click(object sender, EventArgs e)
+        {
             this.Hide();
-            GDPRequestMenu Menu = new GDPRequestMenu();
-            Menu.Show();
+            ViewMission viewMission = new ViewMission();
+            viewMission.Show();
+        }
+
+        private void CompleteMissionbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CompleteMission mission = new CompleteMission();
+            mission.Show();
+        }
+
+        private void Editbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EditMission mission = new EditMission();
+            mission.Show();
+        }
+
+        private void ViewFHbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ViewFH view = new ViewFH();
+            view.ShowDialog();
+        }
+
+        private void Addbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ADDFH add = new ADDFH();
+            add.ShowDialog();
+        }
+
+        private void Updatebt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UpdateFH update = new UpdateFH();
+            update.ShowDialog();
+        }
+
+        private void ViewRequest_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ViewApplication view = new ViewApplication();
+            view.Show();
+        }
+
+        private void AddRequestbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddApplication Add = new AddApplication();
+            Add.Show();
+        }
+
+        private void Delbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            DeletReq del = new DeletReq();
+            del.Show();
         }
     }
 }

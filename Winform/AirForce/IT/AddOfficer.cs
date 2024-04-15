@@ -47,48 +47,67 @@ namespace AirForce.IT
         {   //When add button is clicked  this fucntion works as follow 
             try
             {
+                // Retrieve input data from textboxes
                 string name = InputName.Text;
                 string Rank = InputRank.Text;
                 int PakNO = int.Parse(InputPakNo.Text);
                 string presentlyLocated = InputPosting.Text;
-                //After taking inout it checks if the given User is an OC through its Rank and the proceeds
-                bool IsOC = Validations.IsValidOC(Rank);
                 string squadron = InputSquadron.Text;
-                bool isValid = Validations.IsValidPakNo(PakNO);
                 string branch = InputBranch.Text;
-                if(isValid)
+
+                // Check if the provided PakNo is valid
+                bool isValid = Validations.IsValidPakNo(PakNO);
+
+                if (isValid)
                 {
+                    // Check if the officer is an OC based on the provided Rank
+                    bool IsOC = Validations.IsValidOC(Rank);
+
+                    // Create a new officer object based on whether it's an OC or a GDPilot
                     if (IsOC)
                     {
-
+                        // Create a new Commanding Officer object
                         CommandingOfficers newOC = new CommandingOfficers(name, Rank, PakNO, presentlyLocated, squadron);
-                       
+
+                        // Store the new OC
                         Interfaces.OCInterface.StoreOC(newOC);
-                        MessageBox.Show("OC Added SuccessFully");
+
+                        // Display a success message
+                        MessageBox.Show("OC Added Successfully");
+
+                        // Clear input data
                         ClearData();
                     }
                     else
                     {
+                        // Create a new GDPilot object
                         GDPilot newgdp = new GDPilot(name, Rank, PakNO, presentlyLocated, squadron);
+
+                        // Store the new GDPilot
                         Interfaces.GdpInterface.StoreGDP(newgdp);
-                        MessageBox.Show("Officer Added SuccessFully");
+
+                        // Display a success message
+                        MessageBox.Show("Officer Added Successfully");
+
+                        // Clear input data
                         ClearData();
                     }
-
-                   
                 }
                 else
                 {
+                    // Display a message if the provided PakNo already exists
                     MessageBox.Show("Pak No Already Exists");
-                    ClearData() ;
+
+                    // Clear input data
+                    ClearData();
                 }
-            
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+                // Display an error message if an exception occurs
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
         public void ClearData()
         {

@@ -89,7 +89,7 @@ namespace AirForceLibrary.BL
         //5. It can Approve new Officers
         public bool AskForApproval(GDPilot NewOFFICER)
         {
-            if(UnderOfficers.Count <10 && !(IsValidUnderOfficer(NewOFFICER)))
+            if(UnderOfficers.Count <10 && (IsValidUnderOfficer(NewOFFICER)))
             {
                 AddUnderOfficer(NewOFFICER);
                 return true;

@@ -63,8 +63,8 @@ namespace AirForceLibrary.DL
                     IOC OC = new DLCommandingOfficerDB();
                     IMission mission = new DLMissionDB();
                     IRequest req = new DLRequestsDB();
-
-                    G.SetCommandingOfficer(OC.GetOCbyId(int.Parse(reader["OCId"].ToString())));
+                    //if (reader["OCId"].ToString() != null)
+                    //G.SetCommandingOfficer(OC.GetOCbyId(int.Parse(reader["OCId"].ToString())));
                     G.SetMission(mission.GetAllMissionsOfSpecificOfficer(int.Parse(reader["PakNo"].ToString())));
                     G.SetRequests(req.GetRequestsOfSpecificOfficer(int.Parse(reader["PakNo"].ToString())));
 

@@ -71,7 +71,7 @@
             // 
             // richTextBox5
             // 
-            this.richTextBox5.BackColor = System.Drawing.Color.DimGray;
+            this.richTextBox5.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.richTextBox5.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox5.Location = new System.Drawing.Point(870, 139);
@@ -90,7 +90,7 @@
             // 
             // PakNoCB
             // 
-            this.PakNoCB.BackColor = System.Drawing.Color.DimGray;
+            this.PakNoCB.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.PakNoCB.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PakNoCB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.PakNoCB.FormattingEnabled = true;
@@ -101,7 +101,7 @@
             // 
             // button7
             // 
-            this.button7.BackColor = System.Drawing.Color.DimGray;
+            this.button7.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.button7.Font = new System.Drawing.Font("Tempus Sans ITC", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
@@ -116,7 +116,7 @@
             // 
             // InputName
             // 
-            this.InputName.BackColor = System.Drawing.Color.DimGray;
+            this.InputName.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.InputName.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.InputName.Location = new System.Drawing.Point(415, 220);
@@ -127,7 +127,7 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.BackColor = System.Drawing.Color.DimGray;
+            this.richTextBox2.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.richTextBox2.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox2.Location = new System.Drawing.Point(81, 151);
@@ -138,7 +138,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.DimGray;
+            this.richTextBox1.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.richTextBox1.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox1.Location = new System.Drawing.Point(81, 220);
@@ -169,7 +169,7 @@
             // 
             // Checkbt
             // 
-            this.Checkbt.BackColor = System.Drawing.Color.DimGray;
+            this.Checkbt.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.Checkbt.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Checkbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Checkbt.Location = new System.Drawing.Point(163, 283);
@@ -182,7 +182,7 @@
             // 
             // Assignbt
             // 
-            this.Assignbt.BackColor = System.Drawing.Color.DimGray;
+            this.Assignbt.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.Assignbt.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Assignbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Assignbt.Location = new System.Drawing.Point(415, 283);
@@ -205,7 +205,7 @@
             // 
             // missionText
             // 
-            this.missionText.BackColor = System.Drawing.Color.DimGray;
+            this.missionText.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.missionText.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.missionText.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.missionText.Location = new System.Drawing.Point(863, 389);
@@ -217,7 +217,7 @@
             // 
             // DateT
             // 
-            this.DateT.BackColor = System.Drawing.Color.DimGray;
+            this.DateT.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.DateT.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateT.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DateT.Location = new System.Drawing.Point(81, 344);
@@ -229,7 +229,7 @@
             // 
             // DetailT
             // 
-            this.DetailT.BackColor = System.Drawing.Color.DimGray;
+            this.DetailT.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.DetailT.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DetailT.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DetailT.Location = new System.Drawing.Point(81, 411);
@@ -241,7 +241,7 @@
             // 
             // IsCompleteT
             // 
-            this.IsCompleteT.BackColor = System.Drawing.Color.DimGray;
+            this.IsCompleteT.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.IsCompleteT.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsCompleteT.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.IsCompleteT.Location = new System.Drawing.Point(81, 484);
@@ -253,7 +253,7 @@
             // 
             // SuccessT
             // 
-            this.SuccessT.BackColor = System.Drawing.Color.DimGray;
+            this.SuccessT.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.SuccessT.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SuccessT.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SuccessT.Location = new System.Drawing.Point(81, 557);
@@ -265,7 +265,7 @@
             // 
             // InputDetails
             // 
-            this.InputDetails.BackColor = System.Drawing.Color.DimGray;
+            this.InputDetails.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.InputDetails.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputDetails.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.InputDetails.Location = new System.Drawing.Point(415, 411);
@@ -277,7 +277,7 @@
             // 
             // InputIsComplete
             // 
-            this.InputIsComplete.BackColor = System.Drawing.Color.DimGray;
+            this.InputIsComplete.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.InputIsComplete.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputIsComplete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.InputIsComplete.Location = new System.Drawing.Point(415, 484);
@@ -289,7 +289,7 @@
             // 
             // InputSuccessRate
             // 
-            this.InputSuccessRate.BackColor = System.Drawing.Color.DimGray;
+            this.InputSuccessRate.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.InputSuccessRate.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputSuccessRate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.InputSuccessRate.Location = new System.Drawing.Point(415, 557);
@@ -314,7 +314,7 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.DimGray;
+            this.button3.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.button3.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button3.Location = new System.Drawing.Point(410, 623);

@@ -67,13 +67,13 @@ namespace AirForce.OC
         {
             try
             {
+                InputBranch.Text = "GDP";
                 int PakNo = int.Parse(PakNoCB.Text);
                 bool isValid = Validations.IsValidAFPersonalle(PakNo);//It will check if the AF Personal is valid or not
                 if (isValid)
                 {
                     GDPilot AF = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNo);//From ID the personal is fetched
                     string Squadron = InputSquadron.Text;
-                    MessageBox.Show("Iam " + CurrentOCPakNo);
                     //If valid it is checked if the squadrons and location of oc and underofficer matches of not
                     CommandingOfficers OC = Interfaces.OCInterface.GetOCbyId(CurrentOCPakNo);
 
@@ -91,18 +91,18 @@ namespace AirForce.OC
                         }
                         else
                         {
-                            MessageBox.Show("Your Request was not approved you might have full capacity of under officers");
+                            MessageBox.Show("Your Request was not approved you might have full capacity of under officers or the officer is already added");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Your Squadrons Doesnot Match");
+                        MessageBox.Show("Your Squadrons or current locations Doesnot Match");
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Officer");
+                    MessageBox.Show("Officer Doesnot exists");
                 }
 
 

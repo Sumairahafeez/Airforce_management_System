@@ -38,7 +38,7 @@ namespace AirForce.GDP
         private void Backbt_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GDPRequestMenu Menu = new GDPRequestMenu();
+            GDPMenu Menu = new GDPMenu();
             Menu.Show();
         }
 

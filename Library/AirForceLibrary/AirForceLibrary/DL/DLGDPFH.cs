@@ -45,7 +45,7 @@ namespace AirForceLibrary.DL
             // Read GDPilot information from the file
             using (StreamReader reader = new StreamReader(path))
             {
-                if (File.Exists(path))
+                //if (File.Exists(path))
                 {
                     string record;
                     while ((record = reader.ReadLine()) != null)
@@ -77,11 +77,11 @@ namespace AirForceLibrary.DL
                             // Retrieve GDPilot's missions and requests
                             IMission missions = new DLMissionFH();
                             IRequest request = new DLRequestsFH();
-                            //List<Mission> Mymissions = missions.GetAllMissionsOfSpecificOfficer(PakNo);
-                            //List<Requests> MyRequests = request.GetRequestsOfSpecificOfficer(PakNo);
+                            List<Mission> Mymissions = missions.GetAllMissionsOfSpecificOfficer(PakNo);
+                            List<Requests> MyRequests = request.GetRequestsOfSpecificOfficer(PakNo);
                             G.SetFlyingHours(FlyingHours);
-                            //G.SetMission(Mymissions);
-                            //G.SetRequests(MyRequests);
+                            G.SetMission(Mymissions);
+                            G.SetRequests(MyRequests);
                             Gdps.Add(G);
 
                         }

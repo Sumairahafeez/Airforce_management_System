@@ -104,9 +104,9 @@ namespace AirForce.OC
             this.button1.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.button1.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(1, -2);
+            this.button1.Location = new System.Drawing.Point(-7, -2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(1377, 99);
+            this.button1.Size = new System.Drawing.Size(1385, 99);
             this.button1.TabIndex = 57;
             this.button1.Text = "Commanding Officers";
             this.button1.UseVisualStyleBackColor = false;

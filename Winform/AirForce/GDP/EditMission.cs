@@ -49,7 +49,7 @@ namespace AirForce.GDP
         private void Backbt_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GDPMissionMENU menu = new GDPMissionMENU();
+            GDPMenu menu = new GDPMenu();
             menu.Show();
         }
 

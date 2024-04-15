@@ -34,32 +34,36 @@ namespace AirForceLibrary.DL
         {
             List<AFPersonalle> personalles = new List<AFPersonalle>();
             // Open the file for reading
-            using (StreamReader reader = new StreamReader(path))
+            if(File.Exists(path)) 
             {
-                string record;
-                try
+                using (StreamReader reader = new StreamReader(path))
                 {
-                    if (File.Exists(path))
+                    string record;
+                    try
                     {
-                        // Read each line of the file
-                        while ((record = reader.ReadLine()) != null)
+                        // if (File.Exists(path))
                         {
-                            // Split the record into individual pieces of information
-                            string[] AllData = record.Split(',');
-                            string Name = AllData[0];
-                            int PakNo = int.Parse(AllData[1]);
-                            string Rank = AllData[2];
-                            string Posted = AllData[3];
-                            // Create an AFPersonalle object and add it to the list
-                            AFPersonalle aFPersonalle = new AFPersonalle(Name, Rank, PakNo, Posted);
-                            personalles.Add(aFPersonalle);
+                            // Read each line of the file
+                            while ((record = reader.ReadLine()) != null)
+                            {
+                                // Split the record into individual pieces of information
+                                string[] AllData = record.Split(',');
+                                string Name = AllData[0];
+                                int PakNo = int.Parse(AllData[1]);
+                                string Rank = AllData[2];
+                                string Posted = AllData[3];
+                                // Create an AFPersonalle object and add it to the list
+                                AFPersonalle aFPersonalle = new AFPersonalle(Name, Rank, PakNo, Posted);
+                                personalles.Add(aFPersonalle);
+                            }
                         }
                     }
-                } 
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }// Check if the file exists
+                    catch (Exception ex)
+                    {
+
+                    }// 
+                }
+          
                
             }
             return personalles;

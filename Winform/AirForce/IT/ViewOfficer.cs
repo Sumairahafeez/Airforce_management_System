@@ -24,69 +24,84 @@ namespace AirForce.IT
         {
             try
             {
-                //This will fill the datatable and the pak no comboboxes as soon as the page loads
+                // Create a DataTable to store officer data
                 DataTable dataTable = new DataTable();
                 dataTable.Columns.Add("Name", typeof(string));
                 dataTable.Columns.Add("PakNo", typeof(int));
                 dataTable.Columns.Add("Rank", typeof(string));
                 dataTable.Columns.Add("Posted", typeof(string));
                 dataTable.Columns.Add("Squadron", typeof(string));
+
+                // Retrieve all GDPilots and add their information to the DataTable
                 List<GDPilot> GDPS = Interfaces.GdpInterface.GetAllGdps();
-                for (int i = 0; i < GDPS.Count; i++)
+                foreach (var gdp in GDPS)
                 {
-                    dataTable.Rows.Add(GDPS[i].GetName(), GDPS[i].GetPakNo(), GDPS[i].GetRank(), GDPS[i].GetPresentlyPosted(), GDPS[i].GetSquadron());
+                    dataTable.Rows.Add(gdp.GetName(), gdp.GetPakNo(), gdp.GetRank(), gdp.GetPresentlyPosted(), gdp.GetSquadron());
                 }
+
+                // Retrieve all Commanding Officers (OCs) and add their information to the DataTable
                 List<CommandingOfficers> ALLOc = Interfaces.OCInterface.GetAll();
-                for (int i = 0; i < ALLOc.Count; i++)
+                foreach (var oc in ALLOc)
                 {
-                    dataTable.Rows.Add(ALLOc[i].GetName(), ALLOc[i].GetPakNo(), ALLOc[i].GetRank(), ALLOc[i].GetPresentlyPosted(), ALLOc[i].GetSquadron());
+                    dataTable.Rows.Add(oc.GetName(), oc.GetPakNo(), oc.GetRank(), oc.GetPresentlyPosted(), oc.GetSquadron());
                 }
+
+                // Set the DataSource of OfficerGV DataGridView to the populated DataTable
                 OfficerGV.DataSource = dataTable;
-                //Now fill the combo boxes with available data
-                string query1 = "SELECT PakNo From GDP g,OC o,AFPersonalle a WHERE g.OfficerId = a.Id OR o.OffId = a.Id";
+
+                // Fill the PakNoCB ComboBox with available PakNo data
+                string query1 = "SELECT PakNo FROM GDP g, OC o, AFPersonalle a WHERE g.OfficerId = a.Id OR o.OffId = a.Id";
                 PakNoCB.DataSource = Validations.GetData(query1);
                 PakNoCB.DisplayMember = "PakNo";
-
             }
             catch (Exception ex)
             {
+                // Display an error message if an exception occurs
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void OfficerGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //This function serves to select a data from a given datagrid view and show it on th edattable
-            int SelectedRow = e.RowIndex;
-            if (SelectedRow >= -2  && SelectedRow < OfficerGV.Rows.Count)
+            // This function serves to select data from a given DataGridView and display it on the DataTable
+            int SelectedRow = e.RowIndex; // Get the index of the selected row
+            if (SelectedRow >= -2 && SelectedRow < OfficerGV.Rows.Count)
             {
-                DataGridViewRow row = OfficerGV.Rows[SelectedRow];
+                // Check if the selected row index is valid (greater than or equal to -2 and less than the total number of rows)
+                DataGridViewRow row = OfficerGV.Rows[SelectedRow]; // Retrieve the selected row
+
+                // Update the PakNoCB ComboBox with the PakNo value from the selected row, if available
                 if (row.Cells["PakNo"].Value != null)
-
                     PakNoCB.Text = row.Cells["PakNo"].Value.ToString();
+                else
+                    PakNoCB.Text = string.Empty;
 
-
-
+                // Update the InputName TextBox with the Name value from the selected row, if available
                 if (row.Cells["Name"].Value != null)
                     InputName.Text = row.Cells["Name"].Value.ToString();
                 else
                     InputName.Text = string.Empty;
 
+                // Update the InputRank TextBox with the Rank value from the selected row, if available
                 if (row.Cells["Rank"].Value != null)
                     InputRank.Text = row.Cells["Rank"].Value.ToString();
                 else
                     InputRank.Text = string.Empty;
 
+                // Update the InputPosting TextBox with the Posted value from the selected row, if available
                 if (row.Cells["Posted"].Value != null)
                     InputPosting.Text = row.Cells["Posted"].Value.ToString();
                 else
                     InputPosting.Text = string.Empty;
 
+                // Update the InputSquadron TextBox with the Squadron value from the selected row, if available
                 if (row.Cells["Squadron"].Value != null)
                     InputSquadron.Text = row.Cells["Squadron"].Value.ToString();
                 else
                     InputSquadron.Text = string.Empty;
             }
+
         }
 
         private void Checkbt_Click(object sender, EventArgs e)

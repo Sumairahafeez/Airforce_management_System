@@ -57,31 +57,31 @@
             // richTextBox4
             // 
             this.richTextBox4.BackColor = System.Drawing.Color.Navy;
-            this.richTextBox4.Font = new System.Drawing.Font("Tempus Sans ITC", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox4.Font = new System.Drawing.Font("Tempus Sans ITC", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox4.Location = new System.Drawing.Point(707, 221);
             this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(170, 38);
+            this.richTextBox4.Size = new System.Drawing.Size(218, 38);
             this.richTextBox4.TabIndex = 26;
-            this.richTextBox4.Text = "Pak No";
+            this.richTextBox4.Text = "Enter Your PakNo";
             // 
             // InputPassword
             // 
-            this.InputPassword.Location = new System.Drawing.Point(959, 330);
+            this.InputPassword.Location = new System.Drawing.Point(959, 303);
             this.InputPassword.Name = "InputPassword";
             this.InputPassword.Size = new System.Drawing.Size(188, 20);
             this.InputPassword.TabIndex = 25;
             // 
             // InputPakNo
             // 
-            this.InputPakNo.Location = new System.Drawing.Point(959, 239);
+            this.InputPakNo.Location = new System.Drawing.Point(959, 230);
             this.InputPakNo.Name = "InputPakNo";
             this.InputPakNo.Size = new System.Drawing.Size(188, 20);
             this.InputPakNo.TabIndex = 24;
             // 
             // InputName
             // 
-            this.InputName.Location = new System.Drawing.Point(959, 151);
+            this.InputName.Location = new System.Drawing.Point(959, 160);
             this.InputName.Name = "InputName";
             this.InputName.Size = new System.Drawing.Size(188, 20);
             this.InputName.TabIndex = 23;
@@ -89,24 +89,24 @@
             // richTextBox3
             // 
             this.richTextBox3.BackColor = System.Drawing.Color.Navy;
-            this.richTextBox3.Font = new System.Drawing.Font("Tempus Sans ITC", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox3.Font = new System.Drawing.Font("Tempus Sans ITC", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox3.Location = new System.Drawing.Point(707, 312);
+            this.richTextBox3.Location = new System.Drawing.Point(707, 294);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(170, 38);
+            this.richTextBox3.Size = new System.Drawing.Size(218, 38);
             this.richTextBox3.TabIndex = 22;
-            this.richTextBox3.Text = "Password";
+            this.richTextBox3.Text = "Enter your password";
             // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.Navy;
-            this.richTextBox1.Font = new System.Drawing.Font("Tempus Sans ITC", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Font = new System.Drawing.Font("Tempus Sans ITC", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox1.Location = new System.Drawing.Point(707, 151);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(170, 38);
+            this.richTextBox1.Size = new System.Drawing.Size(218, 38);
             this.richTextBox1.TabIndex = 21;
-            this.richTextBox1.Text = "Name";
+            this.richTextBox1.Text = "Enter your name";
             // 
             // button1
             // 

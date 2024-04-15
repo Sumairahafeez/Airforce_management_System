@@ -32,7 +32,7 @@ namespace AirForce.GDP
         private void backbt_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GDPFlyingHoursMenu menu = new GDPFlyingHoursMenu();
+            GDPMenu menu = new GDPMenu();
             menu.Show();
         }
 

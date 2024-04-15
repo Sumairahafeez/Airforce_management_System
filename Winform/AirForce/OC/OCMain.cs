@@ -41,7 +41,7 @@ namespace AirForce.OC
                 if (CO != null)
                 {
                     userBoxT.BringToFront();
-                    userBoxT.Text = "Welcome" + CO.GetRank() + " " + CO.GetName();
+                    userBoxT.Text =  CO.GetRank() + " " + CO.GetName();
                 }
 
             }

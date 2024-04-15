@@ -45,6 +45,7 @@
     <Compile Include="BL\CommandingOfficers.cs" />
     <Compile Include="BL\GDPilot.cs" />
     <Compile Include="BL\InFieldOfficers.cs" />
+    <Compile Include="BL\ITPersonalle.cs" />
     <Compile Include="BL\Mission.cs" />
     <Compile Include="BL\Requests.cs" />
     <Compile Include="DL\DLAFPersonalleDB.cs" />

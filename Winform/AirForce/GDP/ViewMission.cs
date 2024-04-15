@@ -50,7 +50,7 @@ namespace AirForce.GDP
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GDPMissionMENU menu = new GDPMissionMENU();
+            GDPMenu menu = new GDPMenu();
             menu.Show();
         }
 

@@ -43,7 +43,7 @@ namespace AirForceLibrary.DL
             // Read Commanding Officer information from the file
             using (StreamReader reader = new StreamReader(path))
             {
-                if (File.Exists(path))
+                //if (File.Exists(path))
                 {
                     string record;
                     while ((record = reader.ReadLine()) != null)
@@ -64,6 +64,7 @@ namespace AirForceLibrary.DL
                         CommandingOfficers OC = new CommandingOfficers(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), Squad);
                         if(Unders != null)
                         {
+                           
                             OC.SetUnderOff(Unders);
                         }
                        
