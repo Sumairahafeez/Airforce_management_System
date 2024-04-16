@@ -30,7 +30,7 @@ namespace AirForce.GDP
                 dataTable.Columns.Add("IsCompleted", typeof(bool));
                 dataTable.Columns.Add("SuccessRate", typeof(float));
 
-                List<Mission> missions = Interfaces.MissionInterface.GetAllMissionsOfSpecificOfficer(ConnectionClass.CurrentGDP.GetPakNo());
+                List<Mission> missions = Interfaces.GetMissionInterface().GetAllMissionsOfSpecificOfficer(ConnectionClass.CurrentGDP.GetPakNo());
                 for (int i = 0; i < missions.Count; i++)
                 {
                     dataTable.Rows.Add(missions[i].GetDate(), missions[i].GetDetails(), missions[i].GetIsComplete(), missions[i].GetSuccessRate());
@@ -86,10 +86,10 @@ namespace AirForce.GDP
             try
             {
                 IsComplete.Checked = false;
-                Mission mission = Interfaces.MissionInterface.GetMissionFromDate(DateTime.Parse(dateTimePicker1.Text));
+                Mission mission = Interfaces.GetMissionInterface().GetMissionFromDate(DateTime.Parse(dateTimePicker1.Text));
                 mission.SetIsComplete(false);
                 mission.SetSuccessRate(0);
-                Interfaces.MissionInterface.UpdateMission(DateTime.Parse(dateTimePicker1.Text), mission);
+                Interfaces.GetMissionInterface().UpdateMission(DateTime.Parse(dateTimePicker1.Text), mission);
                 MessageBox.Show("Set Successfully");
             }
             catch(Exception ex)
@@ -105,9 +105,9 @@ namespace AirForce.GDP
             try
             {
                 float success = float.Parse(InputSuccess.Text);
-                Mission mission = Interfaces.MissionInterface.GetMissionFromDate(DateTime.Parse(dateTimePicker1.Text));
+                Mission mission = Interfaces.GetMissionInterface().GetMissionFromDate(DateTime.Parse(dateTimePicker1.Text));
                 mission.SetSuccessRate(success);
-                Interfaces.MissionInterface.UpdateMission(dateTimePicker1.Value, mission);
+                Interfaces.GetMissionInterface().UpdateMission(dateTimePicker1.Value, mission);
                 MessageBox.Show("updated successfully");
 
             }

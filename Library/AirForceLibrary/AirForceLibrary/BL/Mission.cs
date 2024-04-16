@@ -55,5 +55,9 @@ namespace AirForceLibrary.BL
         {
             return SuccessRate;
         }
+        public string ToString()
+        {
+            return Date.ToString()+"\\t"+Details.ToString()+"\\t"+IsComplete+"\\t"+SuccessRate;
+        }
     }
 }

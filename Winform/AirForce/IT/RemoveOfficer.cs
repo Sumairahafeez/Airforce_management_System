@@ -41,14 +41,14 @@ namespace AirForce.IT
                 dataTable.Columns.Add("Squadron", typeof(string));
 
                 // Retrieve all GDPilots and add their information to the DataTable
-                List<GDPilot> GDPS = Interfaces.GdpInterface.GetAllGdps();
+                List<GDPilot> GDPS = Interfaces.GetGdpInterface().GetAllGdps();
                 foreach (var gdp in GDPS)
                 {
                     dataTable.Rows.Add(gdp.GetName(), gdp.GetPakNo(), gdp.GetRank(), gdp.GetPresentlyPosted(), gdp.GetSquadron());
                 }
 
                 // Retrieve all Commanding Officers (OCs) and add their information to the DataTable
-                List<CommandingOfficers> ALLOc = Interfaces.OCInterface.GetAll();
+                List<CommandingOfficers> ALLOc = Interfaces.GetOCInterface().GetAll();
                 foreach (var oc in ALLOc)
                 {
                     dataTable.Rows.Add(oc.GetName(), oc.GetPakNo(), oc.GetRank(), oc.GetPresentlyPosted(), oc.GetSquadron());
@@ -87,7 +87,7 @@ namespace AirForce.IT
                 if (IsValidOC)
                 {
                     // Delete the Commanding Officer (OC) with the specified PakNo
-                    Interfaces.OCInterface.DeleteOC(PakNO);
+                    Interfaces.GetOCInterface().DeleteOC(PakNO);
 
                     // Display a success message
                     MessageBox.Show("OC DELETED SUCCESSFULLY");
@@ -104,7 +104,7 @@ namespace AirForce.IT
                     if (IsValidGDP)
                     {
                         // Delete the GDPilot with the specified PakNo
-                        Interfaces.GdpInterface.DeleteGDP(PakNO);
+                        Interfaces.GetGdpInterface().DeleteGDP(PakNO);
 
                         // Display a success message
                         MessageBox.Show("GDP DELETED SUCCESSFULLY");

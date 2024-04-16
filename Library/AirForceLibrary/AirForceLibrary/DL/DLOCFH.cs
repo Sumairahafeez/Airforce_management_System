@@ -46,30 +46,37 @@ namespace AirForceLibrary.DL
                 //if (File.Exists(path))
                 {
                     string record;
+                    string[] AllData = new string[1000];
                     while ((record = reader.ReadLine()) != null)
                     {
-                        string[] AllData = record.Split(',');
-                        string Squad = AllData[0];
-                        int PakNo = int.Parse(AllData[1]);
-
-                        // Retrieve Commanding Officer's information from the personnel database
-                        IAFPersonalle aFPersonalle = new DLAFPersonalleFH();
-                        AFPersonalle A = aFPersonalle.GetAFPersonalleByID(PakNo);
-
-                        // Retrieve Commanding Officer's subordinate pilots
-                        IGDP Pilots = new DLGDPFH();
-                        List<GDPilot> Unders = Pilots.GetAllUFofOC(PakNo);
-
-                        // Create and populate Commanding Officer object
-                        CommandingOfficers OC = new CommandingOfficers(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), Squad);
-                        if(Unders != null)
+                         AllData = record.Split(',');
+                    }
+                        for(int i = 0; i < AllData.Length; i= i+2)
                         {
-                           
-                            OC.SetUnderOff(Unders);
+                            string Squad = AllData[0];
+                            int PakNo = int.Parse(AllData[1]);
+                            // Retrieve Commanding Officer's information from the personnel database
+                            IAFPersonalle aFPersonalle = new DLAFPersonalleFH();
+                            AFPersonalle A = aFPersonalle.GetAFPersonalleByID(PakNo);
+
+                            // Retrieve Commanding Officer's subordinate pilots
+                            IGDP Pilots = new DLGDPFH();
+                            List<GDPilot> Unders = Pilots.GetAllUFofOC(PakNo);
+
+                            // Create and populate Commanding Officer object
+                            CommandingOfficers OC = new CommandingOfficers(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), Squad);
+                            if (Unders != null)
+                            {
+
+                                OC.SetUnderOff(Unders);
+                            }
+
+                            officers.Add(OC);
                         }
                        
-                        officers.Add(OC);
-                    }
+
+                       
+                    
                 }
             }
 

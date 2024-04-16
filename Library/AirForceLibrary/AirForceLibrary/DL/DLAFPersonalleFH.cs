@@ -1,5 +1,6 @@
 ﻿using AirForceLibrary.BL;
 using AirForceLibrary.Interfaces;
+using AirForceLibrary.Utilis;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,11 +13,12 @@ namespace AirForceLibrary.DL
 {
     public class DLAFPersonalleFH : IAFPersonalle
     {
-        private static readonly string path = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\AFPersonalle.txt";
+        //private static readonly string path = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\AFPersonalle.txt";
         /// <summary>
         /// Stores an AFPersonalle's information and updates the file.
         /// </summary>
         /// <param name="aFPersonalle">The AFPersonalle to store.</param>
+        public string path = ConnectionClass.GetAFFile();
         public void StoreAFPersonalle(AFPersonalle aFPersonalle)
         {
             // Open the file for appending and write AFPersonalle information
@@ -34,6 +36,7 @@ namespace AirForceLibrary.DL
         {
             List<AFPersonalle> personalles = new List<AFPersonalle>();
             // Open the file for reading
+            
             if(File.Exists(path)) 
             {
                 using (StreamReader reader = new StreamReader(path))

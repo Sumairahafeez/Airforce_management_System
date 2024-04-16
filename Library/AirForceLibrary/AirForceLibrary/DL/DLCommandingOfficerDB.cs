@@ -3,6 +3,7 @@ using AirForceLibrary.Interfaces;
 using AirForceLibrary.Utilis;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -17,6 +18,19 @@ namespace AirForceLibrary.DL
         /// Stores a Commanding Officer in the database.
         /// </summary>
         /// <param name="commandingOfficers">The Commanding Officer to store.</param>
+       /* private DLCommandingOfficerDB Instance;
+        public DLCommandingOfficerDB()
+        {
+            Instance = SetValidInstance();
+        }
+        private DLCommandingOfficerDB SetValidInstance()
+        {
+            if (Instance == null)
+            {
+                Instance = new DLCommandingOfficerDB();
+            }
+            return Instance;
+        }*/
         public void StoreOC(CommandingOfficers commandingOfficers)
         {
             IAFPersonalle IAF = new DLAFPersonalleDB();
@@ -40,30 +54,39 @@ namespace AirForceLibrary.DL
         public CommandingOfficers GetOCbyId(int PakNo)
         {
             string query = "SELECT * FROM OC o, AFPersonalle a WHERE o.OffId = (SELECT Id FROM AFPersonalle WHERE PakNo = " + PakNo + ") AND a.Id = o.OffId";
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand(query, con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    string name = reader["Name"].ToString();
-                    string Rank = reader["Rank"].ToString();
-                    string loc = reader["PresentlyPosted"].ToString();
-                    string squad = reader["Squadron"].ToString();
-                    int PakNO;
-                    IGDP AFP = new DLGDPDB();
-                    List<GDPilot> underOff = AFP.GetAllUFofOC(int.Parse(reader["PakNo"].ToString()));
 
-                    if (int.TryParse(reader["PakNo"].ToString(), out PakNO))
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        CommandingOfficers c = new CommandingOfficers(name, Rank, PakNO, loc, squad);
-                        c.SetUnderOff(underOff);
-                        return c;
+                        string name = reader["Name"].ToString();
+                        string Rank = reader["Rank"].ToString();
+                        string loc = reader["PresentlyPosted"].ToString();
+                        string squad = reader["Squadron"].ToString();
+                        int PakNO;
+                        IGDP AFP = new DLGDPDB();
+                        List<GDPilot> underOff = AFP.GetAllUFofOC(int.Parse(reader["PakNo"].ToString()));
+
+                        if (int.TryParse(reader["PakNo"].ToString(), out PakNO))
+                        {
+                            CommandingOfficers c = new CommandingOfficers(name, Rank, PakNO, loc, squad);
+                            c.SetUnderOff(underOff);
+                            return c;
+                        }
                     }
+                   
                 }
-                return null;
             }
+            catch (Exception ex)
+            {
+
+            }
+            return null;
         }
 
         /// <summary>

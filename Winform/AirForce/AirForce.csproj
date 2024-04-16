@@ -79,29 +79,11 @@
     <Compile Include="GDP\EditMission.Designer.cs">
       <DependentUpon>EditMission.cs</DependentUpon>
     </Compile>
-    <Compile Include="GDP\GDPFlyingHoursMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GDP\GDPFlyingHoursMenu.Designer.cs">
-      <DependentUpon>GDPFlyingHoursMenu.cs</DependentUpon>
-    </Compile>
     <Compile Include="GDP\GDPMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GDP\GDPMenu.Designer.cs">
       <DependentUpon>GDPMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GDP\GDPMissionMENU.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GDP\GDPMissionMENU.Designer.cs">
-      <DependentUpon>GDPMissionMENU.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GDP\GDPRequestMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GDP\GDPRequestMenu.Designer.cs">
-      <DependentUpon>GDPRequestMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="GDP\UpdateFH.cs">
       <SubType>Form</SubType>
@@ -157,6 +139,12 @@
     <Compile Include="IT\ViewOfficer.Designer.cs">
       <DependentUpon>ViewOfficer.cs</DependentUpon>
     </Compile>
+    <Compile Include="LandingPage\AskDataStorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LandingPage\AskDataStorer.Designer.cs">
+      <DependentUpon>AskDataStorer.cs</DependentUpon>
+    </Compile>
     <Compile Include="LandingPage\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,7 +181,6 @@
     <Compile Include="OC\SelectUnderOfficer.Designer.cs">
       <DependentUpon>SelectUnderOfficer.cs</DependentUpon>
     </Compile>
-    <Compile Include="OC\Users.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignIn\signIn.cs">
@@ -217,17 +204,8 @@
     <EmbeddedResource Include="GDP\EditMission.resx">
       <DependentUpon>EditMission.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GDP\GDPFlyingHoursMenu.resx">
-      <DependentUpon>GDPFlyingHoursMenu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GDP\GDPMenu.resx">
       <DependentUpon>GDPMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GDP\GDPMissionMENU.resx">
-      <DependentUpon>GDPMissionMENU.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GDP\GDPRequestMenu.resx">
-      <DependentUpon>GDPRequestMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GDP\UpdateFH.resx">
       <DependentUpon>UpdateFH.cs</DependentUpon>
@@ -255,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IT\ViewOfficer.resx">
       <DependentUpon>ViewOfficer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LandingPage\AskDataStorer.resx">
+      <DependentUpon>AskDataStorer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LandingPage\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -37,7 +37,7 @@ namespace AirForce.OC
         {     
             try
             {
-                CommandingOfficers CO = Interfaces.OCInterface.GetOCbyId(CurrentOCPakNo);
+                CommandingOfficers CO = Interfaces.GetOCInterface().GetOCbyId(CurrentOCPakNo);
                 if (CO != null)
                 {
                     userBoxT.BringToFront();

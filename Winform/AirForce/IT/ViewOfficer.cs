@@ -33,14 +33,14 @@ namespace AirForce.IT
                 dataTable.Columns.Add("Squadron", typeof(string));
 
                 // Retrieve all GDPilots and add their information to the DataTable
-                List<GDPilot> GDPS = Interfaces.GdpInterface.GetAllGdps();
+                List<GDPilot> GDPS = Interfaces.GetGdpInterface().GetAllGdps();
                 foreach (var gdp in GDPS)
                 {
                     dataTable.Rows.Add(gdp.GetName(), gdp.GetPakNo(), gdp.GetRank(), gdp.GetPresentlyPosted(), gdp.GetSquadron());
                 }
 
                 // Retrieve all Commanding Officers (OCs) and add their information to the DataTable
-                List<CommandingOfficers> ALLOc = Interfaces.OCInterface.GetAll();
+                List<CommandingOfficers> ALLOc = Interfaces.GetOCInterface().GetAll();
                 foreach (var oc in ALLOc)
                 {
                     dataTable.Rows.Add(oc.GetName(), oc.GetPakNo(), oc.GetRank(), oc.GetPresentlyPosted(), oc.GetSquadron());
@@ -112,7 +112,7 @@ namespace AirForce.IT
                 bool isValidGDP = Validations.IsValidGDP(PakNo);
                 if (isValidGDP)
                 {   //If it is an GDP it will fill the given boxes with its data
-                    GDPilot GDP = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNo);
+                    GDPilot GDP = Interfaces.GetGdpInterface().GetGDPThroughPakNo(PakNo);
                     InputName.Text = GDP.GetName();
                     InputRank.Text = GDP.GetRank();
                     InputSquadron.Text = GDP.GetSquadron();
@@ -121,7 +121,7 @@ namespace AirForce.IT
                 else
                 {   //Otherwise it will fill the given boxes with OC Data
                     bool isVallidOC = Validations.IsValidOC(PakNo);
-                    CommandingOfficers Commander = Interfaces.OCInterface.GetOCbyId(PakNo);
+                    CommandingOfficers Commander = Interfaces.GetOCInterface().GetOCbyId(PakNo);
                     InputName.Text = Commander.GetName();
                     InputRank.Text = Commander.GetRank();
                     InputSquadron.Text = Commander.GetSquadron();

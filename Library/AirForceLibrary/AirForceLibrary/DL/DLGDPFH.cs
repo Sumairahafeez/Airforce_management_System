@@ -1,7 +1,9 @@
 ﻿using AirForceLibrary.BL;
 using AirForceLibrary.Interfaces;
+using AirForceLibrary.Utilis;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -12,11 +14,25 @@ namespace AirForceLibrary.DL
 {
     public class DLGDPFH:IGDP
     {
-       private  static readonly string path = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\GDPilot.txt";
+       //private  static readonly string path = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\GDPilot.txt";
         /// <summary>
         /// Stores a GDPilot in the database and writes the information to a file.
         /// </summary>
         /// <param name="Pilot">The GDPilot to store.</param>
+        private string path = ConnectionClass.GetGDPFile();
+        public DLGDPFH Instance;
+        public DLGDPFH()
+        {
+            Instance = IsValid();
+        }
+        public DLGDPFH IsValid()
+        {
+            if(Instance == null)
+            {
+                Instance = new DLGDPFH();
+            }
+            return Instance;
+        }
         public void StoreGDP(GDPilot Pilot)
         {
             // Store GDPilot information in the personnel database
@@ -62,7 +78,6 @@ namespace AirForceLibrary.DL
                         if(A != null)
                         {
                             GDPilot G = new GDPilot(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), squadron);
-
                             // Set Commanding Officer if exists
                             if (OCPakNo != -1)
                             {

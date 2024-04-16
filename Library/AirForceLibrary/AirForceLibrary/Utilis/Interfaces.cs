@@ -11,17 +11,76 @@ namespace AirForceLibrary.Utilis
 {
     public class Interfaces
     {
-       ///ALL DB INTERFACES
-        public static IGDP GdpInterface = new DLGDPDB();
-        public static IOC OCInterface = new DLCommandingOfficerDB();
-        public static IAFPersonalle AFInterface = new DLAFPersonalleDB();
-        public static IMission MissionInterface = new DLMissionDB();
-        public static IRequest RequestInterface = new DLRequestsDB();
-        //AL FILE HANDLING INTERFACES WITH SAME NAME
-        //public static IRequest RequestInterface = new DLRequestsFH();
-        //public static IMission MissionInterface = new DLMissionFH();
-        //public static IAFPersonalle AFInterface = new DLAFPersonalleFH();
-        //public static IGDP GdpInterface = new DLGDPFH();
-        //public static IOC OCInterface = new DLOCFH();
+       
+        
+        private static IGDP GdpInterface ;
+        private static IOC OCInterface ;
+        private static IAFPersonalle AFInterface;
+        private static IMission MissionInterface;
+        private static IRequest RequestInterface;
+       
+
+        public static IGDP GetGdpInterface()
+        {
+            if(ConnectionClass.GetIsUsingDB())
+            {
+                GdpInterface = new DLGDPDB();
+                return GdpInterface;
+            }
+            else
+            {
+                GdpInterface = new DLGDPDB();
+            }
+            return GdpInterface;
+        }
+        public static IOC GetOCInterface()
+        {
+            if(ConnectionClass.GetIsUsingDB() )
+            {
+                OCInterface = new DLCommandingOfficerDB();
+            }
+            else
+            {
+                OCInterface = new DLCommandingOfficerDB();
+            }
+            return OCInterface;
+        }
+        public static IAFPersonalle GetAFInterface()
+        {
+            if(ConnectionClass.GetIsUsingDB() )
+            {
+                AFInterface = new DLAFPersonalleDB();
+            }
+            else
+            {
+                AFInterface = new DLAFPersonalleDB();
+            }
+            return AFInterface;
+        }
+        public static IRequest GetRequestInterface()
+        {
+            if (ConnectionClass.GetIsUsingDB())
+            {
+                RequestInterface = new DLRequestsDB();
+            }
+            else
+            {
+                RequestInterface = new DLRequestsFH();
+            }
+            return RequestInterface;
+        }
+        public static IMission GetMissionInterface()
+        {
+            if (ConnectionClass.GetIsUsingDB())
+            {
+                MissionInterface = new DLMissionDB();
+            }
+            else
+            {
+                MissionInterface = new DLMissionFH();
+            }
+            return MissionInterface;
+        }
+        
     }
 }

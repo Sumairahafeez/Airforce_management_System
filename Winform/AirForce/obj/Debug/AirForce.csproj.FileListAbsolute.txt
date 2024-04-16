@@ -26,10 +26,7 @@ F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\ob
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.ADDFH.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.CompleteMission.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.EditMission.resources
-F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.GDPFlyingHoursMenu.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.GDPMenu.resources
-F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.GDPMissionMENU.resources
-F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.GDPRequestMenu.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.UpdateFH.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.ViewApplication.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.ViewFH.resources
@@ -55,3 +52,4 @@ F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\ob
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.OC.AssignPosting.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.OC.CheckReq.resources
 F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.GDP.DeletReq.resources
+F:\2nd semester\OOP Lab\Air Force Management System\AirForce\Winform\AirForce\obj\Debug\AirForce.LandingPage.AskDataStorer.resources

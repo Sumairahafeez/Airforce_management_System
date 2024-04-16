@@ -1,5 +1,6 @@
 ﻿using AirForceLibrary.BL;
 using AirForceLibrary.Interfaces;
+using AirForceLibrary.Utilis;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,12 +13,13 @@ namespace AirForceLibrary.DL
 {
     public class DLMissionFH:IMission
     {
-        string path = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Mission.txt";
+        //string path = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Mission.txt";
         /// <summary>
         /// Stores a mission in the file.
         /// </summary>
         /// <param name="mission">The mission to store.</param>
         /// <param name="PakNo">The PakNo associated with the mission.</param>
+        string path = ConnectionClass.GetMissionFile();
         public void StoreMission(Mission mission, int PakNo)
         {
             // Open the file for appending and write mission information

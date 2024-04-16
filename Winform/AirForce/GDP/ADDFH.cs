@@ -39,7 +39,7 @@ namespace AirForce.GDP
         private void Savebt_Click(object sender, EventArgs e)
         {   try
             {
-                GDPilot G = Interfaces.GdpInterface.GetGDPThroughPakNo(ConnectionClass.GetCurrentGDP().GetPakNo());
+                GDPilot G = Interfaces.GetGdpInterface().GetGDPThroughPakNo(ConnectionClass.GetCurrentGDP().GetPakNo());
                 string squadron = G.GetSquadron();
                 if (squadron == "No 2 Minhas")
                 {
@@ -62,7 +62,7 @@ namespace AirForce.GDP
                 {
                     G.SetFlyingHours(int.Parse(InputJF17.Text));
                 }
-                Interfaces.GdpInterface.UpdateGDP(ConnectionClass.CurrentGDP.GetPakNo(), G);
+                Interfaces.GetGdpInterface().UpdateGDP(ConnectionClass.CurrentGDP.GetPakNo(), G);
             }
             catch(Exception ex)
 
@@ -84,7 +84,7 @@ namespace AirForce.GDP
                 dataTable.Columns.Add("Rank", typeof(string));
                 dataTable.Columns.Add("Posted", typeof(string));
                 dataTable.Columns.Add("Squadron", typeof(string));
-                List<GDPilot> GDPS = Interfaces.GdpInterface.GetAllGdps();
+                List<GDPilot> GDPS = Interfaces.GetGdpInterface().GetAllGdps();
                 for (int i = 0; i < GDPS.Count; i++)
                 {
                     dataTable.Rows.Add(GDPS[i].GetName(), GDPS[i].GetPakNo(), GDPS[i].GetRank(), GDPS[i].GetSquadron(), GDPS[i].GetFlyingHours());

@@ -36,12 +36,12 @@ namespace AirForce.OC
                 data.Columns.Add("Context", typeof(string));
                
                 data.Columns.Add("Status", typeof(string));
-                List<GDPilot> Under = Interfaces.GdpInterface.GetAllUFofOC(CurrentOCPakNo);
+                List<GDPilot> Under = Interfaces.GetGdpInterface().GetAllUFofOC(CurrentOCPakNo);
                
                 foreach(AFPersonalle a in  Under)
                 {
                     
-                    List<Requests> requ = Interfaces.RequestInterface.GetRequestsOfSpecificOfficer(a.GetPakNo());
+                    List<Requests> requ = Interfaces.GetRequestInterface().GetRequestsOfSpecificOfficer(a.GetPakNo());
                     for (int i = 0; i < requ.Count; i++)
                     {
                         data.Rows.Add(a.GetPakNo(),a.GetName(),requ[i].GetRequestId(), requ[i].GetContext(), requ[i].GetStatus());
@@ -87,7 +87,7 @@ namespace AirForce.OC
                 InputContext.Text = req.GetContext();
                 string status = InputStatusCB.Text;
                 req.SetStatus(status);
-                Interfaces.RequestInterface.UpdateRequests(id, req);
+                Interfaces.GetRequestInterface().UpdateRequests(id, req);
                 MessageBox.Show("Status SetSuccessfully");
             }
         }

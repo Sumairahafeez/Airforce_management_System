@@ -28,7 +28,7 @@ namespace AirForce.GDP
                 data.Columns.Add("Context", typeof(string));
                 data.Columns.Add("PakNO", typeof(int));
                 data.Columns.Add("Status", typeof(string));
-                List<Requests> requ = Interfaces.RequestInterface.GetRequestsOfSpecificOfficer(ConnectionClass.CurrentGDP.GetPakNo());
+                List<Requests> requ = Interfaces.GetRequestInterface().GetRequestsOfSpecificOfficer(ConnectionClass.CurrentGDP.GetPakNo());
                 for (int i = 0; i < requ.Count; i++)
                 {
                     data.Rows.Add(requ[i].GetRequestId(), requ[i].GetContext(), requ[i].GetPakNo(), requ[i].GetStatus());
@@ -81,7 +81,7 @@ namespace AirForce.GDP
             try
             {
                 int ApplicationId = int.Parse(InputId.Text);
-                Interfaces.RequestInterface.DeleteRequests(ApplicationId);
+                Interfaces.GetRequestInterface().DeleteRequests(ApplicationId);
                 MessageBox.Show("Request Deleted Successfully");
             }
             catch(Exception ex)

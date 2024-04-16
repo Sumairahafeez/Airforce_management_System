@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+
 
 namespace AirForceLibrary.DL
 {
@@ -16,6 +18,19 @@ namespace AirForceLibrary.DL
         /// Stores a GDPilot in the database.
         /// </summary>
         /// <param name="G">The GDPilot to store.</param>
+       /* private DLGDPDB Instance;
+        private DLGDPDB()
+        {
+            Instance = IsValid();
+        }
+        public DLGDPDB IsValid()
+        {
+            if (Instance == null)
+            {
+                Instance = new DLGDPDB();
+            }
+            return Instance;
+        }*/
         public void StoreGDP(GDPilot G)
         {
             // Store AFPersonalle information
@@ -42,36 +57,46 @@ namespace AirForceLibrary.DL
         {
             string query = "SELECT * FROM GDP g, AFPersonalle a WHERE g.OfficerId = a.Id";
             List<GDPilot> gdps = new List<GDPilot>();
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+           // try
             {
-                con.Open();
-                SqlCommand cmd = new SqlCommand(query, con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+               
+                using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
                 {
-                    // Read GDPilot properties from database
-                    string name = reader["Name"].ToString();
-                    string Rank = reader["Rank"].ToString();
-                    int PakNo = int.Parse(reader["PakNo"].ToString());
-                    string loc = reader["PresentlyPosted"].ToString();
-                    string sq = reader["Squadron"].ToString();
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        // Read GDPilot properties from database
+                        string name = reader["Name"].ToString();
+                        string Rank = reader["Rank"].ToString();
+                        int PakNo = int.Parse(reader["PakNo"].ToString());
+                        string loc = reader["PresentlyPosted"].ToString();
+                        string sq = reader["Squadron"].ToString();
 
-                    GDPilot G = new GDPilot(name, Rank, PakNo, loc, sq);
-                    G.SetFlyingHours(int.Parse(reader["FlyingHours"].ToString()));
+                        GDPilot G = new GDPilot(name, Rank, PakNo, loc, sq);
+                        G.SetFlyingHours(int.Parse(reader["FlyingHours"].ToString()));
 
-                    // Retrieve associated objects
-                    IOC OC = new DLCommandingOfficerDB();
-                    IMission mission = new DLMissionDB();
-                    IRequest req = new DLRequestsDB();
-                    //if (reader["OCId"].ToString() != null)
-                    //G.SetCommandingOfficer(OC.GetOCbyId(int.Parse(reader["OCId"].ToString())));
-                    G.SetMission(mission.GetAllMissionsOfSpecificOfficer(int.Parse(reader["PakNo"].ToString())));
-                    G.SetRequests(req.GetRequestsOfSpecificOfficer(int.Parse(reader["PakNo"].ToString())));
+                        // Retrieve associated objects
+                        IOC OC = new DLCommandingOfficerDB();
+                        IMission mission = new DLMissionDB();
+                        IRequest req = new DLRequestsDB();
+                        //if (reader["OCId"].ToString() != null)
+                        //G.SetCommandingOfficer(OC.GetOCbyId(int.Parse(reader["OCId"].ToString())));
+                        G.SetMission(mission.GetAllMissionsOfSpecificOfficer(int.Parse(reader["PakNo"].ToString())));
+                        G.SetRequests(req.GetRequestsOfSpecificOfficer(int.Parse(reader["PakNo"].ToString())));
 
-                    gdps.Add(G);
+                        gdps.Add(G);
+                    }
+                   
                 }
-                return gdps;
+           
             }
+            //catch(Exception ex)
+            {
+                //
+            }
+            return gdps;
         }
 
         /// <summary>

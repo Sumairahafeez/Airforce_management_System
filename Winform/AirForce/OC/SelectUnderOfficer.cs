@@ -43,7 +43,7 @@ namespace AirForce.OC
                 dataTable.Columns.Add("Rank", typeof(string));
                 dataTable.Columns.Add("Posted", typeof(string));
                 dataTable.Columns.Add("Squadron", typeof(string));
-                List<GDPilot> GDPS = Interfaces.GdpInterface.GetAllGdps();
+                List<GDPilot> GDPS = Interfaces.GetGdpInterface().GetAllGdps();
                 for (int i = 0; i < GDPS.Count; i++)
                 {
                     dataTable.Rows.Add(GDPS[i].GetName(), GDPS[i].GetPakNo(), GDPS[i].GetRank(), GDPS[i].GetPresentlyPosted(), GDPS[i].GetSquadron());
@@ -72,10 +72,10 @@ namespace AirForce.OC
                 bool isValid = Validations.IsValidAFPersonalle(PakNo);//It will check if the AF Personal is valid or not
                 if (isValid)
                 {
-                    GDPilot AF = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNo);//From ID the personal is fetched
+                    GDPilot AF = Interfaces.GetGdpInterface().GetGDPThroughPakNo(PakNo);//From ID the personal is fetched
                     string Squadron = InputSquadron.Text;
                     //If valid it is checked if the squadrons and location of oc and underofficer matches of not
-                    CommandingOfficers OC = Interfaces.OCInterface.GetOCbyId(CurrentOCPakNo);
+                    CommandingOfficers OC = Interfaces.GetOCInterface().GetOCbyId(CurrentOCPakNo);
 
                     bool Valid = Validations.IsFitForTHEOC(OC, AF, Squadron);
                     if (Valid)
@@ -84,9 +84,9 @@ namespace AirForce.OC
                         if (isAdded)
                         {
                             AF.SetCommandingOfficer(OC);
-                            Interfaces.GdpInterface.UpdateGDP(PakNo, AF);
+                            Interfaces.GetGdpInterface().UpdateGDP(PakNo, AF);
 
-                            Interfaces.OCInterface.UpdateOC(CurrentOCPakNo, OC);
+                            Interfaces.GetOCInterface().UpdateOC(CurrentOCPakNo, OC);
                             MessageBox.Show("Officer Added Successfully");
                         }
                         else

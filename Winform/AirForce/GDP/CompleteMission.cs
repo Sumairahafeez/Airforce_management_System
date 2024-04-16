@@ -30,7 +30,7 @@ namespace AirForce.GDP
                 dataTable.Columns.Add("IsCompleted", typeof(bool));
                 dataTable.Columns.Add("SuccessRate", typeof(float));
 
-                List<Mission> missions = Interfaces.MissionInterface.GetAllMissionsOfSpecificOfficer(ConnectionClass.CurrentGDP.GetPakNo());
+                List<Mission> missions = Interfaces.GetMissionInterface().GetAllMissionsOfSpecificOfficer(ConnectionClass.CurrentGDP.GetPakNo());
                 for (int i = 0; i < missions.Count; i++)
                 {
                     dataTable.Rows.Add(missions[i].GetDate(), missions[i].GetDetails(), missions[i].GetIsComplete(), missions[i].GetSuccessRate());
@@ -67,7 +67,7 @@ namespace AirForce.GDP
             
                 //This will update the mission and set its completion and success rate
                 DateTime Date = DateTime.Parse(dateTimePicker1.Text);
-                Mission mission = Interfaces.MissionInterface.GetMissionFromDate(Date);
+                Mission mission = Interfaces.GetMissionInterface().GetMissionFromDate(Date);
                 mission.SetSuccessRate(float.Parse(InputSuccess.Text));
                 if (IsComplete.Checked)
                 {
@@ -77,7 +77,7 @@ namespace AirForce.GDP
                 {
                     mission.SetIsComplete(false);
                 }
-                Interfaces.MissionInterface.UpdateMission(Date, mission);
+                Interfaces.GetMissionInterface().UpdateMission(Date, mission);
                 MessageBox.Show("Mission Updated Successfully");
             
         }

@@ -30,7 +30,7 @@ namespace AirForce.GDP
                 dataTable.Columns.Add("IsCompleted", typeof(bool));
                 dataTable.Columns.Add("SuccessRate", typeof(float));
 
-                List<Mission> missions = Interfaces.MissionInterface.GetAllMissionsOfSpecificOfficer(ConnectionClass.CurrentGDP.GetPakNo());
+                List<Mission> missions = Interfaces.GetMissionInterface().GetAllMissionsOfSpecificOfficer(ConnectionClass.CurrentGDP.GetPakNo());
                 for (int i = 0; i < missions.Count; i++)
                 {
                     dataTable.Rows.Add(missions[i].GetDate(), missions[i].GetDetails(), missions[i].GetIsComplete(), missions[i].GetSuccessRate());
@@ -56,7 +56,7 @@ namespace AirForce.GDP
 
         private void Checkbt_Click(object sender, EventArgs e)
         {
-            Mission mission = Interfaces.MissionInterface.GetMissionFromDate(dateTimePicker1.Value);
+            Mission mission = Interfaces.GetMissionInterface().GetMissionFromDate(dateTimePicker1.Value);
            string details = mission.GetDetails();
             InputDetails.Text  = details;
 

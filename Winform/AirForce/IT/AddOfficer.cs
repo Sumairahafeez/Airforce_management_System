@@ -70,7 +70,7 @@ namespace AirForce.IT
                         CommandingOfficers newOC = new CommandingOfficers(name, Rank, PakNO, presentlyLocated, squadron);
 
                         // Store the new OC
-                        Interfaces.OCInterface.StoreOC(newOC);
+                        Interfaces.GetOCInterface().StoreOC(newOC);
 
                         // Display a success message
                         MessageBox.Show("OC Added Successfully");
@@ -84,7 +84,7 @@ namespace AirForce.IT
                         GDPilot newgdp = new GDPilot(name, Rank, PakNO, presentlyLocated, squadron);
 
                         // Store the new GDPilot
-                        Interfaces.GdpInterface.StoreGDP(newgdp);
+                        Interfaces.GetGdpInterface().StoreGDP(newgdp);
 
                         // Display a success message
                         MessageBox.Show("Officer Added Successfully");

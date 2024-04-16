@@ -35,14 +35,14 @@ namespace AirForce.IT
                 dataTable.Columns.Add("Squadron", typeof(string));
 
                 // Retrieve all GDPilots and add their information to the DataTable
-                List<GDPilot> GDPS = Interfaces.GdpInterface.GetAllGdps();
+                List<GDPilot> GDPS = Interfaces.GetGdpInterface().GetAllGdps();
                 foreach (var gdp in GDPS)
                 {
                     dataTable.Rows.Add(gdp.GetName(), gdp.GetPakNo(), gdp.GetRank(), gdp.GetPresentlyPosted(), gdp.GetSquadron());
                 }
 
                 // Retrieve all Commanding Officers (OCs) and add their information to the DataTable
-                List<CommandingOfficers> ALLOc = Interfaces.OCInterface.GetAll();
+                List<CommandingOfficers> ALLOc = Interfaces.GetOCInterface().GetAll();
                 foreach (var oc in ALLOc)
                 {
                     dataTable.Rows.Add(oc.GetName(), oc.GetPakNo(), oc.GetRank(), oc.GetPresentlyPosted(), oc.GetSquadron());
@@ -96,7 +96,7 @@ namespace AirForce.IT
                     CommandingOfficers newOC = new CommandingOfficers(name, Rank, PakNO, presentlyLocated, squadron);
 
                     // Update the OC's information in the database
-                    Interfaces.OCInterface.UpdateOC(PakNO, newOC);
+                    Interfaces.GetOCInterface().UpdateOC(PakNO, newOC);
 
                     // Display a success message
                     MessageBox.Show("OC Updated Successfully");
@@ -110,7 +110,7 @@ namespace AirForce.IT
                     GDPilot newgdp = new GDPilot(name, Rank, PakNO, presentlyLocated, squadron);
 
                     // Update the GDPilot's information in the database
-                    Interfaces.GdpInterface.UpdateGDP(PakNO, newgdp);
+                    Interfaces.GetGdpInterface().UpdateGDP(PakNO, newgdp);
 
                     // Display a success message
                     MessageBox.Show("Officer Updated Successfully");

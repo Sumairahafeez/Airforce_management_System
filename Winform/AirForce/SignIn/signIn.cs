@@ -24,16 +24,16 @@ namespace AirForce.SignIn
 
         private void button2_Click(object sender, EventArgs e)
         {   //this function goes for first check if it is an IT then it goes for the GDP and then it goes on for OC
-            try
+            //try
             {
                 // Retrieve input values from text boxes
                 string name = InputName.Text;
                 int PakNo = int.Parse(InputPakNo.Text);
                 string Password = InputPassword.Text;
-
+                
                 // Check if the provided credentials are valid for an IT user
                 bool IsValid = Validations.IsValidIT(name, PakNo, Password);
-
+                
                 // If the credentials are valid for an IT user
                 if (IsValid)
                 {
@@ -53,7 +53,7 @@ namespace AirForce.SignIn
                     if (IsValidGDP)
                     {
                         // Retrieve the GDPilot object based on the PakNo
-                        GDPilot GDP = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNo);
+                        GDPilot GDP = Interfaces.GetGdpInterface().GetGDPThroughPakNo(PakNo);
 
                         // Set the current GDPilot
                         ConnectionClass.CurrentGDP = GDP;
@@ -74,7 +74,7 @@ namespace AirForce.SignIn
                         if (IsValidOC)
                         {
                             // Retrieve the Commanding Officer (OC) object based on the PakNo
-                            CommandingOfficers CO = Interfaces.OCInterface.GetOCbyId(PakNo);
+                            CommandingOfficers CO = Interfaces.GetOCInterface().GetOCbyId(PakNo);
 
                             // Set the current Commanding Officer (OC)
                             ConnectionClass.SetCurrentOC(CO);
@@ -94,10 +94,10 @@ namespace AirForce.SignIn
                     }
                 }
             }
-            catch (Exception ex)
+            //catch (Exception ex)
             {
                 // Display an error message if an exception occurs
-                MessageBox.Show(ex.Message);
+               // MessageBox.Show(ex.Message);
             }
 
 

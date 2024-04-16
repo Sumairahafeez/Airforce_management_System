@@ -43,7 +43,7 @@ namespace AirForce.OC
                 dataTable.Columns.Add("Rank", typeof(string));
                 dataTable.Columns.Add("Posted", typeof(string));
                 dataTable.Columns.Add("Squadron", typeof(string));
-                List<GDPilot> GDPS = Interfaces.GdpInterface.GetAllUFofOC(currentOC);
+                List<GDPilot> GDPS = Interfaces.GetGdpInterface().GetAllUFofOC(currentOC);
                 for (int i = 0; i < GDPS.Count; i++)
                 {
                     dataTable.Rows.Add(GDPS[i].GetName(), GDPS[i].GetPakNo(), GDPS[i].GetRank(), GDPS[i].GetPresentlyPosted(), GDPS[i].GetSquadron());
@@ -59,7 +59,7 @@ namespace AirForce.OC
                 dataTable2.Columns.Add("Rank", typeof(string));
                 dataTable2.Columns.Add("Posted", typeof(string));
                 dataTable2.Columns.Add("Squadron", typeof(string));
-                List<CommandingOfficers> OC = Interfaces.OCInterface.GetAll();
+                List<CommandingOfficers> OC = Interfaces.GetOCInterface().GetAll();
                 for (int i = 0; i < OC.Count; i++)
                 {
                     dataTable2.Rows.Add(OC[i].GetName(), OC[i].GetPakNo(), OC[i].GetRank(), OC[i].GetPresentlyPosted(), OC[i].GetSquadron());
@@ -111,10 +111,10 @@ namespace AirForce.OC
                     if (isValidOC)
                     {
                         // Retrieve the new Commanding Officer based on the selected PakNo
-                        CommandingOfficers newOC = Interfaces.OCInterface.GetOCbyId(PakNo);
+                        CommandingOfficers newOC = Interfaces.GetOCInterface().GetOCbyId(PakNo);
 
                         // Retrieve the current Commanding Officer based on the currentOC
-                        CommandingOfficers OC = Interfaces.OCInterface.GetOCbyId(currentOC);
+                        CommandingOfficers OC = Interfaces.GetOCInterface().GetOCbyId(currentOC);
 
                         // Set the posting for the GDPilot to the new Commanding Officer
                         bool set = OC.SetPosting(PkNo, PostedTo, newOC);
@@ -123,13 +123,13 @@ namespace AirForce.OC
                         if (set)
                         {
                             // Retrieve the GDPilot based on the PakNo
-                            GDPilot G = Interfaces.GdpInterface.GetGDPThroughPakNo(PkNo);
+                            GDPilot G = Interfaces.GetGdpInterface().GetGDPThroughPakNo(PkNo);
 
                             // Set the Commanding Officer for the GDPilot to the new Commanding Officer
                             G.SetCommandingOfficer(newOC);
 
                             // Update the GDPilot's information in the database
-                            Interfaces.GdpInterface.UpdateGDP(PkNo, G);
+                            Interfaces.GetGdpInterface().UpdateGDP(PkNo, G);
 
                             // Display a success message
                             MessageBox.Show("Posted Successfully");

@@ -28,14 +28,15 @@ namespace AirForceLibrary.Utilis
 
         // Validates IT Officer credentials
         public static bool IsValidIT(string name, int PakNo, string Password)
-        {
-            return PakNo == 123 && Password == "123";
+        {   if (PakNo == 123 && Password == "123")
+                return true;
+        return false;
         }
 
         // Validates the uniqueness of PakNo
         public static bool IsValidPakNo(int PakNO)
         {
-            List<AFPersonalle> AF = Interfaces.AFInterface.GetAFPersonalles();
+            List<AFPersonalle> AF = Interfaces.GetAFInterface().GetAFPersonalles();
             foreach (AFPersonalle personalle in AF)
             {
                 if (personalle.GetPakNo() == PakNO)
@@ -49,7 +50,7 @@ namespace AirForceLibrary.Utilis
         // Checks if the given name, PakNo, and password match a valid GDPilot
         public static bool IsValidGDP(string name, int PakNO, string Password)
         {
-            List<GDPilot> gDPilots = Interfaces.GdpInterface.GetAllGdps();
+            List<GDPilot> gDPilots = Interfaces.GetGdpInterface().GetAllGdps();
             foreach (GDPilot G in gDPilots)
             {
                 if (G.GetName() == name && G.GetPakNo() == PakNO)
@@ -63,7 +64,7 @@ namespace AirForceLibrary.Utilis
         // Checks if the given name, PakNo, and password match a valid OC
         public static bool IsValidOC(string name, int PakNO, string Password)
         {
-            List<CommandingOfficers> OCs = Interfaces.OCInterface.GetAll();
+            List<CommandingOfficers> OCs = Interfaces.GetOCInterface().GetAll();
             foreach (CommandingOfficers OC in OCs)
             {
                 if (OC.GetName() == name && OC.GetPakNo() == PakNO)
@@ -91,7 +92,7 @@ namespace AirForceLibrary.Utilis
         // Checks if the given name and PakNo match a valid OC
         public static bool IsValidOC(int PakNo, string Name)
         {
-            List<CommandingOfficers> OCs = Interfaces.OCInterface.GetAll();
+            List<CommandingOfficers> OCs = Interfaces.GetOCInterface().GetAll();
             foreach (CommandingOfficers OC in OCs)
             {
                 if (OC.GetName() == Name && OC.GetPakNo() == PakNo)
@@ -105,7 +106,7 @@ namespace AirForceLibrary.Utilis
         // Checks if the given name and PakNo match a valid GDPilot
         public static bool IsValidGDP(int PakNo, string Name)
         {
-            List<GDPilot> gDPilots = Interfaces.GdpInterface.GetAllGdps();
+            List<GDPilot> gDPilots = Interfaces.GetGdpInterface().GetAllGdps();
             foreach (GDPilot G in gDPilots)
             {
                 if (G.GetName() == Name && G.GetPakNo() == PakNo)
@@ -119,7 +120,7 @@ namespace AirForceLibrary.Utilis
         // Checks if a GDPilot with the given PakNo exists
         public static bool IsValidGDP(int PakNo)
         {
-            List<GDPilot> gDPilots = Interfaces.GdpInterface.GetAllGdps();
+            List<GDPilot> gDPilots = Interfaces.GetGdpInterface().GetAllGdps();
             foreach (GDPilot G in gDPilots)
             {
                 if (G.GetPakNo() == PakNo)
@@ -133,7 +134,7 @@ namespace AirForceLibrary.Utilis
         // Checks if an OC with the given PakNo exists
         public static bool IsValidOC(int PakNo)
         {
-            List<CommandingOfficers> OCs = Interfaces.OCInterface.GetAll();
+            List<CommandingOfficers> OCs = Interfaces.GetOCInterface().GetAll();
             foreach (CommandingOfficers OC in OCs)
             {
                 if (OC.GetPakNo() == PakNo)
@@ -147,7 +148,7 @@ namespace AirForceLibrary.Utilis
         // Checks if an AFPersonalle with the given PakNo exists
         public static bool IsValidAFPersonalle(int PakNo)
         {
-            List<AFPersonalle> AFs = Interfaces.AFInterface.GetAFPersonalles();
+            List<AFPersonalle> AFs = Interfaces.GetAFInterface().GetAFPersonalles();
             foreach (AFPersonalle AF in AFs)
             {
                 if (AF.GetPakNo() == PakNo)
@@ -167,7 +168,7 @@ namespace AirForceLibrary.Utilis
         // Validates a request based on PakNo and ID
         public static Requests IsValidRequest(int PakNo, int id)
         {
-            List<Requests> req = Interfaces.RequestInterface.GetRequestsOfSpecificOfficer(PakNo);
+            List<Requests> req = Interfaces.GetRequestInterface().GetRequestsOfSpecificOfficer(PakNo);
             foreach (Requests Req in req)
             {
                 if (Req.GetRequestId() == id)

@@ -57,7 +57,7 @@ namespace AirForce.OC
                 dataTable.Columns.Add("SuccessRate", typeof(float));
 
                 // Retrieve a list of missions associated with the officer's PakNo
-                List<Mission> missions = Interfaces.MissionInterface.GetAllMissionsOfSpecificOfficer(PakNo);
+                List<Mission> missions = Interfaces.GetMissionInterface().GetAllMissionsOfSpecificOfficer(PakNo);
 
                 // Iterate over each mission and add its details to the DataTable
                 for (int i = 0; i < missions.Count; i++)
@@ -121,7 +121,7 @@ namespace AirForce.OC
             if (isValid)
             {
                 // Retrieve the GDPilot associated with the PakNo
-                GDPilot AF = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNO);
+                GDPilot AF = Interfaces.GetGdpInterface().GetGDPThroughPakNo(PakNO);
 
                 // Retrieve the current commanding officer
                 CommandingOfficers OC = ConnectionClass.CurrentOC;
@@ -139,7 +139,7 @@ namespace AirForce.OC
                     OC.AssignMission(PakNO, newMission);
 
                     // Store the mission in the database
-                    Interfaces.MissionInterface.StoreMission(newMission, PakNO);
+                    Interfaces.GetMissionInterface().StoreMission(newMission, PakNO);
 
                     // Display a success message
                     MessageBox.Show("Mission Assigned Successfully");
@@ -207,10 +207,10 @@ namespace AirForce.OC
                 dataTable.Columns.Add("Posted", typeof(string));
 
                 // Retrieve the commanding officer based on the current officer's PakNo
-                CommandingOfficers OC = Interfaces.OCInterface.GetOCbyId(CurrentOCPakNo);
+                CommandingOfficers OC = Interfaces.GetOCInterface().GetOCbyId(CurrentOCPakNo);
 
                 // Retrieve a list of subordinate GDPilots under the current commanding officer
-                List<GDPilot> Unders = Interfaces.GdpInterface.GetAllUFofOC(CurrentOCPakNo);
+                List<GDPilot> Unders = Interfaces.GetGdpInterface().GetAllUFofOC(CurrentOCPakNo);
 
                 // Iterate over each subordinate GDPilot and add their details to the DataTable
                 for (int i = 0; i < Unders.Count; i++)
@@ -267,10 +267,10 @@ namespace AirForce.OC
                 if (isValid)
                 {
                     // Retrieve the GDPilot associated with the PakNo
-                    GDPilot AF = Interfaces.GdpInterface.GetGDPThroughPakNo(PakNO);
+                    GDPilot AF = Interfaces.GetGdpInterface().GetGDPThroughPakNo(PakNO);
 
                     // Retrieve the commanding officer based on the current officer's PakNo
-                    CommandingOfficers OC = Interfaces.OCInterface.GetOCbyId(CurrentOCPakNo);
+                    CommandingOfficers OC = Interfaces.GetOCInterface().GetOCbyId(CurrentOCPakNo);
 
                     // Create a new mission object with the provided date and details
                     Mission newMission = new Mission(date, Details);
@@ -279,7 +279,7 @@ namespace AirForce.OC
                     OC.AssignMission(PakNO, newMission);
 
                     // Store the mission in the database
-                    Interfaces.MissionInterface.StoreMission(newMission, PakNO);
+                    Interfaces.GetMissionInterface().StoreMission(newMission, PakNO);
 
                     // Display a success message
                     MessageBox.Show("Mission Assigned Successfully");

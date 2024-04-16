@@ -1,5 +1,6 @@
 ﻿using AirForceLibrary.BL;
 using AirForceLibrary.Interfaces;
+using AirForceLibrary.Utilis;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,11 +13,12 @@ namespace AirForceLibrary.DL
 {
     public class DLRequestsFH:IRequest
     {
-        public string path = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Requests.txt";
+       // public string path = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Requests.txt";
         /// <summary>
         /// Stores a request in the file.
         /// </summary>
         /// <param name="Request">The request to store.</param>
+        public string path = ConnectionClass.GetRequestFile();
         public void StoreRequests(Requests Request)
         {
             // Open the file for appending and write request information
