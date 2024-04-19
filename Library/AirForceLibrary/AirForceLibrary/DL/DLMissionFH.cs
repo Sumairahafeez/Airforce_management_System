@@ -20,6 +20,16 @@ namespace AirForceLibrary.DL
         /// <param name="mission">The mission to store.</param>
         /// <param name="PakNo">The PakNo associated with the mission.</param>
         string path = ConnectionClass.GetMissionFile();
+        private static DLMissionFH Instance;
+        private DLMissionFH() { }
+        public static DLMissionFH SetValidInstance()
+        {
+            if(Instance == null)
+            {
+                Instance = new DLMissionFH();
+            }
+            return Instance;
+        }
         public void StoreMission(Mission mission, int PakNo)
         {
             // Open the file for appending and write mission information

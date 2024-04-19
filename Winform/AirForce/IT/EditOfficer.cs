@@ -81,7 +81,7 @@ namespace AirForce.IT
                 int PakNO = int.Parse(PakNoCB.Text);
                 string presentlyLocated = InputPosting.Text;
                 string squadron = InputSquadron.Text;
-                string branch = InputBranch.Text;
+                string branch = InputBranchCB.Text;
                 
                 // Check if the given user is an OC based on their rank
                 bool IsOC = Validations.IsValidOC(Rank);
@@ -94,7 +94,7 @@ namespace AirForce.IT
                 {
                     // Create a new CommandingOfficers object with the updated information
                     CommandingOfficers newOC = new CommandingOfficers(name, Rank, PakNO, presentlyLocated, squadron);
-
+                    newOC.SetBranch(branch);
                     // Update the OC's information in the database
                     Interfaces.GetOCInterface().UpdateOC(PakNO, newOC);
 
@@ -108,7 +108,7 @@ namespace AirForce.IT
                 {
                     // Create a new GDPilot object with the updated information
                     GDPilot newgdp = new GDPilot(name, Rank, PakNO, presentlyLocated, squadron);
-
+                    newgdp.SetBranch(branch);
                     // Update the GDPilot's information in the database
                     Interfaces.GetGdpInterface().UpdateGDP(PakNO, newgdp);
 
@@ -139,7 +139,7 @@ namespace AirForce.IT
             InputRank.Text = string.Empty;
             InputSquadron.Text = string.Empty;
             InputPosting.Text = string.Empty;
-            InputBranch.Text = string.Empty;
+            InputBranchCB.Text = string.Empty;
         }
 
         private void OfficerGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -183,6 +183,13 @@ namespace AirForce.IT
                     InputSquadron.Text = string.Empty;
             }
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AssignPassword pas = new AssignPassword();
+            pas.Show();
         }
     }
 }

@@ -115,6 +115,12 @@
     <Compile Include="IT\AddOfficer.Designer.cs">
       <DependentUpon>AddOfficer.cs</DependentUpon>
     </Compile>
+    <Compile Include="IT\AssignPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IT\AssignPassword.Designer.cs">
+      <DependentUpon>AssignPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="IT\EditOfficer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IT\AddOfficer.resx">
       <DependentUpon>AddOfficer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IT\AssignPassword.resx">
+      <DependentUpon>AssignPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IT\EditOfficer.resx">
       <DependentUpon>EditOfficer.cs</DependentUpon>

@@ -68,7 +68,7 @@ namespace AirForce.IT
                     {
                         // Create a new Commanding Officer object
                         CommandingOfficers newOC = new CommandingOfficers(name, Rank, PakNO, presentlyLocated, squadron);
-
+                        newOC.SetBranch(branch);
                         // Store the new OC
                         Interfaces.GetOCInterface().StoreOC(newOC);
 
@@ -82,7 +82,7 @@ namespace AirForce.IT
                     {
                         // Create a new GDPilot object
                         GDPilot newgdp = new GDPilot(name, Rank, PakNO, presentlyLocated, squadron);
-
+                        newgdp.SetBranch(branch);
                         // Store the new GDPilot
                         Interfaces.GetGdpInterface().StoreGDP(newgdp);
 

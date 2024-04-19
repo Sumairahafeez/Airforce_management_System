@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AirForceLibrary.DL
 {
@@ -19,13 +20,13 @@ namespace AirForceLibrary.DL
         /// Stores a GDPilot in the database and writes the information to a file.
         /// </summary>
         /// <param name="Pilot">The GDPilot to store.</param>
-        private string path = ConnectionClass.GetGDPFile();
-        public DLGDPFH Instance;
-        public DLGDPFH()
+        private static string path = ConnectionClass.GetGDPFile();
+        private static DLGDPFH Instance;
+        private DLGDPFH()
         {
-            Instance = IsValid();
+            
         }
-        public DLGDPFH IsValid()
+        public static DLGDPFH SetValidInstance()
         {
             if(Instance == null)
             {
@@ -36,7 +37,7 @@ namespace AirForceLibrary.DL
         public void StoreGDP(GDPilot Pilot)
         {
             // Store GDPilot information in the personnel database
-            IAFPersonalle AFP = new DLAFPersonalleFH();
+            IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
             AFPersonalle AF = new AFPersonalle(Pilot.GetName(), Pilot.GetRank(), Pilot.GetPakNo(), Pilot.GetPresentlyPosted());
             AFP.StoreAFPersonalle(AF);
 
@@ -73,15 +74,15 @@ namespace AirForceLibrary.DL
                         int OCPakNo = int.Parse(AllData[3]);
 
                         // Retrieve GDPilot's information from the personnel database
-                        IAFPersonalle aFPersonalle = new DLAFPersonalleFH();
+                        IAFPersonalle aFPersonalle = DLAFPersonalleFH.SetValidInstance();
                         AFPersonalle A = aFPersonalle.GetAFPersonalleByID(PakNo);
-                        if(A != null)
+                        if (A != null)
                         {
                             GDPilot G = new GDPilot(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), squadron);
                             // Set Commanding Officer if exists
                             if (OCPakNo != -1)
                             {
-                                IOC OC = new DLOCFH();
+                                IOC OC = DLOCFH.SetValidInstance();
                                 CommandingOfficers MyOC = OC.GetOCbyId(PakNo);
                                 G.SetCommandingOfficer(MyOC);
                             }
@@ -90,8 +91,8 @@ namespace AirForceLibrary.DL
                                 G.SetCommandingOfficer(null);
                             }
                             // Retrieve GDPilot's missions and requests
-                            IMission missions = new DLMissionFH();
-                            IRequest request = new DLRequestsFH();
+                            IMission missions = DLMissionFH.SetValidInstance();
+                            IRequest request = DLRequestsFH.SetValidInstance();
                             List<Mission> Mymissions = missions.GetAllMissionsOfSpecificOfficer(PakNo);
                             List<Requests> MyRequests = request.GetRequestsOfSpecificOfficer(PakNo);
                             G.SetFlyingHours(FlyingHours);
@@ -100,11 +101,14 @@ namespace AirForceLibrary.DL
                             Gdps.Add(G);
 
                         }
+
                     }
+                   
                 }
+                return Gdps;
             }
 
-            return Gdps;
+           
         }
 
         /// <summary>
@@ -172,7 +176,7 @@ namespace AirForceLibrary.DL
                     if (G.GetPakNo() == PakNo)
                     {
                         // Update GDPilot information in the personnel database
-                        IAFPersonalle AFP = new DLAFPersonalleFH();
+                        IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
                         AFPersonalle AF = new AFPersonalle(Pilot.GetName(), Pilot.GetRank(), Pilot.GetPakNo(), Pilot.GetPresentlyPosted());
                         AFP.UpdateAFPersonalle(PakNo, AF);
 
@@ -212,7 +216,7 @@ namespace AirForceLibrary.DL
                     if (G.GetPakNo() == PakNo)
                     {
                         // Delete GDPilot information from the personnel database
-                        IAFPersonalle AFP = new DLAFPersonalleFH();
+                        IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
                         AFPersonalle AF = new AFPersonalle(G.GetName(), G.GetRank(), G.GetPakNo(), G.GetPresentlyPosted());
                         AFP.DeleteAFPersonalle(PakNo);
                     }

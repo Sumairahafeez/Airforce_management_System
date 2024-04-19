@@ -38,9 +38,13 @@ namespace AirForceConsole
             {
                 ConnectionClass.SetIsUsingDB(false);
             }
+            else if (choice == -1)
+            {
+                ConsoleUtility.Error() ;
+            }
             bool isExit = false;
            
-            while (isExit == false)
+            while (!(Keyboard.IsKeyPressed(Key.Escape)))
             {
                 if (Keyboard.IsKeyPressed(Key.S))
                 {
@@ -62,19 +66,78 @@ namespace AirForceConsole
                     {
                         GDPilot CurrentPilot = Interfaces.GetGdpInterface().GetGDPThroughPakNo(ConsoleUtility.PakNo);
                         if (CurrentPilot != null)
+                            
                         {
-                            ConnectionClass.SetCurrentGDP(CurrentPilot);
-                            int Option = UIGDP.MainMenu();
-                            if (Option == 1)
+                            int Option = 0;
+                            while (Option != 10)
                             {
-                                UIMission.ViewMissions();
-                            }
+                                ConnectionClass.SetCurrentGDP(CurrentPilot);
+                                 Option = UIGDP.MainMenu();
+                                if (Option == 1)
+                                {
+                                    UIMission.ViewMissions();
 
-                        }
+                                }
+                                else if (Option == 2)
+                                {
+                                    UIMission.CompleteMissions();
+                                }
+                                else if (Option == 3)
+                                {
+                                    UIMission.EditMission();
+                                }
+                                else if (Option == 4)
+                                {
+                                    UIGDP.ViewFlyingHours();
+                                }
+                                else if (Option == 5)
+                                {
+                                    UIGDP.CompleteFlyingHours();
+                                }
+                                else if (Option == 6)
+                                {
+                                    UIGDP.EditFlyingHours();
+                                }
+                                else if(Option == 7)
+                                {
+                                    UIRequests.ViewRequests();
+                                }
+                                else if(Option == 8)
+                                {
+                                    UIRequests.NewRequest();
+                                }
+                                else if(Option == 9)
+                                {
+                                    UIRequests.DeleteRequest();
+                                }
+                                else if (Option == -1)
+                                {
+                                    UIGDP.Error();
+                                }
+                                Console.ReadKey();
+                            }
+                           
+
+
 
                     }
+
+                    }
+                    else
+                    {
+                        bool IsOC = Validations.IsValidOC(ConsoleUtility.PakNo);
+                        if(IsOC)
+                        {
+                            UICommandingOfficers.Menu();
+                        }
+                        else
+                        {
+                            ConsoleUtility.UserError();
+                        }
+                        
+                    }
                 }
-                Console.WriteLine("Enter CAPS 'S' to Exit");
+                Console.WriteLine("Enter ESC to Exit");
                 if (Keyboard.IsKeyPressed(Key.S))
                 {
                     isExit = true;

@@ -53,5 +53,9 @@ namespace AirForceLibrary.BL
         {
             Status = status;
         }
+        public new  string ToString()
+        {
+            return  RequestId+"\t \t "+Context+"\t \t"+Status;
+        }
     }
 }

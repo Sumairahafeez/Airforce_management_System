@@ -8,18 +8,26 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AirForceLibrary.DL
 {
     public class DLAFPersonalleDB:IAFPersonalle
     {   //This class will store AFPersonalles
-        /// <summary>
-        /// Stores an AFPersonalle in the database.
-        /// </summary>
-        /// <param name="a">The AFPersonalle to store.</param>
+        //Signleton implementation so that only one instance of the object is made
+        private static DLAFPersonalleDB Instance;
+        private DLAFPersonalleDB() { }
+        public static DLAFPersonalleDB SetValidInstance()
+        {
+            if (Instance == null)
+            {
+                Instance = new DLAFPersonalleDB();
+            }
+            return Instance;
+        }
         public void StoreAFPersonalle(AFPersonalle a)
         {
-            string query = string.Format("INSERT INTO AFPersonalle VALUES('{0}','{1}',{2},'{3}')", a.GetName(), a.GetRank(), a.GetPakNo(), a.GetPresentlyPosted());
+            string query = string.Format("INSERT INTO AFPersonalle VALUES('{0}','{1}',{2},'{3}','{4}','{5}')", a.GetName(), a.GetRank(), a.GetPakNo(), a.GetPresentlyPosted(),a.GetPassword(),a.GetBranch());
             using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
@@ -48,6 +56,8 @@ namespace AirForceLibrary.DL
                     a.SetRank(reader["Rank"].ToString());
                     a.SetPresentlyPosted(reader["PresentlyPosted"].ToString());
                     a.SetPakNo(int.Parse(reader["PakNo"].ToString()));
+                    a.SetPassword(reader["Password"].ToString());
+                    a.SetBranch(reader["Branch"].ToString());
                     aFPersonalles.Add(a);
                 }
                 return aFPersonalles;
@@ -72,7 +82,11 @@ namespace AirForceLibrary.DL
                     string name = reader["Name"].ToString();
                     string Rank = reader["Rank"].ToString();
                     string Present = reader["PresentlyPosted"].ToString();
+                    string Password = reader["Password"].ToString();
+                    string Branch = reader["Branch"].ToString();
                     AFPersonalle A = new AFPersonalle(name, Rank, PakNo, Present);
+                    A.SetPassword(Password);
+                    A.SetBranch(Branch);
                     return A;
                 }
                 return null;
@@ -86,12 +100,13 @@ namespace AirForceLibrary.DL
         /// <param name="a">The updated AFPersonalle information.</param>
         public void UpdateAFPersonalle(int PakNo, AFPersonalle a)
         {
-            string query = string.Format("UPDATE AFPersonalle SET Name = '{0}', Rank = '{1}', PresentlyPosted = '{2}' WHERE PakNo = {3}", a.GetName(), a.GetRank(), a.GetPresentlyPosted(), a.GetPakNo());
+            string query = string.Format("UPDATE AFPersonalle SET Name = '{0}', Rank = '{1}', PresentlyPosted = '{2}',Password = '{3}',Branch = '{4}' WHERE PakNo = {5}", a.GetName(), a.GetRank(), a.GetPresentlyPosted(),a.GetPassword(),a.GetBranch(), a.GetPakNo());
             using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
             {
                 con.Open();
                 SqlCommand cd = new SqlCommand(query, con);
                 cd.ExecuteNonQuery();
+               
             }
         }
 

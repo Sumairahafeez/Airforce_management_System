@@ -18,23 +18,25 @@ namespace AirForceLibrary.DL
         /// Stores a Commanding Officer in the database.
         /// </summary>
         /// <param name="commandingOfficers">The Commanding Officer to store.</param>
-       /* private DLCommandingOfficerDB Instance;
-        public DLCommandingOfficerDB()
+        private static DLCommandingOfficerDB Instance;
+        private DLCommandingOfficerDB()
         {
-            Instance = SetValidInstance();
+            
         }
-        private DLCommandingOfficerDB SetValidInstance()
+        public static DLCommandingOfficerDB SetValidInstance()
         {
             if (Instance == null)
             {
                 Instance = new DLCommandingOfficerDB();
             }
             return Instance;
-        }*/
+        }
         public void StoreOC(CommandingOfficers commandingOfficers)
         {
-            IAFPersonalle IAF = new DLAFPersonalleDB();
+            IAFPersonalle IAF = DLAFPersonalleDB.SetValidInstance();
             AFPersonalle A = new AFPersonalle(commandingOfficers.GetName(), commandingOfficers.GetRank(), commandingOfficers.GetPakNo(), commandingOfficers.GetPresentlyPosted());
+            A.SetBranch(commandingOfficers.GetBranch());
+            A.SetPassword(commandingOfficers.GetPassword());
             IAF.StoreAFPersonalle(A);
             string query = string.Format("INSERT INTO OC VALUES('{0}', (SELECT TOP 1 Id FROM AFPersonalle WHERE PakNo = {1}))", commandingOfficers.GetSquadron(), commandingOfficers.GetPakNo());
 
@@ -68,21 +70,25 @@ namespace AirForceLibrary.DL
                         string Rank = reader["Rank"].ToString();
                         string loc = reader["PresentlyPosted"].ToString();
                         string squad = reader["Squadron"].ToString();
+                        string Password = reader["Password"].ToString();
+                        string branch = reader["Branch"].ToString();
                         int PakNO;
-                        IGDP AFP = new DLGDPDB();
+                        IGDP AFP = DLGDPDB.SetValidInstance();
                         List<GDPilot> underOff = AFP.GetAllUFofOC(int.Parse(reader["PakNo"].ToString()));
 
                         if (int.TryParse(reader["PakNo"].ToString(), out PakNO))
                         {
                             CommandingOfficers c = new CommandingOfficers(name, Rank, PakNO, loc, squad);
                             c.SetUnderOff(underOff);
+                            c.SetBranch(branch);
+                            c.SetPassword(Password);
                             return c;
                         }
                     }
                    
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -109,11 +115,14 @@ namespace AirForceLibrary.DL
                     string loc = reader["PresentlyPosted"].ToString();
                     int PakNo = int.Parse(reader["PakNo"].ToString());
                     string squad = reader["Squadron"].ToString();
-                    IGDP AFP = new DLGDPDB();
+                    string Password = reader["Password"].ToString();
+                    string branch = reader["Branch"].ToString();
+                    IGDP AFP = DLGDPDB.SetValidInstance();
                     List<GDPilot> underOff = AFP.GetAllUFofOC(int.Parse(reader["PakNo"].ToString()));
                     CommandingOfficers c = new CommandingOfficers(name, Rank, PakNo, loc, squad);
                     c.SetUnderOff(underOff);
-
+                    c.SetPassword(Password);
+                    c.SetBranch(branch);
                     commandingOfficers.Add(c);
 
                 }
@@ -144,7 +153,9 @@ namespace AirForceLibrary.DL
         public void UpdateOC(int PakNo, CommandingOfficers UpdatedOC)
         {
             AFPersonalle AF = new AFPersonalle(UpdatedOC.GetName(), UpdatedOC.GetRank(), UpdatedOC.GetPakNo(), UpdatedOC.GetPresentlyPosted());
-            IAFPersonalle Data = new DLAFPersonalleDB();
+            AF.SetBranch(UpdatedOC.GetBranch());
+            AF.SetPassword(UpdatedOC.GetPassword());
+            IAFPersonalle Data = DLAFPersonalleDB.SetValidInstance();
             Data.UpdateAFPersonalle(PakNo, AF);
             string query = string.Format("UPDATE OC SET Squadron = '{0}' WHERE OffId = (SELECT Id FROM AFPersonalle WHERE PakNo = {1})", UpdatedOC.GetSquadron(), PakNo);
             using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))

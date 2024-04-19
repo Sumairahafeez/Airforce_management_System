@@ -20,11 +20,11 @@ namespace AirForce
         public Form1()
         {
             InitializeComponent();
-            string AFPath = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\AFPersonalle.txt";
-            string GDPPath = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\GDPilot.txt";
-            string OCPath = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Commanders.txt";
-            string MissionPath = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Mission.txt";
-            string ReportPath = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Requests.txt";
+            string AFPath = "AFPersonalle.txt";
+            string GDPPath = "GDPilot.txt";
+            string OCPath = "Commanders.txt";
+            string MissionPath = "Mission.txt";
+            string ReportPath = "Requests.txt";
             ConnectionClass.SetAFFile(AFPath);
             ConnectionClass.SetGDPFile(GDPPath);
             ConnectionClass.SetMissionFile(MissionPath);

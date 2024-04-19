@@ -32,7 +32,7 @@
             this.richTextBox5 = new System.Windows.Forms.RichTextBox();
             this.OfficerGV = new System.Windows.Forms.DataGridView();
             this.PakNoCB = new System.Windows.Forms.ComboBox();
-            this.InputBranch = new System.Windows.Forms.ComboBox();
+            this.InputBranchCB = new System.Windows.Forms.ComboBox();
             this.BranchT = new System.Windows.Forms.RichTextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.Deletebt = new System.Windows.Forms.Button();
@@ -48,6 +48,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.InputSquadron = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OfficerGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -83,21 +84,18 @@
             this.PakNoCB.Size = new System.Drawing.Size(195, 38);
             this.PakNoCB.TabIndex = 142;
             // 
-            // InputBranch
+            // InputBranchCB
             // 
-            this.InputBranch.BackColor = System.Drawing.Color.DimGray;
-            this.InputBranch.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputBranch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InputBranch.FormattingEnabled = true;
-            this.InputBranch.Items.AddRange(new object[] {
-            "GDP",
-            "CAE",
-            "Air Defence",
-            "Admin"});
-            this.InputBranch.Location = new System.Drawing.Point(415, 534);
-            this.InputBranch.Name = "InputBranch";
-            this.InputBranch.Size = new System.Drawing.Size(195, 38);
-            this.InputBranch.TabIndex = 141;
+            this.InputBranchCB.BackColor = System.Drawing.Color.DimGray;
+            this.InputBranchCB.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputBranchCB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InputBranchCB.FormattingEnabled = true;
+            this.InputBranchCB.Items.AddRange(new object[] {
+            "GDP"});
+            this.InputBranchCB.Location = new System.Drawing.Point(415, 534);
+            this.InputBranchCB.Name = "InputBranchCB";
+            this.InputBranchCB.Size = new System.Drawing.Size(195, 38);
+            this.InputBranchCB.TabIndex = 141;
             // 
             // BranchT
             // 
@@ -292,16 +290,30 @@
             this.InputSquadron.Size = new System.Drawing.Size(195, 38);
             this.InputSquadron.TabIndex = 145;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.DimGray;
+            this.button3.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(81, 610);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(205, 37);
+            this.button3.TabIndex = 146;
+            this.button3.Text = "Assign Password";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // EditOfficer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 729);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.InputSquadron);
             this.Controls.Add(this.richTextBox5);
             this.Controls.Add(this.OfficerGV);
             this.Controls.Add(this.PakNoCB);
-            this.Controls.Add(this.InputBranch);
+            this.Controls.Add(this.InputBranchCB);
             this.Controls.Add(this.BranchT);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.Deletebt);
@@ -330,7 +342,7 @@
         private System.Windows.Forms.RichTextBox richTextBox5;
         private System.Windows.Forms.DataGridView OfficerGV;
         private System.Windows.Forms.ComboBox PakNoCB;
-        private System.Windows.Forms.ComboBox InputBranch;
+        private System.Windows.Forms.ComboBox InputBranchCB;
         private System.Windows.Forms.RichTextBox BranchT;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button Deletebt;
@@ -346,5 +358,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox InputSquadron;
+        private System.Windows.Forms.Button button3;
     }
 }

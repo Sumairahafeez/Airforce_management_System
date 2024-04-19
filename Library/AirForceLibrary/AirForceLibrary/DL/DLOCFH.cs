@@ -1,5 +1,6 @@
 ﻿using AirForceLibrary.BL;
 using AirForceLibrary.Interfaces;
+using AirForceLibrary.Utilis;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,21 +8,32 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AirForceLibrary.DL
 {
-    public class DLOCFH:IOC
+    public class DLOCFH : IOC
     {
-       private static readonly string path = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Commanders.txt";
 
+        private static string path = ConnectionClass.GetOCFile();
         /// <summary>
         /// Stores a Commanding Officer's information and updates the file.
         /// </summary>
         /// <param name="officers">The Commanding Officer to store.</param>
+        private static DLOCFH Instance;
+        private DLOCFH() { }
+        public static DLOCFH SetValidInstance()
+        {
+            if (Instance == null)
+            {
+                Instance = new DLOCFH();
+            }
+            return Instance;
+        }
         public void StoreOC(CommandingOfficers officers)
         {
             // Store Commanding Officer information in the personnel database
-            IAFPersonalle AFP = new DLAFPersonalleFH();
+            IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
             AFPersonalle AF = new AFPersonalle(officers.GetName(), officers.GetRank(), officers.GetPakNo(), officers.GetPresentlyPosted());
             AFP.StoreAFPersonalle(AF);
 
@@ -46,37 +58,33 @@ namespace AirForceLibrary.DL
                 //if (File.Exists(path))
                 {
                     string record;
-                    string[] AllData = new string[1000];
+                    
                     while ((record = reader.ReadLine()) != null)
                     {
-                         AllData = record.Split(',');
-                    }
-                        for(int i = 0; i < AllData.Length; i= i+2)
+                        string[] AllData = record.Split(',');
+                        
+                   
+                        string Squad = AllData[0];
+                        int PakNo = int.Parse(AllData[1]);
+                        // Retrieve Commanding Officer's information from the personnel database
+                        IAFPersonalle aFPersonalle = DLAFPersonalleFH.SetValidInstance();
+
+                        AFPersonalle A = aFPersonalle.GetAFPersonalleByID(PakNo);
+
+                        // Retrieve Commanding Officer's subordinate pilots
+                        IGDP Pilots = DLGDPFH.SetValidInstance();
+                        List<GDPilot> Unders = Pilots.GetAllUFofOC(PakNo);
+
+                        // Create and populate Commanding Officer object
+                        CommandingOfficers OC = new CommandingOfficers(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), Squad);
+                        if (Unders != null)
                         {
-                            string Squad = AllData[0];
-                            int PakNo = int.Parse(AllData[1]);
-                            // Retrieve Commanding Officer's information from the personnel database
-                            IAFPersonalle aFPersonalle = new DLAFPersonalleFH();
-                            AFPersonalle A = aFPersonalle.GetAFPersonalleByID(PakNo);
 
-                            // Retrieve Commanding Officer's subordinate pilots
-                            IGDP Pilots = new DLGDPFH();
-                            List<GDPilot> Unders = Pilots.GetAllUFofOC(PakNo);
-
-                            // Create and populate Commanding Officer object
-                            CommandingOfficers OC = new CommandingOfficers(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), Squad);
-                            if (Unders != null)
-                            {
-
-                                OC.SetUnderOff(Unders);
-                            }
-
-                            officers.Add(OC);
+                            OC.SetUnderOff(Unders);
                         }
-                       
 
-                       
-                    
+                        officers.Add(OC);
+                    }
                 }
             }
 
@@ -90,13 +98,14 @@ namespace AirForceLibrary.DL
         /// <returns>The Commanding Officer object if found, otherwise null.</returns>
         public CommandingOfficers GetOCbyId(int PakNo)
         {
+            List<CommandingOfficers> OC = GetAll();
             // Iterate through all Commanding Officers
-            foreach (CommandingOfficers OC in GetAll())
+            foreach (CommandingOfficers OCs in OC)
             {
                 // Check if the Commanding Officer's PakNo matches the provided PakNo
-                if (OC.GetPakNo() == PakNo)
+                if (OCs.GetPakNo() == PakNo)
                 {
-                    return OC; // Return the Commanding Officer
+                    return OCs; // Return the Commanding Officer
                 }
             }
 
@@ -125,7 +134,7 @@ namespace AirForceLibrary.DL
                     {
                         // Create a new AFPersonalle instance with updated information
                         AFPersonalle AF = new AFPersonalle(NewOC.GetName(), NewOC.GetRank(), NewOC.GetPakNo(), NewOC.GetPresentlyPosted());
-                        IAFPersonalle NewAF = new DLAFPersonalleFH();
+                        IAFPersonalle NewAF = DLAFPersonalleFH.SetValidInstance();
                         NewAF.UpdateAFPersonalle(PakNo, AF);
 
                         // Update the Squadron and UnderOfficer properties of the Commanding Officer

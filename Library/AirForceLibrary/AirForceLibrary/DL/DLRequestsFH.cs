@@ -19,6 +19,16 @@ namespace AirForceLibrary.DL
         /// </summary>
         /// <param name="Request">The request to store.</param>
         public string path = ConnectionClass.GetRequestFile();
+        private static DLRequestsFH Instance;
+        private DLRequestsFH() { }
+        public static DLRequestsFH SetValidInstance()
+        {
+            if(Instance == null)
+            {
+                Instance = new DLRequestsFH();
+            }
+            return Instance;
+        }
         public void StoreRequests(Requests Request)
         {
             // Open the file for appending and write request information

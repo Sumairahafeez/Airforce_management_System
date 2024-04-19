@@ -18,6 +18,16 @@ namespace AirForceLibrary.DL
         /// </summary>
         /// <param name="mission">The mission to store.</param>
         /// <param name="PakNo">The PakNo of the officer related to the mission.</param>
+       private static DLMissionDB Instance;
+       private DLMissionDB() { }
+        public static DLMissionDB SetValidInstance()
+        {
+            if (Instance == null)
+            {
+                Instance = new DLMissionDB();
+            }
+            return Instance;
+        }
         public void StoreMission(Mission mission, int PakNo)
         {
             int bin = mission.GetIsComplete() ? 1 : 0; // Convert boolean to binary representation

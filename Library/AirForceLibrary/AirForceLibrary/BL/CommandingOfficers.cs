@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
 using AirForceLibrary.Utilis;
@@ -11,13 +12,13 @@ namespace AirForceLibrary.BL
     public class CommandingOfficers:AFPersonalle
     {   //This consist of the attributes of OC
         private string Squadron;
-        private List<GDPilot> UnderOfficers;
+        private List<InFieldPersonalle> UnderOfficers;
         //Define constructors
         public CommandingOfficers() { }
         public CommandingOfficers(string Name, string Rank, int PAkNo, string PresentlyPosted, string Sqadron):base(Name, Rank, PAkNo,PresentlyPosted)
         {
             SetSquadron(Sqadron);
-            UnderOfficers = new List<GDPilot>();
+            UnderOfficers = new List<InFieldPersonalle>();
         }
         //Define Getters And Setters
         public void SetSquadron(string Squadron)
@@ -28,14 +29,22 @@ namespace AirForceLibrary.BL
         {
             return this.Squadron;
         }
-        public List<GDPilot>GetUnderOfficer()
+        public List<InFieldPersonalle>GetUnderOfficer()
         {
             return UnderOfficers.ToList();
         }
         public void SetUnderOff(List<GDPilot> UnderOfficer)
+        {   foreach(GDPilot G in  UnderOfficer)
+            {
+                AddUnderOfficer(G);
+            }
+            
+        }
+        public void SetUnderOff(List<InFieldPersonalle> UnderOfficer)
         {
             this.UnderOfficers = UnderOfficer;
         }
+
         //Now Define the behaviours of Commanding Officers
         //1. Define the CRUD of its under officers
         public void AddUnderOfficer(GDPilot inFieldPersonalle)
@@ -43,6 +52,12 @@ namespace AirForceLibrary.BL
             UnderOfficers.Add(inFieldPersonalle);
             
         }
+        public void AddUnderOfficer(InFieldPersonalle inFieldPersonalle)
+        {
+            UnderOfficers.Add(inFieldPersonalle);
+
+        }
+
         //2. They can assign missions to their under officers
         public void AssignMission(int PakNo,Mission TheMission)
         {
@@ -65,10 +80,11 @@ namespace AirForceLibrary.BL
                 }
             }
         }
+        
         //4. They can Assign their under officers to different posting locations first they will ask the OC of that Location fro approval
         public bool SetPosting(int PakNo, string LOcation,CommandingOfficers NewOC)
         {
-            foreach(GDPilot Officer in UnderOfficers)
+            foreach(InFieldPersonalle Officer in UnderOfficers)
             {
                 if(Officer.GetPakNo().Equals(PakNo) && !(NewOC.IsValidUnderOfficer(Officer) && (NewOC.GetSquadron() == GetSquadron())))
                 {
@@ -87,9 +103,9 @@ namespace AirForceLibrary.BL
             return false;
         }
         //5. It can Approve new Officers
-        public bool AskForApproval(GDPilot NewOFFICER)
+        public bool AskForApproval(InFieldPersonalle NewOFFICER)
         {
-            if(UnderOfficers.Count <10 && (IsValidUnderOfficer(NewOFFICER)))
+            if(UnderOfficers.Count <10 && !(IsValidUnderOfficer(NewOFFICER)))
             {
                 AddUnderOfficer(NewOFFICER);
                 return true;
@@ -97,9 +113,9 @@ namespace AirForceLibrary.BL
             return false;
         }
         //6. Traversing the UnderOFFICERS AND CHECK IF IT IS VALID This function can also be used for validation
-        public bool IsValidUnderOfficer(GDPilot Officer)
+        public bool IsValidUnderOfficer(InFieldPersonalle Officer)
         {
-            foreach(GDPilot aFPersonalle in UnderOfficers)
+            foreach(InFieldPersonalle aFPersonalle in UnderOfficers)
             {
                 if (aFPersonalle == Officer)
                     return true;

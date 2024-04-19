@@ -24,12 +24,12 @@ namespace AirForceLibrary.Utilis
         {
             if(ConnectionClass.GetIsUsingDB())
             {
-                GdpInterface = new DLGDPDB();
+                GdpInterface = DLGDPDB.SetValidInstance();
                 return GdpInterface;
             }
             else
             {
-                GdpInterface = new DLGDPDB();
+                GdpInterface = DLGDPFH.SetValidInstance();
             }
             return GdpInterface;
         }
@@ -37,11 +37,11 @@ namespace AirForceLibrary.Utilis
         {
             if(ConnectionClass.GetIsUsingDB() )
             {
-                OCInterface = new DLCommandingOfficerDB();
+                OCInterface = DLCommandingOfficerDB.SetValidInstance() ;
             }
             else
             {
-                OCInterface = new DLCommandingOfficerDB();
+                OCInterface =  DLOCFH.SetValidInstance();
             }
             return OCInterface;
         }
@@ -49,11 +49,11 @@ namespace AirForceLibrary.Utilis
         {
             if(ConnectionClass.GetIsUsingDB() )
             {
-                AFInterface = new DLAFPersonalleDB();
+                AFInterface = DLAFPersonalleDB.SetValidInstance();
             }
             else
             {
-                AFInterface = new DLAFPersonalleDB();
+                AFInterface = DLAFPersonalleFH.SetValidInstance();
             }
             return AFInterface;
         }
@@ -61,11 +61,11 @@ namespace AirForceLibrary.Utilis
         {
             if (ConnectionClass.GetIsUsingDB())
             {
-                RequestInterface = new DLRequestsDB();
+                RequestInterface = DLRequestsDB.SetValidInstance();
             }
             else
             {
-                RequestInterface = new DLRequestsFH();
+                RequestInterface = DLRequestsFH.SetValidInstance();
             }
             return RequestInterface;
         }
@@ -73,11 +73,11 @@ namespace AirForceLibrary.Utilis
         {
             if (ConnectionClass.GetIsUsingDB())
             {
-                MissionInterface = new DLMissionDB();
+                MissionInterface = DLMissionDB.SetValidInstance();
             }
             else
             {
-                MissionInterface = new DLMissionFH();
+                MissionInterface = DLMissionFH.SetValidInstance();
             }
             return MissionInterface;
         }

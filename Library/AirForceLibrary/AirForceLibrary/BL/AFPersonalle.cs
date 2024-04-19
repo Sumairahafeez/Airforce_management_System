@@ -11,7 +11,9 @@ namespace AirForceLibrary.BL
         private string Name;
         private string Rank;//their designantion
         private int PakNo;//The number assigned to them by AIR Force
-        private string PresentlyPosted;//It tells the location of the personalle
+        private string PresentlyPosted;
+        private string Password;
+        private string Branch;//It tells the location of the personalle
         //It will include two contsructors one by default and other parameterized
         public AFPersonalle()
         {
@@ -42,6 +44,14 @@ namespace AirForceLibrary.BL
         {
             this.PresentlyPosted = PresentlyPosted;
         }
+        public void SetPassword(string Password)
+        {
+            this.Password = Password;
+        }
+        public void SetBranch(string Branch)
+        {
+            this.Branch = Branch;
+        }
         //Then getters
         public string GetName()
         {
@@ -58,6 +68,14 @@ namespace AirForceLibrary.BL
         public string GetPresentlyPosted()
         {
             return PresentlyPosted;
+        }
+        public string GetPassword()
+        {
+            return Password;
+        }
+        public string GetBranch()
+        {
+            return Branch;
         }
     }
 }

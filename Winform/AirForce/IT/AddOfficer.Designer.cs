@@ -220,10 +220,7 @@
             this.InputBranch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.InputBranch.FormattingEnabled = true;
             this.InputBranch.Items.AddRange(new object[] {
-            "GDP",
-            "CAE",
-            "Air Defence",
-            "Admin"});
+            "GDP"});
             this.InputBranch.Location = new System.Drawing.Point(628, 551);
             this.InputBranch.Name = "InputBranch";
             this.InputBranch.Size = new System.Drawing.Size(195, 38);

@@ -16,6 +16,16 @@ namespace AirForceLibrary.DL
         /// Retrieves all requests from the database.
         /// </summary>
         /// <returns>A list of all requests stored in the database.</returns>
+        private static DLRequestsDB instance;
+        private DLRequestsDB() { }
+        public static DLRequestsDB SetValidInstance()
+        {
+            if(instance == null)
+            {
+                instance = new DLRequestsDB();
+            }
+            return instance;
+        }
         public List<Requests> GetAllRequest()
         {
             string query = "SELECT * FROM Request";

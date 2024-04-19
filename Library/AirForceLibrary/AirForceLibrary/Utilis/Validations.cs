@@ -4,11 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Windows.Forms;
 
 namespace AirForceLibrary.Utilis
 {
@@ -28,9 +30,15 @@ namespace AirForceLibrary.Utilis
 
         // Validates IT Officer credentials
         public static bool IsValidIT(string name, int PakNo, string Password)
-        {   if (PakNo == 123 && Password == "123")
+        {
+            if (PakNo == 123 && Password == "123")
+            {
                 return true;
-        return false;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         // Validates the uniqueness of PakNo
@@ -53,7 +61,7 @@ namespace AirForceLibrary.Utilis
             List<GDPilot> gDPilots = Interfaces.GetGdpInterface().GetAllGdps();
             foreach (GDPilot G in gDPilots)
             {
-                if (G.GetName() == name && G.GetPakNo() == PakNO)
+                if (G.GetName() == name && G.GetPakNo() == PakNO && G.GetPassword() == Password)
                 {
                     return true;
                 }
@@ -64,13 +72,21 @@ namespace AirForceLibrary.Utilis
         // Checks if the given name, PakNo, and password match a valid OC
         public static bool IsValidOC(string name, int PakNO, string Password)
         {
-            List<CommandingOfficers> OCs = Interfaces.GetOCInterface().GetAll();
-            foreach (CommandingOfficers OC in OCs)
+            try
             {
-                if (OC.GetName() == name && OC.GetPakNo() == PakNO)
+                List<CommandingOfficers> OCs = Interfaces.GetOCInterface().GetAll();
+                foreach (CommandingOfficers OC in OCs)
                 {
-                    return true;
+                    if (OC.GetName() == name && OC.GetPakNo() == PakNO && OC.GetPassword() == Password)
+                    {
+                        return true;
+                    }
                 }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return false;
         }
@@ -177,6 +193,18 @@ namespace AirForceLibrary.Utilis
                 }
             }
             return null;
+        }
+        public static bool IsValidRequestId(int Id, int PakNo)
+        {
+            List<Requests> req = Interfaces.GetRequestInterface().GetRequestsOfSpecificOfficer(PakNo);
+            foreach (Requests Req in req)
+            {
+                if (Req.GetRequestId() == Id)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         /* IF AN OUT FIELD OC WANTS TO ADD UNDER OFFICER THEN THIS FUCNTION WILL IMPLEMENT
    * Public static bool IsFitForTHEOC(string OCLocation,string OfficerLOc)

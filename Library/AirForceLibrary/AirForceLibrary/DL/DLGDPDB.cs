@@ -18,24 +18,26 @@ namespace AirForceLibrary.DL
         /// Stores a GDPilot in the database.
         /// </summary>
         /// <param name="G">The GDPilot to store.</param>
-       /* private DLGDPDB Instance;
+        private static DLGDPDB Instance;
         private DLGDPDB()
         {
-            Instance = IsValid();
+            
         }
-        public DLGDPDB IsValid()
+        public static DLGDPDB SetValidInstance()
         {
             if (Instance == null)
             {
                 Instance = new DLGDPDB();
             }
             return Instance;
-        }*/
+        }
         public void StoreGDP(GDPilot G)
         {
             // Store AFPersonalle information
-            IAFPersonalle IAF = new DLAFPersonalleDB();
+            IAFPersonalle IAF = DLAFPersonalleDB.SetValidInstance();
             AFPersonalle A = new AFPersonalle(G.GetName(), G.GetRank(), G.GetPakNo(), G.GetPresentlyPosted());
+            A.SetPassword(G.GetPassword());
+            A.SetBranch(G.GetBranch());
             IAF.StoreAFPersonalle(A);
 
             // Construct SQL query to insert GDPilot into the database
@@ -73,14 +75,16 @@ namespace AirForceLibrary.DL
                         int PakNo = int.Parse(reader["PakNo"].ToString());
                         string loc = reader["PresentlyPosted"].ToString();
                         string sq = reader["Squadron"].ToString();
-
+                        string Password = reader["Password"].ToString();
+                        string Branch = reader["Branch"].ToString();
                         GDPilot G = new GDPilot(name, Rank, PakNo, loc, sq);
                         G.SetFlyingHours(int.Parse(reader["FlyingHours"].ToString()));
-
+                        G.SetBranch(Branch);
+                        G.SetPassword(Password);
                         // Retrieve associated objects
-                        IOC OC = new DLCommandingOfficerDB();
-                        IMission mission = new DLMissionDB();
-                        IRequest req = new DLRequestsDB();
+                        IOC OC = DLCommandingOfficerDB.SetValidInstance();
+                        IMission mission = DLMissionDB.SetValidInstance();
+                        IRequest req = DLRequestsDB.SetValidInstance();
                         //if (reader["OCId"].ToString() != null)
                         //G.SetCommandingOfficer(OC.GetOCbyId(int.Parse(reader["OCId"].ToString())));
                         G.SetMission(mission.GetAllMissionsOfSpecificOfficer(int.Parse(reader["PakNo"].ToString())));
@@ -121,14 +125,17 @@ namespace AirForceLibrary.DL
                     int PakNO = int.Parse(reader["PakNo"].ToString());
                     string loc = reader["PresentlyPosted"].ToString();
                     string sq = reader["Squadron"].ToString();
-
+                    string Password = reader["Password"].ToString();
+                    string branch = reader["Branch"].ToString();
                     GDPilot G = new GDPilot(name, Rank, PakNO, loc, sq);
+                    G.SetPassword(Password);
+                    G.SetBranch(branch);
                     G.SetFlyingHours(int.Parse(reader["FlyingHours"].ToString()));
 
                     // Retrieve associated objects
-                    IOC OC = new DLCommandingOfficerDB();
-                    IMission mission = new DLMissionDB();
-                    IRequest req = new DLRequestsDB();
+                    IOC OC = DLCommandingOfficerDB.SetValidInstance();
+                    IMission mission = DLMissionDB.SetValidInstance();
+                    IRequest req = DLRequestsDB.SetValidInstance();
 
                     G.SetCommandingOfficer(OC.GetOCbyId(int.Parse(reader["OCId"].ToString())));
                     G.SetMission(mission.GetAllMissionsOfSpecificOfficer(int.Parse(reader["PakNo"].ToString())));
@@ -175,8 +182,11 @@ namespace AirForceLibrary.DL
                     string Rank = reader["Rank"].ToString();
                     string loc = reader["PresentlyPosted"].ToString();
                     string sq = reader["Squadron"].ToString();
-
+                    string Password = reader["Password"].ToString();
+                    string branch = reader["Branch"].ToString();
                     GDPilot G = new GDPilot(name, Rank, PakNo, loc, sq);
+                    G.SetPassword(Password);
+                    G.SetBranch(branch);
                     return G;
                 }
             }
@@ -192,7 +202,9 @@ namespace AirForceLibrary.DL
         {
             // Update AFPersonalle information
             AFPersonalle AF = new AFPersonalle(Gdp.GetName(), Gdp.GetRank(), Gdp.GetPakNo(), Gdp.GetPresentlyPosted());
-            IAFPersonalle Data = new DLAFPersonalleDB();
+            AF.SetBranch(Gdp.GetBranch());
+            AF.SetPassword(Gdp.GetPassword());
+            IAFPersonalle Data = DLAFPersonalleDB.SetValidInstance();
             Data.UpdateAFPersonalle(PakNo, AF);
 
             // Construct SQL query to update GDPilot in the database

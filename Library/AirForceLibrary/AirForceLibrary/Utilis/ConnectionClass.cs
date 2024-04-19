@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Windows.Forms;
 
 namespace AirForceLibrary.Utilis
 {
@@ -22,7 +23,7 @@ namespace AirForceLibrary.Utilis
         private static string OCFile;
         private static string MissionFile;
         private static string RequestFile;
-        private static bool IsUsingDB = true;
+        private static bool IsUsingDB;
         public static int Count = 0;
         public static void SetCurrentGDP(GDPilot currentGDP)
         {   
@@ -38,6 +39,7 @@ namespace AirForceLibrary.Utilis
         }
         public static string GetAFFile()
         {
+
             return AFFile;
         }
         public static string GetRequestFile()
@@ -46,10 +48,12 @@ namespace AirForceLibrary.Utilis
         }
         public static GDPilot GetCurrentGDP()
         {
+           
             return CurrentGDP;
         }
         public static string GetGDPFile()
         {
+            
             return GDPFile;
         }
         public static void SetOCFile(string path)
@@ -86,7 +90,7 @@ namespace AirForceLibrary.Utilis
         }
         public static bool GetIsUsingDB()
         {
-            return IsUsingDB = true;
+            return IsUsingDB;
         }
         public static void SetIsUsingDB(bool Isit)
         {
