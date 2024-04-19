@@ -35,12 +35,14 @@ namespace AirForceLibrary.DL
             // Store Commanding Officer information in the personnel database
             IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
             AFPersonalle AF = new AFPersonalle(officers.GetName(), officers.GetRank(), officers.GetPakNo(), officers.GetPresentlyPosted());
+            AF.SetBranch(officers.GetBranch());
+            AF.SetPassword(officers.GetPassword());
             AFP.StoreAFPersonalle(AF);
 
             // Write Commanding Officer information to the file
             using (StreamWriter writer = new StreamWriter(path, true))
             {
-                writer.WriteLine(officers.GetSquadron() + "," + officers.GetPakNo());
+                writer.WriteLine(officers.GetPakNo()+","+officers.GetSquadron());
             }
         }
 
@@ -51,6 +53,7 @@ namespace AirForceLibrary.DL
         public List<CommandingOfficers> GetAll()
         {
             List<CommandingOfficers> officers = new List<CommandingOfficers>();
+            
 
             // Read Commanding Officer information from the file
             using (StreamReader reader = new StreamReader(path))
@@ -63,14 +66,12 @@ namespace AirForceLibrary.DL
                     {
                         string[] AllData = record.Split(',');
                         
-                   
-                        string Squad = AllData[0];
-                        int PakNo = int.Parse(AllData[1]);
+                        int PakNo  = int.Parse(AllData[0]);
+                        string Squad = AllData[1];
+
                         // Retrieve Commanding Officer's information from the personnel database
-                        IAFPersonalle aFPersonalle = DLAFPersonalleFH.SetValidInstance();
-
-                        AFPersonalle A = aFPersonalle.GetAFPersonalleByID(PakNo);
-
+                        IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
+                        AFPersonalle A = AFP.GetAFPersonalleByID(PakNo);
                         // Retrieve Commanding Officer's subordinate pilots
                         IGDP Pilots = DLGDPFH.SetValidInstance();
                         List<GDPilot> Unders = Pilots.GetAllUFofOC(PakNo);
@@ -143,7 +144,7 @@ namespace AirForceLibrary.DL
                     }
 
                     // Write the Squadron and PakNo of the Commanding Officer to the file
-                    writer.WriteLine(OC.GetSquadron() + "," + OC.GetPakNo());
+                    writer.WriteLine(NewOC.GetPakNo() + "," + NewOC.GetSquadron());
                 }
             }
         }
@@ -170,7 +171,7 @@ namespace AirForceLibrary.DL
                     }
 
                     // Write the Squadron and PakNo of the Commanding Officer to the file
-                    writer.WriteLine(OC.GetSquadron() + "," + OC.GetPakNo());
+                    writer.WriteLine(OC.GetPakNo() + "," + OC.GetSquadron());
                 }
             }
         }

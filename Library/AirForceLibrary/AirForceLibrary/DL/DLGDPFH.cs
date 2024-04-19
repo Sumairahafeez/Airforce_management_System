@@ -45,9 +45,9 @@ namespace AirForceLibrary.DL
             using (StreamWriter writer = new StreamWriter(path, true))
             {
                 if (Pilot.GetOC() != null)
-                    writer.WriteLine(Pilot.GetSquadron() + "," + Pilot.GetFlyingHours() + "," + Pilot.GetPakNo() + "," + Pilot.GetOC().GetPakNo());
+                    writer.WriteLine(Pilot.GetSquadron() + "," + Pilot.GetFlyingHours() +","+Pilot.GetPakNo()+ ","  + Pilot.GetOC().GetPakNo());
                 else
-                    writer.WriteLine(Pilot.GetSquadron() + "," + Pilot.GetFlyingHours() + "," + Pilot.GetPakNo() + "," + -1);
+                    writer.WriteLine(( Pilot.GetSquadron() + "," + Pilot.GetFlyingHours() + "," +Pilot.GetPakNo()+"," + -1));
             }
         }
 
@@ -58,7 +58,7 @@ namespace AirForceLibrary.DL
         public List<GDPilot> GetAllGdps()
         {
             List<GDPilot> Gdps = new List<GDPilot>();
-
+           
             // Read GDPilot information from the file
             using (StreamReader reader = new StreamReader(path))
             {
@@ -68,6 +68,7 @@ namespace AirForceLibrary.DL
                     while ((record = reader.ReadLine()) != null)
                     {
                         string[] AllData = record.Split(',');
+                       
                         string squadron = AllData[0];
                         int FlyingHours = int.Parse(AllData[1]);
                         int PakNo = int.Parse(AllData[2]);
@@ -193,7 +194,7 @@ namespace AirForceLibrary.DL
                     if (G.GetOC() != null)
                         writer.WriteLine(G.GetSquadron() + "," + G.GetFlyingHours() + "," + G.GetPakNo() + "," + G.GetOC().GetPakNo());
                     else
-                        writer.WriteLine(G.GetSquadron() + "," + G.GetFlyingHours() + "," + G.GetPakNo() + "," + -1);
+                        writer.WriteLine((G.GetSquadron() + "," + G.GetFlyingHours() + "," + G.GetPakNo() + "," + -1));
                 }
             }
         }
@@ -217,7 +218,7 @@ namespace AirForceLibrary.DL
                     {
                         // Delete GDPilot information from the personnel database
                         IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
-                        AFPersonalle AF = new AFPersonalle(G.GetName(), G.GetRank(), G.GetPakNo(), G.GetPresentlyPosted());
+                        //AFPersonalle AF = new AFPersonalle(G.GetName(), G.GetRank(), G.GetPakNo(), G.GetPresentlyPosted());
                         AFP.DeleteAFPersonalle(PakNo);
                     }
 
@@ -225,7 +226,7 @@ namespace AirForceLibrary.DL
                     if (G.GetOC() != null)
                         writer.WriteLine(G.GetSquadron() + "," + G.GetFlyingHours() + "," + G.GetPakNo() + "," + G.GetOC().GetPakNo());
                     else
-                        writer.WriteLine(G.GetSquadron() + "," + G.GetFlyingHours() + "," + G.GetPakNo() + "," + -1);
+                        writer.WriteLine((G.GetSquadron() + "," + G.GetFlyingHours() + "," + G.GetPakNo() + "," + -1));
                 }
             }
         }

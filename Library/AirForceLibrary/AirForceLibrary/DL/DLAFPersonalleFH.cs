@@ -38,7 +38,7 @@ namespace AirForceLibrary.DL
             // Open the file for appending and write AFPersonalle information
             using (StreamWriter writer = new StreamWriter(path, true))
             {
-                writer.WriteLine(aFPersonalle.GetName() + "," + aFPersonalle.GetPakNo() + "," + aFPersonalle.GetRank() + "," + aFPersonalle.GetPresentlyPosted() + ","+aFPersonalle.GetPassword() +","+aFPersonalle.GetBranch());
+                writer.WriteLine(aFPersonalle.GetName() + ";" + aFPersonalle.GetPakNo() + ";" + aFPersonalle.GetRank() + ";" + aFPersonalle.GetPresentlyPosted() + ";"+aFPersonalle.GetPassword() +";"+aFPersonalle.GetBranch());
             }
         }
 
@@ -66,17 +66,17 @@ namespace AirForceLibrary.DL
                             {
                                
                                 // Split the record into individual pieces of information
-                                string[] AllData = record.Split(',');
+                                string[] AllData = record.Split(';');
                                 string Name = AllData[0];
                                 int PakNo = int.Parse(AllData[1]);
                                 string Rank = AllData[2];
                                 string Posted = AllData[3];
-                                //string Password = AllData[4];
-                                //string Branch = AllData[5];
+                                string Password = AllData[4];
+                                string Branch = AllData[5];
                                 // Create an AFPersonalle object and add it to the list
                                 AFPersonalle aFPersonalle = new AFPersonalle(Name, Rank, PakNo, Posted);
-                                //aFPersonalle.SetPassword(Password);
-                                //aFPersonalle.SetBranch(Branch);
+                                aFPersonalle.SetPassword(Password);
+                                aFPersonalle.SetBranch(Branch);
                                 personalles.Add(aFPersonalle);
                             }
                            
