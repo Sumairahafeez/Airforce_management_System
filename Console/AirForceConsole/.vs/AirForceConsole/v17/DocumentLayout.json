@@ -3,7 +3,11 @@
   "WorkspaceRootPath": "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\airforceconsole\\ui\\uirequests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\airforceconsole\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|solutionrelative:airforceconsole\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|f:\\2nd semester\\oop lab\\air force management system\\airforce\\console\\airforceconsole\\airforceconsole\\ui\\uirequests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|solutionrelative:airforceconsole\\ui\\uirequests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -19,11 +23,7 @@
       "RelativeMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|solutionrelative:airforceconsole\\ui\\consoleutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\airforceconsole\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|solutionrelative:airforceconsole\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|f:\\2nd semester\\oop lab\\air force management system\\airforce\\console\\airforceconsole\\airforceconsole\\ui\\uicommandingofficers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\airforceconsole\\ui\\uicommandingofficers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2EA811C7-DC78-428D-B90C-943DA04C287B}|AirForceConsole\\AirForceConsole.csproj|solutionrelative:airforceconsole\\ui\\uicommandingofficers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -48,16 +48,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 9,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 5,
@@ -68,12 +60,11 @@
               "RelativeToolTip": "AirForceConsole\\UI\\UICommandingOfficers.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T12:51:03.443Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-17T12:51:03.443Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UIRequests.cs",
               "DocumentMoniker": "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\AirForceConsole\\UI\\UIRequests.cs",
               "RelativeDocumentMoniker": "AirForceConsole\\UI\\UIRequests.cs",
@@ -98,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UIMission.cs",
               "DocumentMoniker": "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\AirForceConsole\\UI\\UIMission.cs",
               "RelativeDocumentMoniker": "AirForceConsole\\UI\\UIMission.cs",
@@ -106,12 +97,11 @@
               "RelativeToolTip": "AirForceConsole\\UI\\UIMission.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T14:29:45.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T14:29:45.566Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UIGDP.cs",
               "DocumentMoniker": "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\AirForceConsole\\UI\\UIGDP.cs",
               "RelativeDocumentMoniker": "AirForceConsole\\UI\\UIGDP.cs",
@@ -119,8 +109,7 @@
               "RelativeToolTip": "AirForceConsole\\UI\\UIGDP.cs",
               "ViewState": "AQIAAE8AAACAZmZmZuYqwCcAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T14:21:57.504Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T14:21:57.504Z"
             },
             {
               "$type": "Document",
@@ -160,7 +149,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ConsoleUtility.cs",
               "DocumentMoniker": "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\AirForceConsole\\UI\\ConsoleUtility.cs",
               "RelativeDocumentMoniker": "AirForceConsole\\UI\\ConsoleUtility.cs",
@@ -168,18 +157,17 @@
               "RelativeToolTip": "AirForceConsole\\UI\\ConsoleUtility.cs",
               "ViewState": "AQIAABoAAAAApJmZmRkTwCMAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T12:42:04.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T12:42:04.592Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\AirForceConsole\\Program.cs",
               "RelativeDocumentMoniker": "AirForceConsole\\Program.cs",
               "ToolTip": "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Console\\AirForceConsole\\AirForceConsole\\Program.cs",
               "RelativeToolTip": "AirForceConsole\\Program.cs",
-              "ViewState": "AQIAAG0AAAAAyjIzMzPzv4YAAAA3AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIYAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-16T12:37:08.632Z",
               "EditorCaption": ""

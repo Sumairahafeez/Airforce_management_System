@@ -1,3 +1,2 @@
-Marium,3485,Group Captain,Mushaf Base, Sargodha,0,GDP
-Ali Noman,3764,FlyingOfficer,Mushaf Base Sargodha,0,GDP
-Fari,1234,Air Commander,Rafiqui Base Shorkot,0,GDP
+Ali Noman;3764;FlyingOfficer;Mushaf Base, Sargodha;;
+Sumaira;3465;Squadron Leader;Mushaf Base, Sargodha;;

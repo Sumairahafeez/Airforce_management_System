@@ -87,7 +87,7 @@ namespace AirForceLibrary.DL
             {
                 string record;
                 // Check if the file exists
-                if (File.Exists(path))
+                //if (File.Exists(path))
                 {
                     // Read each line of the file
                     while ((record = reader.ReadLine()) != null)

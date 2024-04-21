@@ -21,12 +21,44 @@ namespace AirForce.GDP
 
         private void checkbt_Click(object sender, EventArgs e)
         {
-            richTextBox3.Visible = true;
-            richTextBox2.Visible = true;
-            richTextBox6.Visible = true;
-            InputJF17.Visible = true;
-            InputF16.Visible = true;
-            InputMirage.Visible = true;
+           
+            try
+            {
+                GDPilot G = Interfaces.GetGdpInterface().GetGDPThroughPakNo(ConnectionClass.GetCurrentGDP().GetPakNo());
+                string squadron = G.GetSquadron();
+                if (squadron == "No 2 Minhas")
+                {
+                    richTextBox2.Visible = true;
+                }
+                else if (squadron == "No 5 Falcons")
+                {
+                    richTextBox3.Visible = true;
+
+                }
+                else if (squadron == "No 9 Griffins")
+                {
+                    richTextBox3.Visible = true;
+                }
+                else if (squadron == "No 15 Cobras")
+                {
+                   richTextBox6.Visible = true;
+                }
+                else if (squadron == "No 27 Zarrars")
+                {
+                    richTextBox2.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Your Squadron Jets Are not included yet");
+                }
+                Interfaces.GetGdpInterface().UpdateGDP(ConnectionClass.CurrentGDP.GetPakNo(), G);
+            }
+            catch (Exception ex)
+
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void backbt_Click(object sender, EventArgs e)

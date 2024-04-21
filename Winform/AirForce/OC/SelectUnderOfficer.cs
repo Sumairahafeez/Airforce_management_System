@@ -65,7 +65,7 @@ namespace AirForce.OC
 
         private void Addbt_Click(object sender, EventArgs e)
         {
-            try
+           // try
             {
                 InputBranch.Text = "GDP";
                 int PakNo = int.Parse(PakNoCB.Text);
@@ -80,8 +80,9 @@ namespace AirForce.OC
                     bool Valid = Validations.IsFitForTHEOC(OC, AF, Squadron);
                     if (Valid)
                     {   // if the under office is added show message otherwise show the errrors
-                        bool isAdded = OC.AskForApproval(AF);
-                        if (isAdded)
+                        //bool isAdded = OC.AskForApproval(AF);
+                       if (OC.AskForApproval(AF) && !(OC.IsValidUnderOfficer(AF)))
+                        //if(isAdded)
                         {
                             AF.SetCommandingOfficer(OC);
                             Interfaces.GetGdpInterface().UpdateGDP(PakNo, AF);
@@ -107,9 +108,9 @@ namespace AirForce.OC
 
 
             }
-            catch(Exception ex)
+           // catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               // MessageBox.Show(ex.Message);
             }
 
 

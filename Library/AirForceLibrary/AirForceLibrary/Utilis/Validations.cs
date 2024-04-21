@@ -178,7 +178,11 @@ namespace AirForceLibrary.Utilis
         // Checks if an AFPersonalle is fit to be under an OC based on squadron and currently posted location
         public static bool IsFitForTHEOC(CommandingOfficers OC, AFPersonalle AF, string squadron)
         {
-            return OC.GetSquadron() == squadron && OC.GetPresentlyPosted() == AF.GetPresentlyPosted();
+             if(OC.GetSquadron() == squadron && OC.GetPresentlyPosted() == AF.GetPresentlyPosted())
+            {
+                return true;
+            }
+            return false;
         }
 
         // Validates a request based on PakNo and ID

@@ -84,9 +84,9 @@ namespace AirForceLibrary.BL
         //4. They can Assign their under officers to different posting locations first they will ask the OC of that Location fro approval
         public bool SetPosting(int PakNo, string LOcation,CommandingOfficers NewOC)
         {
-            foreach(InFieldPersonalle Officer in UnderOfficers)
+            foreach(GDPilot Officer in UnderOfficers)
             {
-                if(Officer.GetPakNo().Equals(PakNo) && !(NewOC.IsValidUnderOfficer(Officer) && (NewOC.GetSquadron() == GetSquadron())))
+                if(Officer.GetPakNo().Equals(PakNo) && (!(NewOC.IsValidUnderOfficer(Officer) && (NewOC.GetSquadron() == Officer.GetSquadron()))))
                 {
                     
                      bool IsOK =  NewOC.AskForApproval(Officer);
@@ -103,7 +103,7 @@ namespace AirForceLibrary.BL
             return false;
         }
         //5. It can Approve new Officers
-        public bool AskForApproval(InFieldPersonalle NewOFFICER)
+        public bool AskForApproval(GDPilot NewOFFICER)
         {
             if(UnderOfficers.Count <10 && !(IsValidUnderOfficer(NewOFFICER)))
             {
@@ -113,9 +113,9 @@ namespace AirForceLibrary.BL
             return false;
         }
         //6. Traversing the UnderOFFICERS AND CHECK IF IT IS VALID This function can also be used for validation
-        public bool IsValidUnderOfficer(InFieldPersonalle Officer)
+        public bool IsValidUnderOfficer(GDPilot Officer)
         {
-            foreach(InFieldPersonalle aFPersonalle in UnderOfficers)
+            foreach(GDPilot aFPersonalle in UnderOfficers)
             {
                 if (aFPersonalle == Officer)
                     return true;

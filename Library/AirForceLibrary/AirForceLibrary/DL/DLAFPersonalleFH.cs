@@ -73,6 +73,7 @@ namespace AirForceLibrary.DL
                                 string Posted = AllData[3];
                                 string Password = AllData[4];
                                 string Branch = AllData[5];
+                              
                                 // Create an AFPersonalle object and add it to the list
                                 AFPersonalle aFPersonalle = new AFPersonalle(Name, Rank, PakNo, Posted);
                                 aFPersonalle.SetPassword(Password);
@@ -99,18 +100,60 @@ namespace AirForceLibrary.DL
         /// <param name="PakNo">The PakNo of the AFPersonalle to retrieve.</param>
         /// <returns>The AFPersonalle with the specified PakNo.</returns>
         public AFPersonalle GetAFPersonalleByID(int PakNo)
-        {   List<AFPersonalle> personalles = GetAFPersonalles();
-            // Iterate through all AFPersonalles
-            foreach (AFPersonalle aFPersonalle in personalles)
+        {
+            if (File.Exists(path))
             {
-                
-                // Check if AFPersonalle's PakNo matches the provided PakNo
-                if (aFPersonalle.GetPakNo() == PakNo)
+              
+
+                using (StreamReader reader = new StreamReader(path))
                 {
-                    return aFPersonalle; // Return the AFPersonalle
+                    string record;
+                    try
+                    {
+                       
+                        // if (File.Exists(path))
+                        {
+                            // Read each line of the file
+                            while ((reader.ReadLine() != null))
+                            {
+
+                               
+                                // Split the record into individual pieces of information
+                                string[] AllData = reader.ReadLine().Split(';');
+                                for(int i = 0; i<AllData.Length; i++)
+                                {
+                                }
+                                string Name = AllData[0];
+                                int PakNO = int.Parse(AllData[1]);
+                                string Rank = AllData[2];
+                                string Posted = AllData[3];
+                                string Password = AllData[4];
+                                string Branch = AllData[5];
+                                
+                                if(PakNO == PakNo)
+                                {
+                                    AFPersonalle aFPersonalle = new AFPersonalle(Name, Rank, PakNo, Posted);
+                                    aFPersonalle.SetPassword(Password);
+                                    aFPersonalle.SetBranch(Branch);
+                                    return aFPersonalle;
+                                }
+                                // Create an AFPersonalle object and add it to the list
+                              
+                               
+                            }
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
                 }
+
+
             }
-            return null; // Return null if no matching AFPersonalle is found
+            return null;
+
         }
 
         /// <summary>
@@ -121,7 +164,8 @@ namespace AirForceLibrary.DL
         public void UpdateAFPersonalle(int PakNo, AFPersonalle aFPersonalle)
         {
             // Get the list of AFPersonalles
-            List<AFPersonalle> personalles = GetAFPersonalles();
+            IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
+            List<AFPersonalle> personalles = AFP.GetAFPersonalles();
             // Open the file for writing
             using (StreamWriter writer = new StreamWriter(path, false))
             {
@@ -131,6 +175,7 @@ namespace AirForceLibrary.DL
                     // Check if AFPersonalle's PakNo matches the provided PakNo
                     if (personalle.GetPakNo() == PakNo)
                     {
+                       
                         // Update AFPersonalle properties
                         personalle.SetName(aFPersonalle.GetName());
                         personalle.SetRank(aFPersonalle.GetRank());

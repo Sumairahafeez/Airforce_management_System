@@ -16,6 +16,7 @@ namespace AirForceLibrary.DL
     {
 
         private static string path = ConnectionClass.GetOCFile();
+        private static List<CommandingOfficers> officers = new List<CommandingOfficers>();
         /// <summary>
         /// Stores a Commanding Officer's information and updates the file.
         /// </summary>
@@ -42,42 +43,43 @@ namespace AirForceLibrary.DL
             // Write Commanding Officer information to the file
             using (StreamWriter writer = new StreamWriter(path, true))
             {
-                writer.WriteLine(officers.GetPakNo()+","+officers.GetSquadron());
+                writer.WriteLine(officers.GetName()+";"+officers.GetPakNo()+";"+officers.GetRank()+";"+officers.GetPresentlyPosted()+";"+officers.GetBranch()+";"+officers.GetPassword()+";"+officers.GetSquadron());
             }
         }
-
-        /// <summary>
-        /// Retrieves all Commanding Officers from the file.
-        /// </summary>
-        /// <returns>A list of Commanding Officers.</returns>
-        public List<CommandingOfficers> GetAll()
+        public void LoadList()
         {
-            List<CommandingOfficers> officers = new List<CommandingOfficers>();
-            
-
+           
             // Read Commanding Officer information from the file
             using (StreamReader reader = new StreamReader(path))
             {
                 //if (File.Exists(path))
                 {
                     string record;
-                    
+
                     while ((record = reader.ReadLine()) != null)
                     {
-                        string[] AllData = record.Split(',');
-                        
-                        int PakNo  = int.Parse(AllData[0]);
-                        string Squad = AllData[1];
+                        string[] AllData = record.Split(';');
+                        string Name = AllData[0];
+                        int PakNo = int.Parse(AllData[1]);
+                        string Rank = AllData[2];
+                        string Posting = AllData[3];
+                        string Branch = AllData[4];
+                        string Pass = AllData[5];
+                        string Squad = AllData[6];
 
                         // Retrieve Commanding Officer's information from the personnel database
-                        IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
-                        AFPersonalle A = AFP.GetAFPersonalleByID(PakNo);
+                        //IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
+                        //AFPersonalle A = AFP.GetAFPersonalleByID(PakNo);
                         // Retrieve Commanding Officer's subordinate pilots
                         IGDP Pilots = DLGDPFH.SetValidInstance();
                         List<GDPilot> Unders = Pilots.GetAllUFofOC(PakNo);
 
                         // Create and populate Commanding Officer object
-                        CommandingOfficers OC = new CommandingOfficers(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), Squad);
+
+
+                        CommandingOfficers OC = new CommandingOfficers(Name, Rank, PakNo, Posting, Squad);
+                        OC.SetBranch(Branch);
+                        OC.SetPassword(Pass);
                         if (Unders != null)
                         {
 
@@ -88,7 +90,14 @@ namespace AirForceLibrary.DL
                     }
                 }
             }
-
+        }
+        /// <summary>
+        /// Retrieves all Commanding Officers from the file.
+        /// </summary>
+        /// <returns>A list of Commanding Officers.</returns>
+        public List<CommandingOfficers> GetAll()
+        {
+            LoadList();
             return officers;
         }
 
@@ -99,9 +108,10 @@ namespace AirForceLibrary.DL
         /// <returns>The Commanding Officer object if found, otherwise null.</returns>
         public CommandingOfficers GetOCbyId(int PakNo)
         {
-            List<CommandingOfficers> OC = GetAll();
+            IOC OC = DLOCFH.SetValidInstance();
+            List<CommandingOfficers> Oc = OC.GetAll();
             // Iterate through all Commanding Officers
-            foreach (CommandingOfficers OCs in OC)
+            foreach (CommandingOfficers OCs in Oc)
             {
                 // Check if the Commanding Officer's PakNo matches the provided PakNo
                 if (OCs.GetPakNo() == PakNo)
@@ -134,17 +144,24 @@ namespace AirForceLibrary.DL
                     if (OC.GetPakNo() == PakNo)
                     {
                         // Create a new AFPersonalle instance with updated information
-                        AFPersonalle AF = new AFPersonalle(NewOC.GetName(), NewOC.GetRank(), NewOC.GetPakNo(), NewOC.GetPresentlyPosted());
-                        IAFPersonalle NewAF = DLAFPersonalleFH.SetValidInstance();
-                        NewAF.UpdateAFPersonalle(PakNo, AF);
+                        //AFPersonalle AF = new AFPersonalle(NewOC.GetName(), NewOC.GetRank(), NewOC.GetPakNo(), NewOC.GetPresentlyPosted());
+                        //IAFPersonalle NewAF = DLAFPersonalleFH.SetValidInstance();
+                        //NewAF.UpdateAFPersonalle(PakNo, AF);
 
                         // Update the Squadron and UnderOfficer properties of the Commanding Officer
+                        OC.SetName(NewOC.GetName());
+                        OC.SetPakNo(NewOC.GetPakNo());
+                        OC.SetRank(NewOC.GetRank());
+                        OC.SetPresentlyPosted(NewOC.GetPresentlyPosted());
+                        OC.SetBranch(NewOC.GetBranch());
+                        OC.SetPassword(NewOC.GetPassword());
                         OC.SetSquadron(NewOC.GetSquadron());
                         OC.SetUnderOff(NewOC.GetUnderOfficer());
                     }
 
                     // Write the Squadron and PakNo of the Commanding Officer to the file
-                    writer.WriteLine(NewOC.GetPakNo() + "," + NewOC.GetSquadron());
+                    writer.WriteLine(OC.GetName() + ";" + OC.GetPakNo() + ";" + OC.GetRank() + ";" + OC.GetPresentlyPosted() + ";" + OC.GetBranch() + ";" + OC.GetPassword() + ";" + OC.GetSquadron());
+
                 }
             }
         }
@@ -171,7 +188,8 @@ namespace AirForceLibrary.DL
                     }
 
                     // Write the Squadron and PakNo of the Commanding Officer to the file
-                    writer.WriteLine(OC.GetPakNo() + "," + OC.GetSquadron());
+                    writer.WriteLine(OC.GetName() + ";" + OC.GetPakNo() + ";" + OC.GetRank() + ";" + OC.GetPresentlyPosted() + ";" + OC.GetBranch() + ";" + OC.GetPassword() + ";" + OC.GetSquadron());
+
                 }
             }
         }

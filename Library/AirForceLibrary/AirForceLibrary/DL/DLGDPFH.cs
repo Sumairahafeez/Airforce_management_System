@@ -22,6 +22,7 @@ namespace AirForceLibrary.DL
         /// <param name="Pilot">The GDPilot to store.</param>
         private static string path = ConnectionClass.GetGDPFile();
         private static DLGDPFH Instance;
+        public static List<GDPilot> Pilots = new List<GDPilot>();
         private DLGDPFH()
         {
             
@@ -34,6 +35,7 @@ namespace AirForceLibrary.DL
             }
             return Instance;
         }
+      
         public void StoreGDP(GDPilot Pilot)
         {
             // Store GDPilot information in the personnel database
@@ -45,41 +47,43 @@ namespace AirForceLibrary.DL
             using (StreamWriter writer = new StreamWriter(path, true))
             {
                 if (Pilot.GetOC() != null)
-                    writer.WriteLine(Pilot.GetSquadron() + "," + Pilot.GetFlyingHours() +","+Pilot.GetPakNo()+ ","  + Pilot.GetOC().GetPakNo());
+                    writer.WriteLine(Pilot.GetName()+";"+Pilot.GetPakNo()+";"+Pilot.GetRank()+";"+Pilot.GetPresentlyPosted()+";"+Pilot.GetBranch()+";"+Pilot.GetPassword()+";"+Pilot.GetSquadron() + ";" + Pilot.GetFlyingHours() + ";"  + Pilot.GetOC().GetPakNo());
                 else
-                    writer.WriteLine(( Pilot.GetSquadron() + "," + Pilot.GetFlyingHours() + "," +Pilot.GetPakNo()+"," + -1));
+                    writer.WriteLine(Pilot.GetName() + ";" + Pilot.GetPakNo() + ";" + Pilot.GetRank() + ";" + Pilot.GetPresentlyPosted() + ";" + Pilot.GetBranch() + ";" + Pilot.GetPassword() + ";" + Pilot.GetSquadron() + ";" + Pilot.GetFlyingHours() + ";" + -1);
             }
         }
-
-        /// <summary>
-        /// Retrieves all GDPilots from the file and database.
-        /// </summary>
-        /// <returns>A list of all GDPilots.</returns>
-        public List<GDPilot> GetAllGdps()
+        private void LoadList()
         {
             List<GDPilot> Gdps = new List<GDPilot>();
-           
+
             // Read GDPilot information from the file
             using (StreamReader reader = new StreamReader(path))
             {
                 //if (File.Exists(path))
                 {
-                    string record;
-                    while ((record = reader.ReadLine()) != null)
+                    string read;
+                    while ((read = reader.ReadLine()) != null)
                     {
-                        string[] AllData = record.Split(',');
-                       
-                        string squadron = AllData[0];
-                        int FlyingHours = int.Parse(AllData[1]);
-                        int PakNo = int.Parse(AllData[2]);
-                        int OCPakNo = int.Parse(AllData[3]);
+                        string[] AllData = read.Split(';');
+                        string name = AllData[0];
+                        int PakNo = int.Parse(AllData[1]);
+                        string Rank = AllData[2];
+                        string PresentlyPosted = AllData[3];
+                        string BRanch = AllData[4];
+                        string Password = AllData[5];
+                        string squadron = AllData[6];
+                        int FlyingHours = int.Parse(AllData[7]);
+
+                        int OCPakNo = int.Parse(AllData[8]);
 
                         // Retrieve GDPilot's information from the personnel database
-                        IAFPersonalle aFPersonalle = DLAFPersonalleFH.SetValidInstance();
-                        AFPersonalle A = aFPersonalle.GetAFPersonalleByID(PakNo);
-                        if (A != null)
+                        //IAFPersonalle aFPersonalle = DLAFPersonalleFH.SetValidInstance();
+                        //AFPersonalle A = aFPersonalle.GetAFPersonalleByID(PakNo);
+                        //if (A != null)
                         {
-                            GDPilot G = new GDPilot(A.GetName(), A.GetRank(), A.GetPakNo(), A.GetPresentlyPosted(), squadron);
+                            GDPilot G = new GDPilot(name, Rank, PakNo, PresentlyPosted, squadron);
+                            G.SetBranch(BRanch);
+                            G.SetPassword(Password);
                             // Set Commanding Officer if exists
                             if (OCPakNo != -1)
                             {
@@ -96,18 +100,37 @@ namespace AirForceLibrary.DL
                             IRequest request = DLRequestsFH.SetValidInstance();
                             List<Mission> Mymissions = missions.GetAllMissionsOfSpecificOfficer(PakNo);
                             List<Requests> MyRequests = request.GetRequestsOfSpecificOfficer(PakNo);
+                            if (Mymissions != null)
+                            {
+                                G.SetMission(Mymissions);
+                            }
+                            if (MyRequests != null)
+                            {
+                                G.SetRequests(MyRequests);
+                            }
                             G.SetFlyingHours(FlyingHours);
-                            G.SetMission(Mymissions);
-                            G.SetRequests(MyRequests);
+
+
                             Gdps.Add(G);
 
                         }
 
                     }
-                   
+
                 }
-                return Gdps;
+                Pilots = Gdps;
+
             }
+        }
+        /// <summary>
+        /// Retrieves all GDPilots from the file and database.
+        /// </summary>
+        /// <returns>A list of all GDPilots.</returns>
+        public List<GDPilot> GetAllGdps()
+        {
+                LoadList();
+                return Pilots;
+            
 
            
         }
@@ -119,8 +142,11 @@ namespace AirForceLibrary.DL
         /// <returns>The GDPilot with the specified PakNo.</returns>
         public GDPilot GetGDPThroughPakNo(int PakNo)
         {
+            //IGDP Gd = DLGDPFH.SetValidInstance();
+           
+            //List<GDPilot> GDP = Gd.GetAllGdps();
             // Iterate through all GDPilots
-            foreach (GDPilot Pilot in GetAllGdps())
+            foreach (GDPilot Pilot in Pilots)
             {
                 // Check if GDPilot's PakNo matches the provided PakNo
                 if (Pilot.GetPakNo() == PakNo)
@@ -139,17 +165,18 @@ namespace AirForceLibrary.DL
         /// <returns>A list of all GDPilots under the specified Commanding Officer.</returns>
         public List<GDPilot> GetAllUFofOC(int OCPakNo)
         {
-            List<GDPilot> Pilots = new List<GDPilot>();
-
+            List<GDPilot> pilots = new List<GDPilot>();
+            //IGDP gDP = DLGDPFH.SetValidInstance();
+            //List<GDPilot> list = gDP.GetAllGdps();
             // Retrieve all GDPilots
-            foreach (GDPilot GDPilot in GetAllGdps())
+            foreach (GDPilot GDPilot in Pilots)
             {  // it checks if it's OC Exists
                 if(GDPilot.GetOC() != null)
                 {
                     // Check if GDPilot's Commanding Officer PakNo matches the provided PakNo
                     if (GDPilot.GetOC().GetPakNo() == OCPakNo)
                     {
-                        Pilots.Add(GDPilot);
+                        pilots.Add(GDPilot);
                     }
                 }
                
@@ -166,22 +193,28 @@ namespace AirForceLibrary.DL
         public void UpdateGDP(int PakNo, GDPilot Pilot)
         {
             // Retrieve all GDPilots
-            List<GDPilot> gDPilots = GetAllGdps();
+            //List<GDPilot> gDPilots = GetAllGdps();
 
             // Open the file for writing
             using (StreamWriter writer = new StreamWriter(path, false))
             {
-                foreach (GDPilot G in gDPilots)
+                foreach (GDPilot G in Pilots)
                 {
                     // Check if GDPilot's PakNo matches the provided PakNo
                     if (G.GetPakNo() == PakNo)
                     {
                         // Update GDPilot information in the personnel database
-                        IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
-                        AFPersonalle AF = new AFPersonalle(Pilot.GetName(), Pilot.GetRank(), Pilot.GetPakNo(), Pilot.GetPresentlyPosted());
-                        AFP.UpdateAFPersonalle(PakNo, AF);
+                        //IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
+                        //AFPersonalle AF = new AFPersonalle(Pilot.GetName(), Pilot.GetRank(), Pilot.GetPakNo(), Pilot.GetPresentlyPosted());
+                       // AFP.UpdateAFPersonalle(PakNo, AF);
 
                         // Update GDPilot properties
+                        G.SetName(Pilot.GetName());
+                        G.SetPassword(Pilot.GetPassword());
+                        G.SetBranch(Pilot.GetBranch());
+                        G.SetCommandingOfficer(Pilot.GetOC());
+                        G.SetRank(Pilot.GetRank());
+                        G.SetPresentlyPosted(Pilot.GetPresentlyPosted());
                         G.SetSquadron(Pilot.GetSquadron());
                         G.SetFlyingHours(Pilot.GetFlyingHours());
                         if (Pilot.GetOC() != null)
@@ -192,9 +225,10 @@ namespace AirForceLibrary.DL
 
                     // Write GDPilot information to the file
                     if (G.GetOC() != null)
-                        writer.WriteLine(G.GetSquadron() + "," + G.GetFlyingHours() + "," + G.GetPakNo() + "," + G.GetOC().GetPakNo());
+                        writer.WriteLine(G.GetName() + ";" +G.GetPakNo()+";"+G.GetRank()+";"+G.GetPresentlyPosted()+";"+G.GetBranch()+";"+G.GetPassword()+";"+G.GetSquadron()+";"+ G.GetFlyingHours() +  ";" + G.GetOC().GetPakNo());
                     else
-                        writer.WriteLine((G.GetSquadron() + "," + G.GetFlyingHours() + "," + G.GetPakNo() + "," + -1));
+                        writer.WriteLine(G.GetName() + ";" + G.GetPakNo() + ";" + G.GetRank() + ";" + G.GetPresentlyPosted() + ";" + G.GetBranch() + ";" + G.GetPassword() + ";" + G.GetSquadron() + ";" + G.GetFlyingHours() + ";" + -1);
+
                 }
             }
         }
@@ -211,7 +245,7 @@ namespace AirForceLibrary.DL
             // Open the file for writing
             using (StreamWriter writer = new StreamWriter(path, false))
             {
-                foreach (GDPilot G in gDPilots)
+                foreach (GDPilot G in Pilots)
                 {
                     // Check if GDPilot's PakNo matches the provided PakNo
                     if (G.GetPakNo() == PakNo)
@@ -224,9 +258,9 @@ namespace AirForceLibrary.DL
 
                     // Write GDPilot information to the file
                     if (G.GetOC() != null)
-                        writer.WriteLine(G.GetSquadron() + "," + G.GetFlyingHours() + "," + G.GetPakNo() + "," + G.GetOC().GetPakNo());
+                        writer.WriteLine(G.GetName() + ";" + G.GetPakNo() + ";" + G.GetRank() + ";" + G.GetPresentlyPosted() + ";" + G.GetBranch() + ";" + G.GetPassword() + ";" + G.GetSquadron() + ";" + G.GetFlyingHours() + ";" + G.GetOC().GetPakNo());
                     else
-                        writer.WriteLine((G.GetSquadron() + "," + G.GetFlyingHours() + "," + G.GetPakNo() + "," + -1));
+                        writer.WriteLine(G.GetName() + ";" + G.GetPakNo() + ";" + G.GetRank() + ";" + G.GetPresentlyPosted() + ";" + G.GetBranch() + ";" + G.GetPassword() + ";" + G.GetSquadron() + ";" + G.GetFlyingHours() + ";" + -1);
                 }
             }
         }

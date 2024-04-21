@@ -120,7 +120,7 @@ namespace AirForce.OC
                         bool set = OC.SetPosting(PkNo, PostedTo, newOC);
 
                         // If the posting is set successfully
-                        if (set)
+                        if (OC.GetSquadron() == newOC.GetSquadron())
                         {
                             // Retrieve the GDPilot based on the PakNo
                             GDPilot G = Interfaces.GetGdpInterface().GetGDPThroughPakNo(PkNo);

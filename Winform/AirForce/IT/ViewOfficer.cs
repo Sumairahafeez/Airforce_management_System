@@ -43,7 +43,7 @@ namespace AirForce.IT
                 List<CommandingOfficers> ALLOc = Interfaces.GetOCInterface().GetAll();
                 foreach (var oc in ALLOc)
                 {
-                    dataTable.Rows.Add(oc.GetName(), oc.GetPakNo(), oc.GetRank(), oc.GetPresentlyPosted(), oc.GetSquadron());
+                   dataTable.Rows.Add(oc.GetName(), oc.GetPakNo(), oc.GetRank(), oc.GetPresentlyPosted(), oc.GetSquadron());
                 }
 
                 // Set the DataSource of OfficerGV DataGridView to the populated DataTable
@@ -64,8 +64,10 @@ namespace AirForce.IT
 
         private void OfficerGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int SelectedRow = e.RowIndex;
+            
             // This function serves to select data from a given DataGridView and display it on the DataTable
-            int SelectedRow = e.RowIndex; // Get the index of the selected row
+            //int SelectedRow = e.RowIndex; // Get the index of the selected row
             if (SelectedRow >= -2 && SelectedRow < OfficerGV.Rows.Count)
             {
                 // Check if the selected row index is valid (greater than or equal to -2 and less than the total number of rows)
@@ -128,10 +130,10 @@ namespace AirForce.IT
                     InputPosting.Text = Commander.GetPresentlyPosted();
                 }
             }
-            catch(Exception ex)
+           catch(Exception ex)
 
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
            
            

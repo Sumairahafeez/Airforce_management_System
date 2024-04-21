@@ -1,2 +1,4 @@
-Marium,3485,Group Captain,Mushaf Base
-Ali Noman,3764,FlyingOfficer,Mushaf Base
+Sumaira,3444,Flight Lieutanat,Mushaf Base, Sargodha,,
+Marium,3485,Group Captain,Mushaf Base, Sargodha,,GDP
+Ali Noman,3764,FlyingOfficer,Mushaf Base, Sargodha,,
+FATIMA,3214,Flight Lieutanat,Mushaf Base, Sargodha,,
