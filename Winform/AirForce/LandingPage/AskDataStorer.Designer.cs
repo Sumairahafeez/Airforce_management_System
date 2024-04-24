@@ -81,6 +81,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Name = "AskDataStorer";
             this.Text = "AskDataStorer";
+            this.Load += new System.EventHandler(this.AskDataStorer_Load);
             this.ResumeLayout(false);
 
         }

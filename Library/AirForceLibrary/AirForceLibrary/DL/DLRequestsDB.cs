@@ -30,7 +30,7 @@ namespace AirForceLibrary.DL
         {
             string query = "SELECT * FROM Request";
             List<Requests> requests = new List<Requests>();
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -58,7 +58,7 @@ namespace AirForceLibrary.DL
         {
             string query = "SELECT * FROM Request WHERE OfficerId = " + PakNo;
             List<Requests> requests = new List<Requests>();
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -85,7 +85,7 @@ namespace AirForceLibrary.DL
         {
             // Construct SQL query to insert request into the database
             string query = string.Format("INSERT INTO Request VALUES({0}, {1}, '{2}', '{3}')", request.GetRequestId(), request.GetPakNo(), request.GetContext(), request.GetStatus());
-            using (SqlConnection co = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection co = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 co.Open();
                 SqlCommand cmd = new SqlCommand(query, co);
@@ -102,7 +102,7 @@ namespace AirForceLibrary.DL
         {
             // Construct SQL query to update request in the database
             string query = string.Format("UPDATE Request SET Context = '{0}', Status = '{1}' WHERE Id = {2}", request.GetContext(), request.GetStatus(), RequestId);
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -118,7 +118,7 @@ namespace AirForceLibrary.DL
         {
             // Construct SQL query to delete request from the database
             string query = "DELETE FROM Request WHERE Id = " + RequestId;
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);

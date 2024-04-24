@@ -20,57 +20,58 @@ namespace AirForce.GDP
         }
 
         private void checkbt_Click(object sender, EventArgs e)
-        {
+        {   // Set the text of Missionhdbt to display the current GDPilot's rank, name, and "FlyingHours Menu"
+            Missionhdbt.Text = ConnectionClass.GetCurrentGDP().GetRank() + " " + ConnectionClass.GetCurrentGDP().GetName() + "'s FlyingHours Menu";
+
+            // Check if the entered PakNo is valid
             bool isValid = Validations.IsValidGDP(int.Parse(InputPakNo.Text));
-            if(isValid)
+            if (isValid)
             {
+                // Show the RichTextBoxes and TextBoxes for input
                 richTextBox3.Visible = true;
                 richTextBox2.Visible = true;
                 richTextBox6.Visible = true;
                 InputJF17.Visible = true;
                 InputF16.Visible = true;
                 InputMirage.Visible = true;
+
                 try
                 {
+                    // Retrieve GDPilot data using the entered PakNo
                     GDPilot G = Interfaces.GetGdpInterface().GetGDPThroughPakNo(int.Parse(InputPakNo.Text));
                     string squadron = G.GetSquadron();
-                    if (squadron == "No 2 Minhas")
-                    {
-                        (InputJF17.Text) = G.GetFlyingHours().ToString();
-                    }
-                    else if (squadron == "No 5 Falcons")
-                    {
-                        (InputF16.Text) = G.GetFlyingHours().ToString();
 
-                    }
-                    else if (squadron == "No 9 Griffins")
+                    // Populate the appropriate TextBox with flying hours based on the squadron
+                    if (squadron == "No 2 Minhas" || squadron == "No 27 Zarrars")
                     {
-                        (InputF16.Text) = G.GetFlyingHours().ToString();
+                        InputJF17.Text = G.GetFlyingHours().ToString();
+                    }
+                    else if (squadron == "No 5 Falcons" || squadron == "No 9 Griffins")
+                    {
+                        InputF16.Text = G.GetFlyingHours().ToString();
                     }
                     else if (squadron == "No 15 Cobras")
                     {
-                        (InputMirage.Text) = G.GetFlyingHours().ToString();
-                    }
-                    else if (squadron == "No 27 Zarrars")
-                    {
-                        (InputJF17.Text) = G.GetFlyingHours().ToString();
+                        InputMirage.Text = G.GetFlyingHours().ToString();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
+                    // Display any exceptions that occur
                     MessageBox.Show(ex.Message);
                 }
-               
             }
             else
             {
-                MessageBox.Show("GDP Doesnot Exist");
+                // Inform the user that the GDPilot does not exist
+                MessageBox.Show("GDP Does not Exist");
             }
-           
+
+
         }
 
         private void Backbt_Click(object sender, EventArgs e)
-        {
+        {//go back to main menu
             this.Hide();
             GDPMenu menu = new GDPMenu();
             menu.Show();
@@ -80,18 +81,16 @@ namespace AirForce.GDP
         {
             try
             {
+                // Retrieve GDPilot data using the entered PakNo
                 GDPilot G = Interfaces.GetGdpInterface().GetGDPThroughPakNo(int.Parse(InputPakNo.Text));
                 string squadron = G.GetSquadron();
-                if (squadron == "No 2 Minhas")
+
+                // Update the flying hours based on the squadron
+                if (squadron == "No 2 Minhas" || squadron == "No 27 Zarrars")
                 {
                     G.SetFlyingHours(int.Parse(InputJF17.Text));
                 }
-                else if (squadron == "No 5 Falcons")
-                {
-                    G.SetFlyingHours(int.Parse(InputF16.Text));
-
-                }
-                else if (squadron == "No 9 Griffins")
+                else if (squadron == "No 5 Falcons" || squadron == "No 9 Griffins")
                 {
                     G.SetFlyingHours(int.Parse(InputF16.Text));
                 }
@@ -99,17 +98,16 @@ namespace AirForce.GDP
                 {
                     G.SetFlyingHours(int.Parse(InputMirage.Text));
                 }
-                else if (squadron == "No 27 Zarrars")
-                {
-                    G.SetFlyingHours(int.Parse(InputJF17.Text));
-                }
+
+                // Update the GDPilot's flying hours in the database
                 Interfaces.GetGdpInterface().UpdateGDP(G.GetPakNo(), G);
             }
             catch (Exception ex)
-
             {
+                // Display any exceptions that occur
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void UpdateFH_Load(object sender, EventArgs e)
@@ -142,18 +140,23 @@ namespace AirForce.GDP
 
         private void OfficerGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Retrieve the index of the selected row
             int SelectedRow = e.RowIndex;
+
+            // Check if the selected row index is valid
             if (SelectedRow >= -2 && SelectedRow < OfficerGV.Rows.Count)
             {
+                // Retrieve the selected row
                 DataGridViewRow row = OfficerGV.Rows[SelectedRow];
+
+                // Check if the "PakNo" cell of the selected row has a value
                 if (row.Cells["PakNo"].Value != null)
-
+                {
+                    // Populate the InputPakNo TextBox with the value from the "PakNo" cell
                     InputPakNo.Text = row.Cells["PakNo"].Value.ToString();
-
-
-
-
+                }
             }
+
         }
     }
 }

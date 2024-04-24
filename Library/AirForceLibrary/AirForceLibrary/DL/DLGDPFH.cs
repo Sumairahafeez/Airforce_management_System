@@ -182,7 +182,7 @@ namespace AirForceLibrary.DL
                
             }
 
-            return Pilots;
+            return pilots;
         }
 
         /// <summary>
@@ -204,9 +204,9 @@ namespace AirForceLibrary.DL
                     if (G.GetPakNo() == PakNo)
                     {
                         // Update GDPilot information in the personnel database
-                        //IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
-                        //AFPersonalle AF = new AFPersonalle(Pilot.GetName(), Pilot.GetRank(), Pilot.GetPakNo(), Pilot.GetPresentlyPosted());
-                       // AFP.UpdateAFPersonalle(PakNo, AF);
+                        IAFPersonalle AFP = DLAFPersonalleFH.SetValidInstance();
+                        AFPersonalle AF = new AFPersonalle(Pilot.GetName(), Pilot.GetRank(), Pilot.GetPakNo(), Pilot.GetPresentlyPosted());
+                        AFP.UpdateAFPersonalle(PakNo, AF);
 
                         // Update GDPilot properties
                         G.SetName(Pilot.GetName());

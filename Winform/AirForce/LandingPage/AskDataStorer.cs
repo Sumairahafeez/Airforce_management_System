@@ -25,7 +25,8 @@ namespace AirForce.LandingPage
             this.Hide();
             signIn sign = new signIn();
             sign.Show();
-           
+           //this will set using database true and open sigin form
+
         }
 
         private void fhbt_Click(object sender, EventArgs e)
@@ -34,6 +35,12 @@ namespace AirForce.LandingPage
             this.Hide();
             signIn sign = new signIn();
             sign.Show();
+            //this will set using database false if using file handling and  open signin form
+        }
+
+        private void AskDataStorer_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

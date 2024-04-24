@@ -229,7 +229,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(1377, 99);
             this.button1.TabIndex = 106;
-            this.button1.Text = "Edit Officer";
+            this.button1.Text = "Delete Officer";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // pictureBox1

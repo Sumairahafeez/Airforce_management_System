@@ -28,7 +28,7 @@ namespace AirForceLibrary.DL
         public void StoreAFPersonalle(AFPersonalle a)
         {
             string query = string.Format("INSERT INTO AFPersonalle VALUES('{0}','{1}',{2},'{3}','{4}','{5}')", a.GetName(), a.GetRank(), a.GetPakNo(), a.GetPresentlyPosted(),a.GetPassword(),a.GetBranch());
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -44,7 +44,7 @@ namespace AirForceLibrary.DL
         {
             string query = "SELECT * FROM AFPersonalle";
             List<AFPersonalle> aFPersonalles = new List<AFPersonalle>();
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -72,7 +72,7 @@ namespace AirForceLibrary.DL
         public AFPersonalle GetAFPersonalleByID(int PakNo)
         {
             string query = "SELECT * FROM AFPersonalle WHERE PakNo = " + PakNo;
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -101,7 +101,7 @@ namespace AirForceLibrary.DL
         public void UpdateAFPersonalle(int PakNo, AFPersonalle a)
         {
             string query = string.Format("UPDATE AFPersonalle SET Name = '{0}', Rank = '{1}', PresentlyPosted = '{2}',Password = '{3}',Branch = '{4}' WHERE PakNo = {5}", a.GetName(), a.GetRank(), a.GetPresentlyPosted(),a.GetPassword(),a.GetBranch(), a.GetPakNo());
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cd = new SqlCommand(query, con);
@@ -117,7 +117,7 @@ namespace AirForceLibrary.DL
         public void DeleteAFPersonalle(int PakNo)
         {
             string query = "DELETE FROM AFPersonalle WHERE PakNo = " + PakNo;
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);

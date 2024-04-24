@@ -124,7 +124,7 @@ namespace AirForce.OC
                 GDPilot AF = Interfaces.GetGdpInterface().GetGDPThroughPakNo(PakNO);
 
                 // Retrieve the current commanding officer
-                CommandingOfficers OC = ConnectionClass.CurrentOC;
+                CommandingOfficers OC = ConnectionClass.GetCurrentOC();
 
                 // Check if the GDPilot is under the command of the current officer
                 bool isUnderOfficer = OC.IsValidUnderOfficer(AF);

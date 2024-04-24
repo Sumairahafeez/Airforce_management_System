@@ -149,5 +149,17 @@ namespace AirForce.OC
             }
 
         }
+
+        private void OfficersDV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {   //filll the text boxes through data grid view
+            int SelectedRow = e.RowIndex;
+            if(SelectedRow>=0)
+            {
+               DataGridViewRow row  = OfficersDV.Rows[SelectedRow];
+                PakNoCB.Text = row.Cells["PakNo"].ToString();
+                InputId.Text = row.Cells["Name"].ToString();
+
+            }
+        }
     }
 }

@@ -110,7 +110,7 @@ namespace AirForce.IT
 
         }
         public void ClearData()
-        {
+        {   //it sets all the boxes to epmty string again
             InputName.Text = string.Empty;
             InputPakNo.Text = string.Empty;
             InputRank.Text = string.Empty;
@@ -118,6 +118,10 @@ namespace AirForce.IT
             InputPosting.Text = string.Empty;
             InputBranch.Text = string.Empty;
         }
-       
+
+        private void AddOfficer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

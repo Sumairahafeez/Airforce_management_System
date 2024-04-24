@@ -22,7 +22,7 @@ namespace AirForce.IT
 
         private void ViewOfficer_Load(object sender, EventArgs e)
         {
-            //try
+            try
             {
                 // Create a DataTable to store officer data
                 DataTable dataTable = new DataTable();
@@ -54,10 +54,10 @@ namespace AirForce.IT
                 PakNoCB.DataSource = Validations.GetData(query1);
                 PakNoCB.DisplayMember = "PakNo";
             }
-            //catch (Exception ex)
+            catch (Exception ex)
             {
                 // Display an error message if an exception occurs
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
 
         }

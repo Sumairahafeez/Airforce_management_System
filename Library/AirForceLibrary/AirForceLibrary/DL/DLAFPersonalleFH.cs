@@ -14,10 +14,10 @@ namespace AirForceLibrary.DL
 {
     public class DLAFPersonalleFH : IAFPersonalle
     {
-        //private static readonly string path = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\AFPersonalle.txt";
         //Signleton implementation so that only one instance of the object is made
         private static string path = ConnectionClass.GetAFFile();
         private static DLAFPersonalleFH Instance;
+        private static List<AFPersonalle> personalle;
         private DLAFPersonalleFH() { }
         public static DLAFPersonalleFH SetValidInstance()
         {
@@ -29,10 +29,7 @@ namespace AirForceLibrary.DL
             return Instance;
         }
        
-        /// <summary>
-        /// Stores an AFPersonalle's information and updates the file.
-        /// </summary>
-        /// <param name="aFPersonalle">The AFPersonalle to store.</param>
+       //It stores the AFPersonalle
         public void StoreAFPersonalle(AFPersonalle aFPersonalle)
         {
             // Open the file for appending and write AFPersonalle information
@@ -41,64 +38,57 @@ namespace AirForceLibrary.DL
                 writer.WriteLine(aFPersonalle.GetName() + ";" + aFPersonalle.GetPakNo() + ";" + aFPersonalle.GetRank() + ";" + aFPersonalle.GetPresentlyPosted() + ";"+aFPersonalle.GetPassword() +";"+aFPersonalle.GetBranch());
             }
         }
-
-        /// <summary>
-        /// Retrieves all AFPersonalle from the file.
-        /// </summary>
-        /// <returns>A list of AFPersonalle.</returns>
-        public List<AFPersonalle> GetAFPersonalles()
+        private void Loadlist()
         {
+
             List<AFPersonalle> personalles = new List<AFPersonalle>();
             // Open the file for reading
-            
-            if (File.Exists(path)) 
+
+            if (File.Exists(path))
             {
-               
+
                 using (StreamReader reader = new StreamReader(path))
-                {   
+                {
                     string record;
                     try
                     {
-                        // if (File.Exists(path))
-                        {  
-                            // Read each line of the file
-                            while ((record = reader.ReadLine()) != null)
-                            {
-                               
-                                // Split the record into individual pieces of information
-                                string[] AllData = record.Split(';');
-                                string Name = AllData[0];
-                                int PakNo = int.Parse(AllData[1]);
-                                string Rank = AllData[2];
-                                string Posted = AllData[3];
-                                string Password = AllData[4];
-                                string Branch = AllData[5];
-                              
-                                // Create an AFPersonalle object and add it to the list
-                                AFPersonalle aFPersonalle = new AFPersonalle(Name, Rank, PakNo, Posted);
-                                aFPersonalle.SetPassword(Password);
-                                aFPersonalle.SetBranch(Branch);
-                                personalles.Add(aFPersonalle);
-                            }
-                           
+                        // Read each line of the file
+                        while ((record = reader.ReadLine()) != null)
+                        {
+
+                            // Split the record into individual pieces of information
+                            string[] AllData = record.Split(';');
+                            string Name = AllData[0];
+                            int PakNo = int.Parse(AllData[1]);
+                            string Rank = AllData[2];
+                            string Posted = AllData[3];
+                            string Password = AllData[4];
+                            string Branch = AllData[5];
+
+                            // Create an AFPersonalle object and add it to the list
+                            AFPersonalle aFPersonalle = new AFPersonalle(Name, Rank, PakNo, Posted);
+                            aFPersonalle.SetPassword(Password);
+                            aFPersonalle.SetBranch(Branch);
+                            personalles.Add(aFPersonalle);
                         }
+
                     }
+
                     catch (Exception)
                     {
-
                     }
                 }
-          
-               
             }
-            return personalles;
+            personalle = personalles;
+        }
+       //It returns the list of AFPersonalle 
+        public List<AFPersonalle> GetAFPersonalles()
+        {
+            Loadlist();
+            return personalle;
         }
 
-        /// <summary>
-        /// Retrieves an AFPersonalle by PakNo.
-        /// </summary>
-        /// <param name="PakNo">The PakNo of the AFPersonalle to retrieve.</param>
-        /// <returns>The AFPersonalle with the specified PakNo.</returns>
+       //this function returns an AFPersonalle by Id
         public AFPersonalle GetAFPersonalleByID(int PakNo)
         {
             if (File.Exists(path))
@@ -114,12 +104,12 @@ namespace AirForceLibrary.DL
                         // if (File.Exists(path))
                         {
                             // Read each line of the file
-                            while ((reader.ReadLine() != null))
+                            while ((record = reader.ReadLine()) != null)
                             {
 
                                
                                 // Split the record into individual pieces of information
-                                string[] AllData = reader.ReadLine().Split(';');
+                                string[] AllData = record.Split(';');
                                 for(int i = 0; i<AllData.Length; i++)
                                 {
                                 }
@@ -155,12 +145,7 @@ namespace AirForceLibrary.DL
             return null;
 
         }
-
-        /// <summary>
-        /// Updates an existing AFPersonalle's information.
-        /// </summary>
-        /// <param name="PakNo">The PakNo of the AFPersonalle to update.</param>
-        /// <param name="aFPersonalle">The updated AFPersonalle information.</param>
+           //This fucntion is to update AFPersonalle on the basis of pakNo
         public void UpdateAFPersonalle(int PakNo, AFPersonalle aFPersonalle)
         {
             // Get the list of AFPersonalles
@@ -170,7 +155,7 @@ namespace AirForceLibrary.DL
             using (StreamWriter writer = new StreamWriter(path, false))
             {
                 // Iterate through all AFPersonalles
-                foreach (AFPersonalle personalle in personalles)
+                foreach (AFPersonalle personalle in personalle)
                 {
                     // Check if AFPersonalle's PakNo matches the provided PakNo
                     if (personalle.GetPakNo() == PakNo)
@@ -182,21 +167,17 @@ namespace AirForceLibrary.DL
                         personalle.SetPresentlyPosted(aFPersonalle.GetPresentlyPosted());
                     }
                     // Write AFPersonalle information to the file
-                    writer.WriteLine(personalle.GetName() + "," + personalle.GetPakNo() + "," + personalle.GetRank() + "," + personalle.GetPresentlyPosted() +","+personalle.GetPassword()+","+personalle.GetBranch());
+                    writer.WriteLine(personalle.GetName() + ";" + personalle.GetPakNo() + ";" + personalle.GetRank() + ";" + personalle.GetPresentlyPosted() +";"+personalle.GetPassword()+";"+personalle.GetBranch());
                 }
             }
         }
-
-        /// <summary>
-        /// Deletes an AFPersonalle with the specified PakNo.
-        /// </summary>
-        /// <param name="PakNo">The PakNo of the AFPersonalle to delete.</param>
+        //this function deltes the AFPersonalle on the basis of PakNo
         public void DeleteAFPersonalle(int PakNo)
         {
             // Get the list of AFPersonalles
             List<AFPersonalle> personalles = GetAFPersonalles();
             // Open the file for writing
-            using (StreamWriter writer = new StreamWriter(path, false))
+            using (StreamWriter writer = new StreamWriter(path))
             {
                 // Iterate through all AFPersonalles
                 foreach (AFPersonalle personalle in personalles)
@@ -207,7 +188,7 @@ namespace AirForceLibrary.DL
                         continue;
                     }
                     // Write AFPersonalle information to the file
-                    writer.WriteLine(personalle.GetName() + "," + personalle.GetPakNo() + "," + personalle.GetRank() + "," + personalle.GetPresentlyPosted() + "," + personalle.GetPassword() + "," + personalle.GetBranch());
+                    writer.WriteLine(personalle.GetName() + ";" + personalle.GetPakNo() + ";" + personalle.GetRank() + ";" + personalle.GetPresentlyPosted() + ";" + personalle.GetPassword() + ";" + personalle.GetBranch());
                 }
             }
         }

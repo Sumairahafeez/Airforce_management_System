@@ -117,7 +117,7 @@ namespace AirForceLibrary.BL
         {
             foreach(GDPilot aFPersonalle in UnderOfficers)
             {
-                if (aFPersonalle == Officer)
+                if (aFPersonalle.GetPakNo() == Officer.GetPakNo())
                     return true;
                
             }

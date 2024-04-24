@@ -16,7 +16,7 @@ namespace AirForceLibrary.DL
     {
 
         private static string path = ConnectionClass.GetOCFile();
-        private static List<CommandingOfficers> officers = new List<CommandingOfficers>();
+        public static List<CommandingOfficers> officers = new List<CommandingOfficers>();
         /// <summary>
         /// Stores a Commanding Officer's information and updates the file.
         /// </summary>
@@ -46,8 +46,9 @@ namespace AirForceLibrary.DL
                 writer.WriteLine(officers.GetName()+";"+officers.GetPakNo()+";"+officers.GetRank()+";"+officers.GetPresentlyPosted()+";"+officers.GetBranch()+";"+officers.GetPassword()+";"+officers.GetSquadron());
             }
         }
-        public void LoadList()
+        private  void LoadList()
         {
+            List<CommandingOfficers> OCs = new List<CommandingOfficers>();
            
             // Read Commanding Officer information from the file
             using (StreamReader reader = new StreamReader(path))
@@ -86,9 +87,10 @@ namespace AirForceLibrary.DL
                             OC.SetUnderOff(Unders);
                         }
 
-                        officers.Add(OC);
+                        OCs.Add(OC);
                     }
                 }
+                officers = OCs;
             }
         }
         /// <summary>
@@ -144,9 +146,9 @@ namespace AirForceLibrary.DL
                     if (OC.GetPakNo() == PakNo)
                     {
                         // Create a new AFPersonalle instance with updated information
-                        //AFPersonalle AF = new AFPersonalle(NewOC.GetName(), NewOC.GetRank(), NewOC.GetPakNo(), NewOC.GetPresentlyPosted());
-                        //IAFPersonalle NewAF = DLAFPersonalleFH.SetValidInstance();
-                        //NewAF.UpdateAFPersonalle(PakNo, AF);
+                        AFPersonalle AF = new AFPersonalle(NewOC.GetName(), NewOC.GetRank(), NewOC.GetPakNo(), NewOC.GetPresentlyPosted());
+                        IAFPersonalle NewAF = DLAFPersonalleFH.SetValidInstance();
+                        NewAF.UpdateAFPersonalle(PakNo, AF);
 
                         // Update the Squadron and UnderOfficer properties of the Commanding Officer
                         OC.SetName(NewOC.GetName());
@@ -184,6 +186,10 @@ namespace AirForceLibrary.DL
                     // Skip the Commanding Officer with the matching PakNo
                     if (OC.GetPakNo() == PakNo)
                     {
+                        //AFPersonalle AF = new AFPersonalle(NewOC.GetName(), NewOC.GetRank(), NewOC.GetPakNo(), NewOC.GetPresentlyPosted());
+                        IAFPersonalle NewAF = DLAFPersonalleFH.SetValidInstance();
+                        NewAF.DeleteAFPersonalle(PakNo);
+
                         continue;
                     }
 

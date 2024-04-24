@@ -56,7 +56,7 @@ namespace AirForce.SignIn
                         GDPilot GDP = Interfaces.GetGdpInterface().GetGDPThroughPakNo(PakNo);
 
                         // Set the current GDPilot
-                        ConnectionClass.CurrentGDP = GDP;
+                        ConnectionClass.SetCurrentGDP(GDP);
 
                         // Hide the current form
                         this.Hide();
@@ -103,6 +103,14 @@ namespace AirForce.SignIn
 
 
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            Form1 Form = new Form1();
+            Form.Show();
+           // this is To take back to the first page
         }
     }
 }

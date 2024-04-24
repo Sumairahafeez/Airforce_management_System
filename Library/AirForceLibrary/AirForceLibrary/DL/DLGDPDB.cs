@@ -43,7 +43,7 @@ namespace AirForceLibrary.DL
             // Construct SQL query to insert GDPilot into the database
             
             string query = string.Format("INSERT INTO GDP VALUES({0}, (SELECT TOP 1 Id FROM AFPersonalle WHERE PakNo = {1}), null, '{2}')", G.GetFlyingHours(), G.GetPakNo(), G.GetSquadron());
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -62,7 +62,7 @@ namespace AirForceLibrary.DL
            // try
             {
                
-                using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+                using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand(query, con);
@@ -112,7 +112,7 @@ namespace AirForceLibrary.DL
         {
             string query = "SELECT * FROM GDP g, AFPersonalle a WHERE g.OfficerId = a.Id AND g.OCId = (SELECT Id FROM OC WHERE OffId = (SELECT Id FROM AFPersonalle WHERE PakNo = " + PakNo + "))";
             List<GDPilot> gdps = new List<GDPilot>();
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -154,7 +154,7 @@ namespace AirForceLibrary.DL
         public void DeleteGDP(int PakNo)
         {
             string query = string.Format("DELETE FROM GDP WHERE OfficerId IN (SELECT Id FROM AFPersonalle WHERE PakNo = {0}); DELETE FROM AFPersonalle WHERE PakNo = {0};", PakNo);
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand mcd = new SqlCommand(query, con);
@@ -170,7 +170,7 @@ namespace AirForceLibrary.DL
         public GDPilot GetGDPThroughPakNo(int PakNo)
         {
             string query = "SELECT * FROM GDP g, AFPersonalle a WHERE g.OfficerId = a.Id AND a.PakNo = " + PakNo;
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -217,7 +217,7 @@ namespace AirForceLibrary.DL
             {
                 query = string.Format("UPDATE GDP SET Squadron = '{0}', FlyingHours = {1} WHERE OfficerId = (SELECT Id FROM AFPersonalle WHERE PakNo = {2})", Gdp.GetSquadron(), Gdp.GetFlyingHours(), PakNo);
             }
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);

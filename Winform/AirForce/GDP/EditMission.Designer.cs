@@ -42,8 +42,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.Misssionhdbt = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.Updatebt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MissionDGV)).BeginInit();
@@ -194,29 +193,17 @@
             this.pictureBox1.TabIndex = 60;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // Misssionhdbt
             // 
-            this.button1.BackColor = System.Drawing.Color.Peru;
-            this.button1.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(-4, -4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(563, 99);
-            this.button1.TabIndex = 59;
-            this.button1.Text = "WELCOME ON BOARD SIR!!";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Peru;
-            this.button4.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(548, -4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(827, 99);
-            this.button4.TabIndex = 69;
-            this.button4.Text = "MISSION DETAILS";
-            this.button4.UseVisualStyleBackColor = false;
+            this.Misssionhdbt.BackColor = System.Drawing.Color.Peru;
+            this.Misssionhdbt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Misssionhdbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Misssionhdbt.Location = new System.Drawing.Point(-4, -4);
+            this.Misssionhdbt.Name = "Misssionhdbt";
+            this.Misssionhdbt.Size = new System.Drawing.Size(1394, 99);
+            this.Misssionhdbt.TabIndex = 59;
+            this.Misssionhdbt.Text = "WELCOME ON BOARD SIR!!";
+            this.Misssionhdbt.UseVisualStyleBackColor = false;
             // 
             // button6
             // 
@@ -264,8 +251,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.Misssionhdbt);
             this.Name = "EditMission";
             this.Text = "EditMission";
             this.Load += new System.EventHandler(this.EditMission_Load);
@@ -291,8 +277,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button Misssionhdbt;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button Updatebt;
     }

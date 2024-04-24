@@ -33,7 +33,7 @@
             this.Requestbt = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.Missionbt = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Headingbt = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ViewMissionbt = new System.Windows.Forms.Button();
@@ -68,6 +68,8 @@
             this.Requestbt.BackColor = System.Drawing.Color.Peru;
             this.Requestbt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Requestbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Requestbt.Image = ((System.Drawing.Image)(resources.GetObject("Requestbt.Image")));
+            this.Requestbt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Requestbt.Location = new System.Drawing.Point(886, 654);
             this.Requestbt.Name = "Requestbt";
             this.Requestbt.Size = new System.Drawing.Size(318, 55);
@@ -81,6 +83,8 @@
             this.button3.BackColor = System.Drawing.Color.Peru;
             this.button3.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(503, 654);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(318, 55);
@@ -94,6 +98,8 @@
             this.Missionbt.BackColor = System.Drawing.Color.Peru;
             this.Missionbt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Missionbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Missionbt.Image = ((System.Drawing.Image)(resources.GetObject("Missionbt.Image")));
+            this.Missionbt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Missionbt.Location = new System.Drawing.Point(92, 654);
             this.Missionbt.Name = "Missionbt";
             this.Missionbt.Size = new System.Drawing.Size(318, 55);
@@ -102,17 +108,17 @@
             this.Missionbt.UseVisualStyleBackColor = false;
             this.Missionbt.Click += new System.EventHandler(this.Missionbt_Click_1);
             // 
-            // button1
+            // Headingbt
             // 
-            this.button1.BackColor = System.Drawing.Color.Peru;
-            this.button1.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(1, -2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(1377, 99);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "GENERAL DUTY PILOTS";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Headingbt.BackColor = System.Drawing.Color.Peru;
+            this.Headingbt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Headingbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Headingbt.Location = new System.Drawing.Point(1, -2);
+            this.Headingbt.Name = "Headingbt";
+            this.Headingbt.Size = new System.Drawing.Size(1377, 99);
+            this.Headingbt.TabIndex = 47;
+            this.Headingbt.Text = "GENERAL DUTY PILOTS";
+            this.Headingbt.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
@@ -279,7 +285,7 @@
             this.Controls.Add(this.Requestbt);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.Missionbt);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Headingbt);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.pictureBox1);
             this.Name = "GDPMenu";
@@ -296,7 +302,7 @@
         private System.Windows.Forms.Button Requestbt;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button Missionbt;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Headingbt;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button ViewMissionbt;

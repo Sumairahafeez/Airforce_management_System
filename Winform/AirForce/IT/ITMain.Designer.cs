@@ -60,11 +60,14 @@
             this.Viewbt.BackColor = System.Drawing.Color.MidnightBlue;
             this.Viewbt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Viewbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Viewbt.Location = new System.Drawing.Point(878, 632);
+            this.Viewbt.Image = ((System.Drawing.Image)(resources.GetObject("Viewbt.Image")));
+            this.Viewbt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Viewbt.Location = new System.Drawing.Point(865, 632);
             this.Viewbt.Name = "Viewbt";
-            this.Viewbt.Size = new System.Drawing.Size(264, 55);
+            this.Viewbt.Size = new System.Drawing.Size(277, 55);
             this.Viewbt.TabIndex = 70;
             this.Viewbt.Text = "View Officers";
+            this.Viewbt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Viewbt.UseVisualStyleBackColor = false;
             this.Viewbt.Click += new System.EventHandler(this.Viewbt_Click);
             // 
@@ -73,32 +76,41 @@
             this.Removebt.BackColor = System.Drawing.Color.MidnightBlue;
             this.Removebt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Removebt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Removebt.Location = new System.Drawing.Point(582, 632);
+            this.Removebt.Image = ((System.Drawing.Image)(resources.GetObject("Removebt.Image")));
+            this.Removebt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Removebt.Location = new System.Drawing.Point(561, 632);
             this.Removebt.Name = "Removebt";
-            this.Removebt.Size = new System.Drawing.Size(290, 55);
+            this.Removebt.Size = new System.Drawing.Size(298, 55);
             this.Removebt.TabIndex = 69;
             this.Removebt.Text = "Remove Officer";
+            this.Removebt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Removebt.UseVisualStyleBackColor = false;
             this.Removebt.Click += new System.EventHandler(this.Removebt_Click);
             // 
             // Addbt
             // 
             this.Addbt.BackColor = System.Drawing.Color.MidnightBlue;
+            this.Addbt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Addbt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Addbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Addbt.Location = new System.Drawing.Point(42, 632);
+            this.Addbt.Image = ((System.Drawing.Image)(resources.GetObject("Addbt.Image")));
+            this.Addbt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Addbt.Location = new System.Drawing.Point(38, 632);
             this.Addbt.Name = "Addbt";
-            this.Addbt.Size = new System.Drawing.Size(251, 55);
+            this.Addbt.Size = new System.Drawing.Size(260, 55);
             this.Addbt.TabIndex = 68;
             this.Addbt.Text = "Add Officer";
+            this.Addbt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Addbt.UseVisualStyleBackColor = false;
             this.Addbt.Click += new System.EventHandler(this.Addbt_Click);
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button1.BackColor = System.Drawing.Color.MidnightBlue;
             this.button1.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(1, -2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(1377, 99);
@@ -108,7 +120,7 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button5.BackColor = System.Drawing.Color.MidnightBlue;
             this.button5.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button5.Location = new System.Drawing.Point(1, 610);
@@ -132,11 +144,14 @@
             this.button2.BackColor = System.Drawing.Color.MidnightBlue;
             this.button2.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(299, 632);
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(304, 632);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(277, 55);
+            this.button2.Size = new System.Drawing.Size(251, 55);
             this.button2.TabIndex = 77;
             this.button2.Text = "Edit Officer";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

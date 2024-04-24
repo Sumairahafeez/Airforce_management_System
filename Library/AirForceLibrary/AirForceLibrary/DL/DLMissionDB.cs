@@ -33,7 +33,7 @@ namespace AirForceLibrary.DL
             int bin = mission.GetIsComplete() ? 1 : 0; // Convert boolean to binary representation
                                                        // Construct SQL query to insert mission into the database
             string query = string.Format("INSERT INTO Mission VALUES ('{0}', '{1}', {2}, {3}, (SELECT Id FROM AFPersonalle WHERE PakNo = {4}))", mission.GetDate(), mission.GetDetails(), bin, mission.GetSuccessRate(), PakNo);
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -51,7 +51,7 @@ namespace AirForceLibrary.DL
             int bin = mission.GetIsComplete() ? 1 : 0; // Convert boolean to binary representation
                                                        // Construct SQL query to update mission in the database
             string query = string.Format("UPDATE Mission SET Date = '{0}', Details = '{1}', IsComplete = {2}, SuccessRate = {3} WHERE Date = '{4}'", mission.GetDate(), mission.GetDetails(), bin, mission.GetSuccessRate(), Date);
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand command = new SqlCommand(query, con);
@@ -69,7 +69,7 @@ namespace AirForceLibrary.DL
             Mission mission = new Mission();
             // Construct SQL query to select mission from the database based on date
             string query = string.Format("SELECT TOP 1 * FROM Mission WHERE Date = '{0}'", Date);
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -95,7 +95,7 @@ namespace AirForceLibrary.DL
         {
             // Construct SQL query to delete mission from the database based on its properties
             string query = string.Format("DELETE FROM Mission WHERE Date = '{0}' AND Details = '{1}' AND IsComplete = {2} AND SuccessRate = {3}", mission.GetDate(), mission.GetDetails(), mission.GetIsComplete() ? 1 : 0, mission.GetSuccessRate());
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -112,7 +112,7 @@ namespace AirForceLibrary.DL
             // Construct SQL query to select all missions from the database
             string query = "SELECT * FROM Mission";
             List<Mission> missions = new List<Mission>();
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -142,7 +142,7 @@ namespace AirForceLibrary.DL
             // Construct SQL query to select missions of a specific officer from the database
             string query = "SELECT * FROM Mission WHERE OffId = (SELECT Id FROM AFPersonalle WHERE PakNo = " + PakNo + ")";
             List<Mission> missions = new List<Mission>();
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);

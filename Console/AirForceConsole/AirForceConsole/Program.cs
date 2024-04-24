@@ -17,18 +17,26 @@ namespace AirForceConsole
     {
         static void Main(string[] args)
         {
+            
+            // File paths for various data files
             string AFPath = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\AFPersonalle.txt";
             string GDPPath = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\GDPilot.txt";
             string OCPath = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Commanders.txt";
             string MissionPath = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Mission.txt";
             string ReportPath = "F:\\2nd semester\\OOP Lab\\Air Force Management System\\AirForce\\Library\\AirForceLibrary\\AirForceLibrary\\FileHandling\\Requests.txt";
+
+            // Setting file paths in the ConnectionClass
             ConnectionClass.SetAFFile(AFPath);
             ConnectionClass.SetGDPFile(GDPPath);
             ConnectionClass.SetMissionFile(MissionPath);
             ConnectionClass.SetReportFile(ReportPath);
             ConnectionClass.SetOCFile(OCPath);
+
+            // Displaying header and first page of the application
             ConsoleUtility.Header();
             ConsoleUtility.FirstPage();
+            
+            // Getting user's choice for database usage
             int choice = ConsoleUtility.DataBaseChoice();
             if (choice == 1)
             {
@@ -40,18 +48,19 @@ namespace AirForceConsole
             }
             else if (choice == -1)
             {
-                ConsoleUtility.Error() ;
+                ConsoleUtility.Error();
             }
-            bool isExit = false;
-           
+            bool isExit;
+
+            // Main loop for the application
             while (!(Keyboard.IsKeyPressed(Key.Escape)))
             {
-                if (Keyboard.IsKeyPressed(Key.S))
+                if (Keyboard.IsKeyPressed(Key.Escape))
                 {
-                    isExit = true;
+                    break;
                 }
                 ConsoleUtility.TakeSignIn();
-                // Check if the provided credentials are valid for an IT user
+                // Checking if the provided credentials are valid for an IT user
                 bool IsValid = Validations.IsValidIT(ConsoleUtility.name, ConsoleUtility.PakNo, ConsoleUtility.Password);
 
                 // If the credentials are valid for an IT user
@@ -66,35 +75,36 @@ namespace AirForceConsole
                     {
                         GDPilot CurrentPilot = Interfaces.GetGdpInterface().GetGDPThroughPakNo(ConsoleUtility.PakNo);
                         if (CurrentPilot != null)
-                            
                         {
                             int Option = 0;
+                            // Loop for handling GDPilot's menu options
                             while (Option != 10)
                             {
                                 ConnectionClass.SetCurrentGDP(CurrentPilot);
-                                 Option = UIGDP.MainMenu();
+                                Option = UIGDP.MainMenu();
+                                // Handling different options chosen by the GDPilot
                                 if (Option == 1)
                                 {
                                     UIMission.ViewMissions();
-
                                 }
                                 else if (Option == 2)
                                 {
                                     UIMission.CompleteMissions();
                                 }
-                                else if (Option == 3)
+                                // Similar handling for other options...
+                                else if(Option == 3)
                                 {
                                     UIMission.EditMission();
                                 }
-                                else if (Option == 4)
+                                else if( Option == 4)
                                 {
                                     UIGDP.ViewFlyingHours();
                                 }
-                                else if (Option == 5)
+                                else if(Option == 5)
                                 {
                                     UIGDP.CompleteFlyingHours();
                                 }
-                                else if (Option == 6)
+                                else if(Option == 6)
                                 {
                                     UIGDP.EditFlyingHours();
                                 }
@@ -110,23 +120,14 @@ namespace AirForceConsole
                                 {
                                     UIRequests.DeleteRequest();
                                 }
-                                else if (Option == -1)
-                                {
-                                    UIGDP.Error();
-                                }
                                 Console.ReadKey();
                             }
-                           
-
-
-
-                    }
-
+                        }
                     }
                     else
                     {
                         bool IsOC = Validations.IsValidOC(ConsoleUtility.PakNo);
-                        if(IsOC)
+                        if (IsOC)
                         {
                             UICommandingOfficers.Menu();
                         }
@@ -134,24 +135,16 @@ namespace AirForceConsole
                         {
                             ConsoleUtility.UserError();
                         }
-                        
                     }
                 }
                 Console.WriteLine("Enter ESC to Exit");
-                if (Keyboard.IsKeyPressed(Key.S))
+                if (Keyboard.IsKeyPressed(Key.Escape))
                 {
-                    isExit = true;
+                    break;
                 }
                 Console.ReadKey();
             }
-           
         }
+}
 
-
-
-
-
-          
-        }
-    
 }

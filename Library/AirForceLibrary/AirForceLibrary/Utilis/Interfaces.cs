@@ -12,7 +12,7 @@ namespace AirForceLibrary.Utilis
     public class Interfaces
     {
        
-        
+       //object handler class that returns the right object according to the demand of the user 
         private static IGDP GdpInterface ;
         private static IOC OCInterface ;
         private static IAFPersonalle AFInterface;

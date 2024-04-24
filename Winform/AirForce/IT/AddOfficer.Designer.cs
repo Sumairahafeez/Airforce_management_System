@@ -291,6 +291,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "AddOfficer";
             this.Text = "AddOfficer";
+            this.Load += new System.EventHandler(this.AddOfficer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

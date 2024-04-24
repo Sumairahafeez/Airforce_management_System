@@ -76,6 +76,7 @@ namespace AirForceLibrary.BL
                 mymission.SetSuccessRate(SuccessRate);
             }
         }
+        //this is an example of dynamic polymorphism
         public virtual bool UpdateMission(DateTime Date, bool IsCompleted, float SuccessRate, Mission mymission)
         {
           
@@ -87,6 +88,7 @@ namespace AirForceLibrary.BL
             }
             return false;
         }
+        //it will change depending upon th etype of infeld personalle in future
         public virtual bool SetIncompleted(DateTime Date, bool IsCompleted, Mission mymission)
         {
            
@@ -98,6 +100,7 @@ namespace AirForceLibrary.BL
             }
             return false;
         }
+        //attributes and types of request may differ according to the person so it is kept abstract
         public abstract bool AddRequest(Requests requests);
        
        

@@ -40,7 +40,7 @@ namespace AirForceLibrary.DL
             IAF.StoreAFPersonalle(A);
             string query = string.Format("INSERT INTO OC VALUES('{0}', (SELECT TOP 1 Id FROM AFPersonalle WHERE PakNo = {1}))", commandingOfficers.GetSquadron(), commandingOfficers.GetPakNo());
 
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -59,7 +59,7 @@ namespace AirForceLibrary.DL
 
             try
             {
-                using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+                using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand(query, con);
@@ -103,7 +103,7 @@ namespace AirForceLibrary.DL
         {
             string query = "SELECT * FROM OC o, AFPersonalle a WHERE o.OffId = a.Id";
             List<CommandingOfficers> commandingOfficers = new List<CommandingOfficers>();
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -137,7 +137,7 @@ namespace AirForceLibrary.DL
         public void DeleteOC(int PakNo)
         {
             string query = string.Format("DELETE FROM OC WHERE OffId IN (SELECT Id FROM AFPersonalle WHERE PakNo = {0});\r\nDELETE FROM AFPersonalle WHERE PakNo = {0};\r\nUPDATE GDP SET OCId = null WHERE OCId IN(SELECT Id FROM AFPersonalle WHERE PakNo = {0})", PakNo);
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -158,7 +158,7 @@ namespace AirForceLibrary.DL
             IAFPersonalle Data = DLAFPersonalleDB.SetValidInstance();
             Data.UpdateAFPersonalle(PakNo, AF);
             string query = string.Format("UPDATE OC SET Squadron = '{0}' WHERE OffId = (SELECT Id FROM AFPersonalle WHERE PakNo = {1})", UpdatedOC.GetSquadron(), PakNo);
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);

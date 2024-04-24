@@ -19,8 +19,8 @@ namespace AirForce.GDP
         }
 
         private void GDPMenu_Load(object sender, EventArgs e)
-        {
-           
+        {   //fills the heading with the name of the current user
+            Headingbt.Text = ConnectionClass.GetCurrentGDP().GetRank() + " " + ConnectionClass.GetCurrentGDP().GetName() + "'s Menu";
         }
 
         private void button2_Click(object sender, EventArgs e)

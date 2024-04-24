@@ -14,46 +14,41 @@ namespace AirForceLibrary.Utilis
 {
     public class ConnectionClass
     {
-        public static string ConnectionStr = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-        //public static string ConnectionStr = "Server = localhost\\SQLEXPRESS01; Database = AirForce; trusted_connection = true;";
-        public static GDPilot CurrentGDP;
-        public static CommandingOfficers CurrentOC;
+        // Connection string for the database
+        private static string ConnectionStr = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+        // Current GDPilot and Commanding Officer
+        private static GDPilot CurrentGDP;
+        private static CommandingOfficers CurrentOC;
+
+        // File paths for various data files
         private static string AFFile;
         private static string GDPFile;
         private static string OCFile;
         private static string MissionFile;
         private static string RequestFile;
+
+        // Flag indicating whether the application is using a database
         private static bool IsUsingDB;
+
+        // Counter for tracking
         public static int Count = 0;
-        public static void SetCurrentGDP(GDPilot currentGDP)
-        {   
-            CurrentGDP = currentGDP;
-        }
+
+        // Setters and getters for file paths
         public static void SetAFFile(string path)
         {
             AFFile = path;
+        }
+        public static string GetAFFile()
+        {
+            return AFFile;
         }
         public static void SetGDPFile(string path)
         {
             GDPFile = path;
         }
-        public static string GetAFFile()
-        {
-
-            return AFFile;
-        }
-        public static string GetRequestFile()
-        {
-            return RequestFile;
-        }
-        public static GDPilot GetCurrentGDP()
-        {
-           
-            return CurrentGDP;
-        }
         public static string GetGDPFile()
         {
-            
             return GDPFile;
         }
         public static void SetOCFile(string path)
@@ -76,9 +71,19 @@ namespace AirForceLibrary.Utilis
         {
             RequestFile = path;
         }
-        public string GetReportPath()
+        public static string GetRequestFile()
         {
             return RequestFile;
+        }
+
+        // Setters and getters for current GDPilot and Commanding Officer
+        public static void SetCurrentGDP(GDPilot currentGDP)
+        {
+            CurrentGDP = currentGDP;
+        }
+        public static GDPilot GetCurrentGDP()
+        {
+            return CurrentGDP;
         }
         public static void SetCurrentOC(CommandingOfficers ic)
         {
@@ -88,6 +93,8 @@ namespace AirForceLibrary.Utilis
         {
             return CurrentOC;
         }
+
+        // Setter and getter for using database flag
         public static bool GetIsUsingDB()
         {
             return IsUsingDB;
@@ -96,6 +103,8 @@ namespace AirForceLibrary.Utilis
         {
             IsUsingDB = Isit;
         }
+
+        // Setters and getters for connection string
         public static string GetConnectionStr()
         {
             return ConnectionStr;

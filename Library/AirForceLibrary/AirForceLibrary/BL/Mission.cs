@@ -22,7 +22,7 @@ namespace AirForceLibrary.BL
            SetDate(date);
            SetDetails(details);
         }
-        //Define Getters Anf Setters
+        //Define Getters And Setters
         public void SetDate(DateTime date)
         {
             this.Date = date;

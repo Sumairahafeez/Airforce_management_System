@@ -95,7 +95,7 @@ namespace AirForceLibrary.Utilis
         public static DataTable GetData(string query)
         {
             DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(ConnectionClass.ConnectionStr))
+            using (SqlConnection con = new SqlConnection(ConnectionClass.GetConnectionStr()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);

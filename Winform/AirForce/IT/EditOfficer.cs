@@ -133,7 +133,7 @@ namespace AirForce.IT
 
         }
         public void ClearData()
-        {
+        {   //this clears the boxes again
             InputName.Text = string.Empty;
             PakNoCB.Text = string.Empty;
             InputRank.Text = string.Empty;

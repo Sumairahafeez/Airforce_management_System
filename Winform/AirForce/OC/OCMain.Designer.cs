@@ -37,7 +37,7 @@ namespace AirForce.OC
             this.Requestbt = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.Missionbt = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Textbt = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -99,17 +99,17 @@ namespace AirForce.OC
             this.Missionbt.UseVisualStyleBackColor = false;
             this.Missionbt.Click += new System.EventHandler(this.Missionbt_Click);
             // 
-            // button1
+            // Textbt
             // 
-            this.button1.BackColor = System.Drawing.Color.DarkOliveGreen;
-            this.button1.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(-7, -2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(1385, 99);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "Commanding Officers";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Textbt.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.Textbt.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Textbt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Textbt.Location = new System.Drawing.Point(-7, -2);
+            this.Textbt.Name = "Textbt";
+            this.Textbt.Size = new System.Drawing.Size(1385, 99);
+            this.Textbt.TabIndex = 57;
+            this.Textbt.Text = "Commanding Officers";
+            this.Textbt.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
@@ -167,7 +167,7 @@ namespace AirForce.OC
             this.Controls.Add(this.Requestbt);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.Missionbt);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Textbt);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.userBoxT);
@@ -185,7 +185,7 @@ namespace AirForce.OC
         private System.Windows.Forms.Button Requestbt;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button Missionbt;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Textbt;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;

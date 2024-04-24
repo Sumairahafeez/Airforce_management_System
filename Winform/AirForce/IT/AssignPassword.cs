@@ -98,33 +98,78 @@ namespace AirForce.IT
 
         private void Setbt_Click(object sender, EventArgs e)
         {
+            // Parse the text value from PakNoCB ComboBox into an integer.
             int PakNo = int.Parse(PakNoCB.Text);
+
+            // Retrieve the password entered by the user.
             string Password = InputPassword.Text;
+
+            // Retrieve the confirmation password entered by the user.
             string ConfirmPassword = InputConfirmPassword.Text;
-            if(Password == ConfirmPassword)
+
+            // Check if the entered password matches the confirmed password.
+            if (Password == ConfirmPassword)
             {
-                AFPersonalle aFPersonalle = Interfaces.GetAFInterface().GetAFPersonalleByID(PakNo);
-                if (aFPersonalle != null)
-                {
+                // Retrieve the Air Force personnel object associated with the given PakNo.
+              
+                GDPilot Pilot = Interfaces.GetGdpInterface().GetGDPThroughPakNo(PakNo);
+                if(Pilot != null)
+                {   //create an instance of ITPersonalle to manage passwords
                     ITPersonalle personalle = ITPersonalle.GetValidInstance();
-                    bool isAssigned = personalle.AssignPassword(Password, aFPersonalle);
-                    if(isAssigned)
+
+                    // Attempt to assign the password to the Air Force personnel.
+                    bool isAssigned = personalle.AssignPassword(Password, Pilot);
+
+                    // If the password is successfully assigned:
+                    if (isAssigned)
                     {
-                        aFPersonalle.SetPassword(Password);
-                        Interfaces.GetAFInterface().UpdateAFPersonalle(PakNo, aFPersonalle);
+                        // Update the password of the Air Force personnel in the database.
+                       
+                        Interfaces.GetGdpInterface().UpdateGDP(PakNo,Pilot);
+                        // Show a success message to the user.
                         MessageBox.Show("Password Assigned Successfully");
                     }
                     else
                     {
+                        // Show a message indicating failure to assign the password.
                         MessageBox.Show("Unable to Assign");
                     }
                 }
+                else
+                {
+                    CommandingOfficers CO = Interfaces.GetOCInterface().GetOCbyId(PakNo);
+                    if(CO != null)
+                    {
+                        //create an instance of ITPersonalle to manage passwords
+                        ITPersonalle personalle = ITPersonalle.GetValidInstance();
+
+                        // Attempt to assign the password to the Air Force personnel.
+                        bool isAssigned = personalle.AssignPassword(Password, CO);
+
+                        // If the password is successfully assigned:
+                        if (isAssigned)
+                        {
+                            // Update the password of the Air Force personnel in the database.
+                           
+                            Interfaces.GetOCInterface().UpdateOC(PakNo,CO);
+                            // Show a success message to the user.
+                            MessageBox.Show("Password Assigned Successfully");
+                        }
+                        else
+                        {
+                            // Show a message indicating failure to assign the password.
+                            MessageBox.Show("Unable to Assign");
+                        }
+                    }
+                }
+               
             }
             else
             {
+                // Show a message indicating that the passwords don't match.
                 MessageBox.Show("Passwords don't match");
             }
-           
+
         }
 
         private void button7_Click(object sender, EventArgs e)

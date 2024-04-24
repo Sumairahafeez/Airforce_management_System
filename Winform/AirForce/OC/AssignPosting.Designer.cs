@@ -74,7 +74,7 @@
             this.richTextBox7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox7.Location = new System.Drawing.Point(81, 389);
             this.richTextBox7.Name = "richTextBox7";
-            this.richTextBox7.Size = new System.Drawing.Size(195, 39);
+            this.richTextBox7.Size = new System.Drawing.Size(208, 39);
             this.richTextBox7.TabIndex = 221;
             this.richTextBox7.Text = "Under OC PakNo";
             // 
@@ -85,7 +85,7 @@
             this.richTextBox6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox6.Location = new System.Drawing.Point(81, 305);
             this.richTextBox6.Name = "richTextBox6";
-            this.richTextBox6.Size = new System.Drawing.Size(195, 39);
+            this.richTextBox6.Size = new System.Drawing.Size(208, 39);
             this.richTextBox6.TabIndex = 220;
             this.richTextBox6.Text = "Posted To";
             // 
@@ -103,13 +103,13 @@
             // richTextBox3
             // 
             this.richTextBox3.BackColor = System.Drawing.Color.DarkOliveGreen;
-            this.richTextBox3.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox3.Font = new System.Drawing.Font("Yu Gothic UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox3.Location = new System.Drawing.Point(81, 228);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(195, 39);
+            this.richTextBox3.Size = new System.Drawing.Size(208, 39);
             this.richTextBox3.TabIndex = 218;
-            this.richTextBox3.Text = "Name";
+            this.richTextBox3.Text = "Under Officer\'s Name";
             // 
             // AssigmMissionbt
             // 
@@ -155,6 +155,7 @@
             this.OfficersDV.Name = "OfficersDV";
             this.OfficersDV.Size = new System.Drawing.Size(390, 182);
             this.OfficersDV.TabIndex = 213;
+            this.OfficersDV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OfficersDV_CellContentClick);
             // 
             // PakNoCB
             // 
@@ -185,13 +186,13 @@
             // richTextBox2
             // 
             this.richTextBox2.BackColor = System.Drawing.Color.DarkOliveGreen;
-            this.richTextBox2.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox2.Font = new System.Drawing.Font("Yu Gothic UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox2.Location = new System.Drawing.Point(81, 151);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(195, 39);
+            this.richTextBox2.Size = new System.Drawing.Size(208, 38);
             this.richTextBox2.TabIndex = 210;
-            this.richTextBox2.Text = "Pak No";
+            this.richTextBox2.Text = "Under Officer\'s PakNo";
             // 
             // button2
             // 

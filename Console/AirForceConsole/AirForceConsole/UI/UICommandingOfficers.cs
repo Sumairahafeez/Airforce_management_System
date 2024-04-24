@@ -12,11 +12,16 @@ namespace AirForceConsole.UI
     {
         public static void Menu()
         {
-            Console.Clear();
-            ConsoleUtility.Header();
+            Console.Clear(); // Clear the console
+            ConsoleUtility.Header(); // Display the header
+
+            // Display a message with the current operational command
             Console.WriteLine("Respected " + ConnectionClass.GetCurrentOC());
-            Console.WriteLine("OC Menu is not implemented on Console Please Work on Winform");
+
+            // Inform the user that the OC menu is not implemented in the console
+            Console.WriteLine("OC Menu is not implemented on Console. Please Work on Winform.");
         }
+
     }
 
 }

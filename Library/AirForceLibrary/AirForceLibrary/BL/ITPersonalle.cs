@@ -16,6 +16,7 @@ namespace AirForceLibrary.BL
         {
 
         }
+        //only one IT officer object can be made
         public static ITPersonalle GetValidInstance()
         {
             if(Instance == null)
@@ -24,6 +25,7 @@ namespace AirForceLibrary.BL
             }
             return Instance;
         }
+        //it has crud control of all the officers which is done through db and fh plus a behaviour of assigning password
         public bool AssignPassword(string Password,AFPersonalle Personalle)
         {
             if(Validations.IsValidAFPersonalle(Personalle.GetPakNo()))

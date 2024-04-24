@@ -35,7 +35,7 @@ namespace AirForceLibrary.BL
                 mymission.SetSuccessRate(SuccessRate/10);
             }
         }
-       
+       //updates a mission
         public new bool UpdateMission(DateTime Date, bool IsCompleted, float SuccessRate,Mission mymission)
         {
            
@@ -47,6 +47,7 @@ namespace AirForceLibrary.BL
             }
             return false;
         }
+        //set missions as incomplete
         public new bool SetIncompleted(DateTime Date, bool IsCompleted,Mission mymission)
         {
            
@@ -58,6 +59,7 @@ namespace AirForceLibrary.BL
             }
             return false;
         }
+        //this adds request in their list
         public override bool AddRequest(Requests req)
         {   foreach(Requests requ in GetRequests())
             {
